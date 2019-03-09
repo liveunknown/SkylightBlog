@@ -40,7 +40,7 @@ function LoadIndex()
             }
 
 
-            $("#lastOne").append(content);
+            $("#lastOne").html(content);
 
         },error:function(){
             alert("数据加载错误");
