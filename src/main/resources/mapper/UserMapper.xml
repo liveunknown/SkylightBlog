@@ -13,4 +13,7 @@
     <select id="GetUserById" parameterType="int" resultMap="UserMap">
         select * from user where id=#{id}
     </select>
+    <select id="GetUsersByPageNumber" resultMap="UserMap">
+        select * from user
+    </select>
 </mapper>

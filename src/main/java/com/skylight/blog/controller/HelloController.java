@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * 测试控制器
  */
@@ -26,5 +28,11 @@ public class HelloController {
     @ResponseBody
     public User getUser(@RequestParam int id) {
         return userMapper.GetUserById(id);
+    }
+
+    @RequestMapping("/users")
+    @ResponseBody
+    public List<User> getUsers() {
+        return userMapper.GetUsersByPageNumber();
     }
 }
