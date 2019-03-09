@@ -1,6 +1,8 @@
 package com.skylight.blog.controller;
 
+import com.skylight.blog.mapper.SummaryMapper;
 import com.skylight.blog.mapper.UserMapper;
+import com.skylight.blog.model.ArticleSummary;
 import com.skylight.blog.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,9 @@ public class HelloController {
 
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    SummaryMapper summaryMapper;
+
 
     @RequestMapping("/hello")
     public String hello() {
@@ -35,4 +40,11 @@ public class HelloController {
     public List<User> getUsers() {
         return userMapper.GetUsersByPageNumber();
     }
+
+    @RequestMapping("/summarys")
+    @ResponseBody
+    public List<ArticleSummary> getSummarys() {
+        return summaryMapper.getSummarys();
+    }
+
 }
