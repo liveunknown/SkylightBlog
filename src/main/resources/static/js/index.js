@@ -1,8 +1,8 @@
 $(function(){
 
     alert("你好呀！");
-    haha();
-    LoadIndex();
+    //haha();
+    //LoadIndex();
 });
 
 function haha()

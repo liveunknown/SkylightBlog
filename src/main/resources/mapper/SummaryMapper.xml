@@ -7,7 +7,6 @@
         <result column="topic" jdbcType="VARCHAR" property="topic" />
         <result column="summary" jdbcType="VARCHAR" property="summary" />
         <result column="article_id" jdbcType="BIGINT" property="articleId" />
-
     </resultMap>
 
     <select id="getSummarys" resultMap="SummaryMap">
