@@ -34,7 +34,7 @@ public class HelloController {
 
     @RequestMapping("/user")
     @ResponseBody
-    public User getUser(@RequestParam int id) {
+    public User getUser(int id) {
         return userMapper.GetUserById(id);
     }
 
