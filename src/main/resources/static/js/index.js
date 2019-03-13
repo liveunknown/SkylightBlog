@@ -29,7 +29,7 @@ function LoadIndex() {
                 var articleId = data[i].articleId;
 
                 content = content +
-                    '<div class="col-xs-6 col-lg-4" id="lastOne">' +
+                    '<div class="col-xs-12 col-lg-12" id="lastOne">' +
                     '<h2>' + topic + '</h2>' +
                     '<p>' + summary + '</p>' +
                     '<p><a class="btn btn-default" href="' + 'javascript:GetArticleById(' + articleId + ');' + '" role="button">View details &raquo;</a></p>' +
@@ -60,7 +60,7 @@ function LoadIndex() {
                     var id = data.id;
                     var hi = data.content;
 
-                    content = content + '<div class="col-xs-6 col-lg-4">'+
+                    content = content + '<div class="col-xs-12 col-lg-12">'+
                         '<h2>'+id+'</h2>'+
                         '<p>'+hi+'</p>'+
                     '</div>';
