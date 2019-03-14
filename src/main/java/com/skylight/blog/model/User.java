@@ -10,6 +10,17 @@ public class User {
     private String createTime;
     private String updateTime;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", updateTime='" + updateTime + '\'' +
+                '}';
+    }
 
     public int getId() {
         return id;
