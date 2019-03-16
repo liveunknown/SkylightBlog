@@ -1,5 +1,9 @@
 package com.skylight.blog.service;
 
-public interface ArticleService {
+import com.skylight.blog.model.ArticleInfo;
 
+import java.util.List;
+
+public interface ArticleService {
+    List<ArticleInfo> getArticleInfos(Long categoryId,int page, int number);
 }

@@ -20,6 +20,6 @@
             and category_id = #{categoryId}
         </if>
         ORDER BY create_by
-        limit #{count} , #{number};
+        limit #{page} , #{number};
     </select>
 </mapper>
