@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skylight.blog.mapper.ArticleInfoMapper">
+    <resultMap id="ArticleInfoMap" type="com.skylight.blog.model.ArticleInfo">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="category_id" jdbcType="BIGINT" property="categoryId" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="summary" jdbcType="VARCHAR" property="summary" />
+        <result column="views" property="views" />
+        <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
+        <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
+        <result property="isDeleted" column="is_deleted"/>
+    </resultMap>
+
+    <select id="getArticleInfos" resultMap="ArticleInfoMap">
+        select * from article_info
+        where 1 = 1
+        <if test="categoryId != 0 ">
+            and category_id = #{categoryId}
+        </if>
+        ORDER BY create_by
+        limit #{count} , #{number};
+    </select>
+</mapper>
