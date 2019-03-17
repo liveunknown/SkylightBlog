@@ -25,6 +25,12 @@ public class ArticleServiceImpl implements ArticleService {
         return articleInfoList;
     }
 
+    public List<ArticleWrap> getArticleInfoDetails(Long categoryId, int page, int number)
+    {
+        List<ArticleWrap> articleWrapList = articleInfoMapper.getArticleInfoDetails(categoryId, (page - 1)*number, number);
+        return articleWrapList;
+    }
+
     public ArticleContent getArticleContentByArticleInfoId(Long id)
     {
         return articleContentMapper.getArticleContentByArticleInfoId(id);

@@ -54,6 +54,19 @@
         limit #{page} , #{number};
     </select>
 
+    <select id="getArticleInfoDetails" resultMap="ArticleWrapMap">
+        SELECT ai.*,
+        c.id cid,c.name,c.number,c.create_by c_create_by,c.modified_by c_modified_by
+        FROM article_info ai LEFT JOIN
+        (SELECT * FROM category  c ) c ON ai.category_id = c.id
+        WHERE 1 = 1
+        <if test="categoryId != 0 ">
+            and category_id = #{categoryId}
+        </if>
+        ORDER BY create_by
+        limit #{page} , #{number};
+    </select>
+
     <select id="getArticleInfos" resultMap="ArticleInfoMap">
         select * from article_info
         where 1 = 1

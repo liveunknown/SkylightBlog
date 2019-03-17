@@ -23,6 +23,13 @@ public class ArticleController {
         return articleService.getArticleInfos(categoryId,page,10);
     }
 
+    @RequestMapping("/articleInfoDetails")
+    public List<ArticleWrap> getArticleInfoDetails(Long categoryId, int page) {
+        if(categoryId==null)
+            categoryId = new Long(0);
+        return articleService.getArticleInfoDetails(categoryId,page,10);
+    }
+
     @RequestMapping("/articleContent")
     public ArticleContent getArticleContentByArticleInfoId(Long articleInfoId){
         return articleService.getArticleContentByArticleInfoId(articleInfoId);
