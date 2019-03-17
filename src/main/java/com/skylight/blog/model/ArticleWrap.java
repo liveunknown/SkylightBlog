@@ -15,6 +15,7 @@ public class ArticleWrap {
 
     private ArticleContent articleContent;
 
+    private List<ArticleLabel> articleLabelList;
     private List<Comment> commentList;
 
     @Override
@@ -30,6 +31,7 @@ public class ArticleWrap {
                 ", modifiedBy='" + modifiedBy + '\'' +
                 ", isDeleted=" + isDeleted +
                 ", articleContent=" + articleContent +
+                ", articleLabelList=" + articleLabelList +
                 ", commentList=" + commentList +
                 '}';
     }
@@ -112,6 +114,14 @@ public class ArticleWrap {
 
     public void setArticleContent(ArticleContent articleContent) {
         this.articleContent = articleContent;
+    }
+
+    public List<ArticleLabel> getArticleLabelList() {
+        return articleLabelList;
+    }
+
+    public void setArticleLabelList(List<ArticleLabel> articleLabelList) {
+        this.articleLabelList = articleLabelList;
     }
 
     public List<Comment> getCommentList() {

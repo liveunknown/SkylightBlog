@@ -36,6 +36,19 @@
             <result column="ac_create_by" jdbcType="TIMESTAMP" property="createBy" />
             <result column="ac_modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
         </association>
+        <collection property="articleLabelList" ofType="com.skylight.blog.model.ArticleLabel">
+            <id property="id" column="al_id"/>
+            <result property="articleId" column="al_article_id"/>
+            <result property="labelId" column="label_id"/>
+            <result column="al_create_by" jdbcType="TIMESTAMP" property="createBy" />
+            <result column="al_modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
+            <association property="label" javaType="com.skylight.blog.model.Label">
+                <id property="id" column="lid" />
+                <result property="name" column="l_name"/>
+                <result column="l_create_by" jdbcType="TIMESTAMP" property="createBy" />
+                <result column="l_modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
+            </association>
+        </collection>
     </resultMap>
 
     <select id="getArticleWraps" resultMap="ArticleWrapMap">
@@ -56,9 +69,15 @@
 
     <select id="getArticleInfoDetails" resultMap="ArticleWrapMap">
         SELECT ai.*,
-        c.id cid,c.name,c.number,c.create_by c_create_by,c.modified_by c_modified_by
+        c.id cid,c.name,c.number,c.create_by c_create_by,c.modified_by c_modified_by,
+        al.id al_id,al.article_id al_article_id,al.label_id,al.create_by al_create_by,al.modified_by al_modified_by,
+        l.id lid,l.name l_name,l.create_by l_create_by,l.modified_by l_modified_by
         FROM article_info ai LEFT JOIN
         (SELECT * FROM category  c ) c ON ai.category_id = c.id
+        LEFT JOIN
+        (SELECT * FROM article_label al ) al ON ai.id=al.article_id
+        LEFT JOIN
+        (SELECT * FROM label l ) l ON al.label_id=l.id
         WHERE 1 = 1
         <if test="categoryId != 0 ">
             and category_id = #{categoryId}

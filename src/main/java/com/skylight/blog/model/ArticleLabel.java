@@ -8,6 +8,8 @@ public class ArticleLabel {
     private String createBy;
     private String modifiedBy;
 
+    private Label label;
+
     @Override
     public String toString() {
         return "ArticleLabel{" +
@@ -16,6 +18,7 @@ public class ArticleLabel {
                 ", labelId=" + labelId +
                 ", createBy='" + createBy + '\'' +
                 ", modifiedBy='" + modifiedBy + '\'' +
+                ", label=" + label +
                 '}';
     }
 
@@ -57,5 +60,13 @@ public class ArticleLabel {
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+    public Label getLabel() {
+        return label;
+    }
+
+    public void setLabel(Label label) {
+        this.label = label;
     }
 }
