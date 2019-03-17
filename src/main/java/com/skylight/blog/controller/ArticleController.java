@@ -41,4 +41,9 @@ public class ArticleController {
             categoryId = new Long(0);
         return articleService.getArticleWraps(categoryId,page,10);
     }
+
+    @RequestMapping("/articleWrapDetail")
+    public ArticleWrap getArticleWrapByArticleInfoId(Long id) {
+        return articleService.getArticleWrapByArticleInfoId(id);
+    }
 }

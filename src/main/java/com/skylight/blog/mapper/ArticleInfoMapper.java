@@ -12,4 +12,6 @@ public interface ArticleInfoMapper {
     List<ArticleInfo> getArticleInfos(@Param("categoryId")Long categoryId, @Param("page")int page, @Param("number")int number);
     List<ArticleWrap> getArticleInfoDetails(@Param("categoryId")Long categoryId, @Param("page")int page, @Param("number")int number);
     List<ArticleWrap> getArticleWraps(@Param("categoryId")Long categoryId, @Param("page")int page, @Param("number")int number);
+
+    ArticleWrap getArticleWrapByArticleInfoId(@Param("id")Long id);
 }

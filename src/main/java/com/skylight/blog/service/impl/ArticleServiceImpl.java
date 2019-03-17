@@ -40,4 +40,8 @@ public class ArticleServiceImpl implements ArticleService {
         List<ArticleWrap> articleWrapList = articleInfoMapper.getArticleWraps(categoryId, (page - 1)*number, number);
         return articleWrapList;
     }
+
+    public ArticleWrap getArticleWrapByArticleInfoId(Long id){
+        return articleInfoMapper.getArticleWrapByArticleInfoId(id);
+    }
 }
