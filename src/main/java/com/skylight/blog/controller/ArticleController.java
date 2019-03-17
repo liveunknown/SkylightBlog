@@ -1,5 +1,6 @@
 package com.skylight.blog.controller;
 
+import com.skylight.blog.model.ArticleContent;
 import com.skylight.blog.model.ArticleInfo;
 import com.skylight.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,10 @@ public class ArticleController {
         if(categoryId==null)
             categoryId = new Long(0);
         return articleService.getArticleInfos(categoryId,page,10);
+    }
+
+    @RequestMapping("/articleContent")
+    public ArticleContent getArticleContentByArticleInfoId(Long articleInfoId){
+        return articleService.getArticleContentByArticleInfoId(articleInfoId);
     }
 }
