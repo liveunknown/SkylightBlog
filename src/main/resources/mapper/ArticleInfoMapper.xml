@@ -54,11 +54,17 @@
     <select id="getArticleWraps" resultMap="ArticleWrapMap">
         SELECT ai.*,
         c.id cid,c.name,c.number,c.create_by c_create_by,c.modified_by c_modified_by,
-        ac.id acid,ac.content ac_content,ac.article_id ac_article_id,ac.create_by ac_create_by,ac.modified_by ac_modified_by
+        ac.id acid,ac.content ac_content,ac.article_id ac_article_id,ac.create_by ac_create_by,ac.modified_by ac_modified_by,
+        al.id al_id,al.article_id al_article_id,al.label_id,al.create_by al_create_by,al.modified_by al_modified_by,
+        l.id lid,l.name l_name,l.create_by l_create_by,l.modified_by l_modified_by
         FROM article_info ai LEFT JOIN
         (SELECT * FROM category  c ) c ON ai.category_id = c.id
         LEFT JOIN
         (SELECT * FROM article_content ac ) ac ON ai.id=ac.article_id
+        LEFT JOIN
+        (SELECT * FROM article_label al ) al ON ai.id=al.article_id
+        LEFT JOIN
+        (SELECT * FROM label l ) l ON al.label_id=l.id
         WHERE 1 = 1
         <if test="categoryId != 0 ">
             and category_id = #{categoryId}
