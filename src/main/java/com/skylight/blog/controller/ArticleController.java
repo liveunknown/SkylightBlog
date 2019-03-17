@@ -2,6 +2,7 @@ package com.skylight.blog.controller;
 
 import com.skylight.blog.model.ArticleContent;
 import com.skylight.blog.model.ArticleInfo;
+import com.skylight.blog.model.ArticleWrap;
 import com.skylight.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,5 +26,12 @@ public class ArticleController {
     @RequestMapping("/articleContent")
     public ArticleContent getArticleContentByArticleInfoId(Long articleInfoId){
         return articleService.getArticleContentByArticleInfoId(articleInfoId);
+    }
+
+    @RequestMapping("/articleWrap")
+    public List<ArticleWrap> getArticleWrap(Long categoryId, int page) {
+        if(categoryId==null)
+            categoryId = new Long(0);
+        return articleService.getArticleWraps(categoryId,page,10);
     }
 }

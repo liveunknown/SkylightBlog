@@ -13,6 +13,47 @@
         <result property="isDeleted" column="is_deleted"/>
     </resultMap>
 
+    <resultMap id="ArticleWrapMap" type="com.skylight.blog.model.ArticleWrap">
+        <id column="id" jdbcType="BIGINT" property="articleInfoId" />
+        <result column="category_id" jdbcType="BIGINT" property="categoryId" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="summary" jdbcType="VARCHAR" property="summary" />
+        <result column="views" property="views" />
+        <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
+        <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
+        <result property="isDeleted" column="is_deleted"/>
+        <association property="category" javaType="com.skylight.blog.model.Category">
+            <id property="id" column="cid" />
+            <result property="name" column="name"/>
+            <result property="number" column="number"/>
+            <result column="c_create_by" jdbcType="TIMESTAMP" property="createBy" />
+            <result column="c_modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
+        </association>
+        <association property="articleContent" javaType="com.skylight.blog.model.ArticleContent">
+            <id property="id" column="acid" />
+            <result property="content" column="ac_content"/>
+            <result property="articleId" column="ac_article_id"/>
+            <result column="ac_create_by" jdbcType="TIMESTAMP" property="createBy" />
+            <result column="ac_modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
+        </association>
+    </resultMap>
+
+    <select id="getArticleWraps" resultMap="ArticleWrapMap">
+        SELECT ai.*,
+        c.id cid,c.name,c.number,c.create_by c_create_by,c.modified_by c_modified_by,
+        ac.id acid,ac.content ac_content,ac.article_id ac_article_id,ac.create_by ac_create_by,ac.modified_by ac_modified_by
+        FROM article_info ai LEFT JOIN
+        (SELECT * FROM category  c ) c ON ai.category_id = c.id
+        LEFT JOIN
+        (SELECT * FROM article_content ac ) ac ON ai.id=ac.article_id
+        WHERE 1 = 1
+        <if test="categoryId != 0 ">
+            and category_id = #{categoryId}
+        </if>
+        ORDER BY create_by
+        limit #{page} , #{number};
+    </select>
+
     <select id="getArticleInfos" resultMap="ArticleInfoMap">
         select * from article_info
         where 1 = 1

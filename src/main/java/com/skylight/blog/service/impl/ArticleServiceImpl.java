@@ -4,6 +4,7 @@ import com.skylight.blog.mapper.ArticleContentMapper;
 import com.skylight.blog.mapper.ArticleInfoMapper;
 import com.skylight.blog.model.ArticleContent;
 import com.skylight.blog.model.ArticleInfo;
+import com.skylight.blog.model.ArticleWrap;
 import com.skylight.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,10 @@ public class ArticleServiceImpl implements ArticleService {
     public ArticleContent getArticleContentByArticleInfoId(Long id)
     {
         return articleContentMapper.getArticleContentByArticleInfoId(id);
+    }
+
+    public List<ArticleWrap> getArticleWraps(Long categoryId, int page, int number){
+        List<ArticleWrap> articleWrapList = articleInfoMapper.getArticleWraps(categoryId, (page - 1)*number, number);
+        return articleWrapList;
     }
 }
