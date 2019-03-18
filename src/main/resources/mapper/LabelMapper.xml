@@ -9,7 +9,20 @@
         <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
     </resultMap>
 
+    <resultMap id="ArticleLabelMap" type="com.skylight.blog.model.ArticleLabel">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <id column="article_id" jdbcType="BIGINT" property="articleId" />
+        <id column="label_id" jdbcType="BIGINT" property="labelId" />
+        <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
+        <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
+    </resultMap>
+
     <select id="getLabelList" resultMap="LabelMap">
         select * from label;
+    </select>
+
+    <select id="getArticleLabelListByLabelId" resultMap="ArticleLabelMap">
+        select * from article_label
+        WHERE label_id = #{id};
     </select>
 </mapper>

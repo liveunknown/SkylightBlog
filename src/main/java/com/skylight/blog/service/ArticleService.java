@@ -19,4 +19,7 @@ public interface ArticleService {
     List<Category> getCategoryList();
 
     List<Label> getLabelList();
+
+
+    List<ArticleLabel> getArticleLabelListByLabelId(Long id);
 }
