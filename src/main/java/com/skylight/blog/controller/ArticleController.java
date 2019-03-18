@@ -32,6 +32,16 @@ public class ArticleController {
         return articleService.getArticleLabelListByLabelId(id,page,10);
     }
 
+    @RequestMapping("/test")
+    public ArticleWrap getArticleInfoDetailByArticleInfoId(Long id) {
+        return articleService.getArticleInfoDetailByArticleInfoId(id);
+    }
+
+    @RequestMapping("/articleInfoDetailByLabelId")
+    public List<ArticleWrap> getArticleInfoDetailsByLabelId(Long id,int page) {
+        return articleService.getArticleInfoDetailsByLabelId(id,page,10);
+    }
+
 
     @RequestMapping("/articleInfo")
     public List<ArticleInfo> getArticleInfo(Long categoryId,int page) {

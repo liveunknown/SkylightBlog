@@ -111,6 +111,21 @@
         ORDER BY id;
     </select>
 
+    <select id="getArticleInfoDetailByArticleInfoId" resultMap="ArticleWrapMap">
+        SELECT ai.*,
+        c.id cid,c.name,c.number,c.create_by c_create_by,c.modified_by c_modified_by,
+        al.id al_id,al.article_id al_article_id,al.label_id,al.create_by al_create_by,al.modified_by al_modified_by,
+        l.id lid,l.name l_name,l.create_by l_create_by,l.modified_by l_modified_by
+        FROM article_info ai LEFT JOIN
+        (SELECT * FROM category  c ) c ON ai.category_id = c.id
+        LEFT JOIN
+        (SELECT * FROM article_label al ) al ON ai.id=al.article_id
+        LEFT JOIN
+        (SELECT * FROM label l ) l ON al.label_id=l.id
+        WHERE ai.id = #{id}
+    </select>
+
+
     <select id="getArticleInfos" resultMap="ArticleInfoMap">
         select * from article_info
         where 1 = 1

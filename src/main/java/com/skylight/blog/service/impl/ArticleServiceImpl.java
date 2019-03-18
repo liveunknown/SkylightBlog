@@ -9,6 +9,7 @@ import com.skylight.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -64,5 +65,24 @@ public class ArticleServiceImpl implements ArticleService {
     public List<ArticleLabel> getArticleLabelListByLabelId(Long id,int page, int number)
     {
         return labelMapper.getArticleLabelListByLabelId(id,(page - 1)*number, number);
+    }
+
+    public ArticleWrap getArticleInfoDetailByArticleInfoId(Long id)
+    {
+        return articleInfoMapper.getArticleInfoDetailByArticleInfoId(id);
+    }
+
+    public List<ArticleWrap> getArticleInfoDetailsByLabelId(Long id,int page, int number)
+    {
+        List<ArticleLabel> articleLabelList = labelMapper.getArticleLabelListByLabelId(id,(page - 1)*number, number);
+        List<ArticleWrap> articleWrapList = new ArrayList<>(16);
+
+        for(ArticleLabel articleLabel:articleLabelList)
+        {
+           ArticleWrap articleWrap = articleInfoMapper.getArticleInfoDetailByArticleInfoId(articleLabel.getArticleId());
+           articleWrapList.add(articleWrap);
+        }
+
+        return articleWrapList;
     }
 }

@@ -22,4 +22,8 @@ public interface ArticleService {
 
 
     List<ArticleLabel> getArticleLabelListByLabelId(Long id,int page, int number);
+
+    ArticleWrap getArticleInfoDetailByArticleInfoId(Long id);
+
+    List<ArticleWrap> getArticleInfoDetailsByLabelId(Long id,int page, int number);
 }
