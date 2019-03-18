@@ -11,5 +11,5 @@ import java.util.List;
 public interface LabelMapper {
     List<Label> getLabelList();
 
-    List<ArticleLabel> getArticleLabelListByLabelId(@Param("id")Long id);
+    List<ArticleLabel> getArticleLabelListByLabelId(@Param("id")Long id, @Param("page")int page, @Param("number")int number);
 }

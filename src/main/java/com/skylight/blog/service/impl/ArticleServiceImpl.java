@@ -61,8 +61,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
 
-    public List<ArticleLabel> getArticleLabelListByLabelId(Long id)
+    public List<ArticleLabel> getArticleLabelListByLabelId(Long id,int page, int number)
     {
-        return labelMapper.getArticleLabelListByLabelId(id);
+        return labelMapper.getArticleLabelListByLabelId(id,(page - 1)*number, number);
     }
 }

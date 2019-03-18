@@ -21,5 +21,5 @@ public interface ArticleService {
     List<Label> getLabelList();
 
 
-    List<ArticleLabel> getArticleLabelListByLabelId(Long id);
+    List<ArticleLabel> getArticleLabelListByLabelId(Long id,int page, int number);
 }

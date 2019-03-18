@@ -27,9 +27,9 @@ public class ArticleController {
     }
 
     @RequestMapping("/articleLabel")
-    public List<ArticleLabel> getArticleLabelListByLabelId(Long id)
+    public List<ArticleLabel> getArticleLabelListByLabelId(Long id,int page)
     {
-        return articleService.getArticleLabelListByLabelId(id);
+        return articleService.getArticleLabelListByLabelId(id,page,10);
     }
 
 
