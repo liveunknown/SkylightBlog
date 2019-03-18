@@ -1,8 +1,6 @@
 package com.skylight.blog.controller;
 
-import com.skylight.blog.model.ArticleContent;
-import com.skylight.blog.model.ArticleInfo;
-import com.skylight.blog.model.ArticleWrap;
+import com.skylight.blog.model.*;
 import com.skylight.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +13,19 @@ public class ArticleController {
 
     @Autowired
     ArticleService articleService;
+
+    @RequestMapping("/category")
+    public List<Category> getCategoryList()
+    {
+        return articleService.getCategoryList();
+    }
+
+    @RequestMapping("/label")
+    public List<Label> getLabelList()
+    {
+        return articleService.getLabelList();
+    }
+
 
     @RequestMapping("/articleInfo")
     public List<ArticleInfo> getArticleInfo(Long categoryId,int page) {

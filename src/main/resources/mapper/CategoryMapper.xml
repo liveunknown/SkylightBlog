@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skylight.blog.mapper.CategoryMapper">
+    <resultMap id="CategoryMap" type="com.skylight.blog.model.Category">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="number" jdbcType="BIGINT" property="number" />
+        <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
+        <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
+    </resultMap>
+
+    <select id="getCategoryList" resultMap="CategoryMap">
+        select * from category;
+    </select>
+</mapper>

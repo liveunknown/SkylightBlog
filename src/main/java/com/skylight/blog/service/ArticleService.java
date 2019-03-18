@@ -1,8 +1,6 @@
 package com.skylight.blog.service;
 
-import com.skylight.blog.model.ArticleContent;
-import com.skylight.blog.model.ArticleInfo;
-import com.skylight.blog.model.ArticleWrap;
+import com.skylight.blog.model.*;
 
 import java.util.List;
 
@@ -16,4 +14,9 @@ public interface ArticleService {
     List<ArticleWrap> getArticleWraps(Long categoryId, int page, int number);
 
     ArticleWrap getArticleWrapByArticleInfoId(Long id);
+
+
+    List<Category> getCategoryList();
+
+    List<Label> getLabelList();
 }

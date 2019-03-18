@@ -2,9 +2,9 @@ package com.skylight.blog.service.impl;
 
 import com.skylight.blog.mapper.ArticleContentMapper;
 import com.skylight.blog.mapper.ArticleInfoMapper;
-import com.skylight.blog.model.ArticleContent;
-import com.skylight.blog.model.ArticleInfo;
-import com.skylight.blog.model.ArticleWrap;
+import com.skylight.blog.mapper.CategoryMapper;
+import com.skylight.blog.mapper.LabelMapper;
+import com.skylight.blog.model.*;
 import com.skylight.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +18,10 @@ public class ArticleServiceImpl implements ArticleService {
     ArticleInfoMapper articleInfoMapper;
     @Autowired
     ArticleContentMapper articleContentMapper;
+    @Autowired
+    CategoryMapper categoryMapper;
+    @Autowired
+    LabelMapper labelMapper;
 
     public List<ArticleInfo> getArticleInfos(Long categoryId, int page, int number)
     {
@@ -43,5 +47,16 @@ public class ArticleServiceImpl implements ArticleService {
 
     public ArticleWrap getArticleWrapByArticleInfoId(Long id){
         return articleInfoMapper.getArticleWrapByArticleInfoId(id);
+    }
+
+
+    public List<Category> getCategoryList()
+    {
+        return categoryMapper.getCategoryList();
+    }
+
+    public List<Label> getLabelList()
+    {
+        return labelMapper.getLabelList();
     }
 }
