@@ -26,19 +26,6 @@ public class ArticleController {
         return articleService.getLabelList();
     }
 
-    /*
-    @RequestMapping("/articleLabel")
-    public List<ArticleLabel> getArticleLabelListByLabelId(Long id,int page)
-    {
-        return articleService.getArticleLabelListByLabelId(id,page,10);
-    }
-
-    @RequestMapping("/test")
-    public ArticleWrap getArticleInfoDetailByArticleInfoId(Long id) {
-        return articleService.getArticleInfoDetailByArticleInfoId(id);
-    }
-*/
-
     @RequestMapping("/articleInfoDetailsByLabelId")
     public List<ArticleWrap> getArticleInfoDetailsByLabelId(Long id,int page) {
         return articleService.getArticleInfoDetailsByLabelId(id,page,10);
@@ -51,31 +38,9 @@ public class ArticleController {
         return articleService.getArticleInfoDetails(categoryId,page,10);
     }
 
-
     @RequestMapping("/articleWrapDetail")
     public ArticleWrap getArticleWrapByArticleInfoId(Long id) {
         return articleService.getArticleWrapByArticleInfoId(id);
     }
 
-
-// 不再使用
-    @RequestMapping("/articleInfo")
-    public List<ArticleInfo> getArticleInfo(Long categoryId,int page) {
-        if(categoryId==null)
-            categoryId = new Long(0);
-        return articleService.getArticleInfos(categoryId,page,10);
-    }
-
-    @RequestMapping("/articleContent")
-    public ArticleContent getArticleContentByArticleInfoId(Long articleInfoId){
-        return articleService.getArticleContentByArticleInfoId(articleInfoId);
-    }
-
-    @RequestMapping("/articleWrap")
-    public List<ArticleWrap> getArticleWrap(Long categoryId, int page) {
-        if(categoryId==null)
-            categoryId = new Long(0);
-        return articleService.getArticleWraps(categoryId,page,10);
-    }
-// 不再使用
 }

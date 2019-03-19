@@ -1,6 +1,5 @@
 package com.skylight.blog.service.impl;
 
-import com.skylight.blog.mapper.ArticleContentMapper;
 import com.skylight.blog.mapper.ArticleInfoMapper;
 import com.skylight.blog.mapper.CategoryMapper;
 import com.skylight.blog.mapper.LabelMapper;
@@ -18,36 +17,9 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     ArticleInfoMapper articleInfoMapper;
     @Autowired
-    ArticleContentMapper articleContentMapper;
-    @Autowired
     CategoryMapper categoryMapper;
     @Autowired
     LabelMapper labelMapper;
-
-    //不再使用
-    public List<ArticleInfo> getArticleInfos(Long categoryId, int page, int number)
-    {
-        List<ArticleInfo> articleInfoList = articleInfoMapper.getArticleInfos(categoryId, (page - 1)*number, number);
-        return articleInfoList;
-    }
-    public ArticleContent getArticleContentByArticleInfoId(Long id)
-    {
-        return articleContentMapper.getArticleContentByArticleInfoId(id);
-    }
-    public List<ArticleWrap> getArticleWraps(Long categoryId, int page, int number){
-        List<ArticleWrap> articleWrapList = articleInfoMapper.getArticleWraps(categoryId, (page - 1)*number, number);
-        return articleWrapList;
-    }
-    public List<ArticleLabel> getArticleLabelListByLabelId(Long id,int page, int number)
-    {
-        return labelMapper.getArticleLabelListByLabelId(id,(page - 1)*number, number);
-    }
-    public ArticleWrap getArticleInfoDetailByArticleInfoId(Long id)
-    {
-        return articleInfoMapper.getArticleInfoDetailByArticleInfoId(id);
-    }
-    //不再使用
-
 
     public List<Category> getCategoryList()
     {
