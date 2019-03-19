@@ -14,18 +14,19 @@ public class ArticleController {
     @Autowired
     ArticleService articleService;
 
-    @RequestMapping("/category")
+    @RequestMapping("/categories")
     public List<Category> getCategoryList()
     {
         return articleService.getCategoryList();
     }
 
-    @RequestMapping("/label")
+    @RequestMapping("/labels")
     public List<Label> getLabelList()
     {
         return articleService.getLabelList();
     }
 
+    /*
     @RequestMapping("/articleLabel")
     public List<ArticleLabel> getArticleLabelListByLabelId(Long id,int page)
     {
@@ -36,25 +37,33 @@ public class ArticleController {
     public ArticleWrap getArticleInfoDetailByArticleInfoId(Long id) {
         return articleService.getArticleInfoDetailByArticleInfoId(id);
     }
+*/
 
-    @RequestMapping("/articleInfoDetailByLabelId")
+    @RequestMapping("/articleInfoDetailsByLabelId")
     public List<ArticleWrap> getArticleInfoDetailsByLabelId(Long id,int page) {
         return articleService.getArticleInfoDetailsByLabelId(id,page,10);
     }
 
+    @RequestMapping("/articleInfoDetailsByCategoryId")
+    public List<ArticleWrap> getArticleInfoDetailsByCategoryId(Long categoryId, int page) {
+        if(categoryId==null)
+            categoryId = new Long(0);
+        return articleService.getArticleInfoDetails(categoryId,page,10);
+    }
 
+
+    @RequestMapping("/articleWrapDetail")
+    public ArticleWrap getArticleWrapByArticleInfoId(Long id) {
+        return articleService.getArticleWrapByArticleInfoId(id);
+    }
+
+
+// 不再使用
     @RequestMapping("/articleInfo")
     public List<ArticleInfo> getArticleInfo(Long categoryId,int page) {
         if(categoryId==null)
             categoryId = new Long(0);
         return articleService.getArticleInfos(categoryId,page,10);
-    }
-
-    @RequestMapping("/articleInfoDetails")
-    public List<ArticleWrap> getArticleInfoDetails(Long categoryId, int page) {
-        if(categoryId==null)
-            categoryId = new Long(0);
-        return articleService.getArticleInfoDetails(categoryId,page,10);
     }
 
     @RequestMapping("/articleContent")
@@ -68,9 +77,5 @@ public class ArticleController {
             categoryId = new Long(0);
         return articleService.getArticleWraps(categoryId,page,10);
     }
-
-    @RequestMapping("/articleWrapDetail")
-    public ArticleWrap getArticleWrapByArticleInfoId(Long id) {
-        return articleService.getArticleWrapByArticleInfoId(id);
-    }
+// 不再使用
 }

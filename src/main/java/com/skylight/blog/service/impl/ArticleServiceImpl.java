@@ -24,31 +24,29 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     LabelMapper labelMapper;
 
+    //不再使用
     public List<ArticleInfo> getArticleInfos(Long categoryId, int page, int number)
     {
         List<ArticleInfo> articleInfoList = articleInfoMapper.getArticleInfos(categoryId, (page - 1)*number, number);
         return articleInfoList;
     }
-
-    public List<ArticleWrap> getArticleInfoDetails(Long categoryId, int page, int number)
-    {
-        List<ArticleWrap> articleWrapList = articleInfoMapper.getArticleInfoDetails(categoryId, (page - 1)*number, number);
-        return articleWrapList;
-    }
-
     public ArticleContent getArticleContentByArticleInfoId(Long id)
     {
         return articleContentMapper.getArticleContentByArticleInfoId(id);
     }
-
     public List<ArticleWrap> getArticleWraps(Long categoryId, int page, int number){
         List<ArticleWrap> articleWrapList = articleInfoMapper.getArticleWraps(categoryId, (page - 1)*number, number);
         return articleWrapList;
     }
-
-    public ArticleWrap getArticleWrapByArticleInfoId(Long id){
-        return articleInfoMapper.getArticleWrapByArticleInfoId(id);
+    public List<ArticleLabel> getArticleLabelListByLabelId(Long id,int page, int number)
+    {
+        return labelMapper.getArticleLabelListByLabelId(id,(page - 1)*number, number);
     }
+    public ArticleWrap getArticleInfoDetailByArticleInfoId(Long id)
+    {
+        return articleInfoMapper.getArticleInfoDetailByArticleInfoId(id);
+    }
+    //不再使用
 
 
     public List<Category> getCategoryList()
@@ -61,17 +59,6 @@ public class ArticleServiceImpl implements ArticleService {
         return labelMapper.getLabelList();
     }
 
-
-    public List<ArticleLabel> getArticleLabelListByLabelId(Long id,int page, int number)
-    {
-        return labelMapper.getArticleLabelListByLabelId(id,(page - 1)*number, number);
-    }
-
-    public ArticleWrap getArticleInfoDetailByArticleInfoId(Long id)
-    {
-        return articleInfoMapper.getArticleInfoDetailByArticleInfoId(id);
-    }
-
     public List<ArticleWrap> getArticleInfoDetailsByLabelId(Long id,int page, int number)
     {
         List<ArticleLabel> articleLabelList = labelMapper.getArticleLabelListByLabelId(id,(page - 1)*number, number);
@@ -79,10 +66,20 @@ public class ArticleServiceImpl implements ArticleService {
 
         for(ArticleLabel articleLabel:articleLabelList)
         {
-           ArticleWrap articleWrap = articleInfoMapper.getArticleInfoDetailByArticleInfoId(articleLabel.getArticleId());
-           articleWrapList.add(articleWrap);
+            ArticleWrap articleWrap = articleInfoMapper.getArticleInfoDetailByArticleInfoId(articleLabel.getArticleId());
+            articleWrapList.add(articleWrap);
         }
 
         return articleWrapList;
+    }
+
+    public List<ArticleWrap> getArticleInfoDetails(Long categoryId, int page, int number)
+    {
+        List<ArticleWrap> articleWrapList = articleInfoMapper.getArticleInfoDetails(categoryId, (page - 1)*number, number);
+        return articleWrapList;
+    }
+
+    public ArticleWrap getArticleWrapByArticleInfoId(Long id){
+        return articleInfoMapper.getArticleWrapByArticleInfoId(id);
     }
 }
