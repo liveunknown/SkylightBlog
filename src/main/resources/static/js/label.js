@@ -1,35 +1,36 @@
 $(function(){
     alert("你好呀！");
-    LoadCategories();
+    LoadLabels();
     LoadArticleInfo(1);
 });
 
-function LoadCategories() {
+function LoadLabels() {
     $.ajax({
-        url: "/categories",
-        type: "GET",
+        url: "/labels",
+        type: "Get",
         async: false,
         data: {},
+
         success: function (data) {
             console.log("成功了！");
             var content = "";
+            console.log("______: "+data);
 
             var id;
             var name;
-            var number;
-            var createTime;
             for(var i in data)
             {
-              id = data[i].id;
-              name = data[i].name;
-              content = content +'<li><a href="javascript:LoadArticleInfoByCategoryId(1,'+ id +');">'+ name +'</a></li>';
+                id = data[i].id;
+                name = data[i].name;
+                content = content +'<li><a href="javascript:LoadArticleInfoByLabelId(1,'+ id +');">'+ name +'</a></li>';
             }
 
-            $("#category").html(content);
+            $("#label").html(content);
 
         }, error: function () {
             alert("数据加载错误");
         }
+
     });
 }
 
@@ -84,12 +85,12 @@ function LoadArticleInfo(page) {
     });
 }
 
-function LoadArticleInfoByCategoryId(page,id) {
+function LoadArticleInfoByLabelId(page,id) {
     $.ajax({
-        url: "/articleInfoDetailsByCategoryId",
+        url: "/articleInfoDetailsByLabelId",
         type: "GET",
         async: false,
-        data: {page:page,categoryId:id},
+        data: {page:page,id:id},
 
         success: function (data) {
             console.log("成功了！");
