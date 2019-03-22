@@ -102,4 +102,12 @@
         (SELECT * FROM label l ) l ON al.label_id=l.id
         WHERE ai.id = #{id}
     </select>
+
+    <insert id="addArticleInfo" parameterType="com.skylight.blog.model.ArticleInfo" useGeneratedKeys="true" keyProperty="id">
+    insert into article_info(category_id,title,summary,views,is_deleted) values (#{ai.categoryId},#{ai.title},#{ai.summary},#{ai.views},#{ai.isDeleted})
+    </insert>
+    
+    <select id="getArticleInfoById" resultMap="ArticleInfoMap">
+        select  * from article_info where id = #{id}
+    </select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.skylight.blog.controller;
 
+import com.skylight.blog.mapper.ArticleInfoMapper;
 import com.skylight.blog.model.*;
 import com.skylight.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ public class ArticleController {
 
     @Autowired
     ArticleService articleService;
+    @Autowired
+    ArticleInfoMapper articleInfoMapper;
+
 
     @RequestMapping("/categories")
     public List<Category> getCategoryList()
@@ -43,4 +47,19 @@ public class ArticleController {
         return articleService.getArticleWrapByArticleInfoId(id);
     }
 
+    @RequestMapping("/addArticleInfo")
+    public boolean addArticleInfo(String text) {
+        ArticleInfo articleInfo = new ArticleInfo();
+        articleInfo.setIsDeleted(0);
+        articleInfo.setCategoryId(new Long(1));
+        articleInfo.setSummary(text);
+        articleInfo.setViews(1);
+        articleInfo.setTitle("md测试");
+        return articleInfoMapper.addArticleInfo(articleInfo);
+    }
+
+    @RequestMapping("/aInfo")
+    public ArticleInfo getArticleInfoById(Long id) {
+        return articleInfoMapper.getArticleInfoById(id);
+    }
 }
