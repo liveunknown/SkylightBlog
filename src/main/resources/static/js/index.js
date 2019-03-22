@@ -18,7 +18,7 @@ function LoadPage(page) {
 
             for (var i in data) {
                 var id = data[i].articleInfoId;
-                var createTime = data[i].createBy
+                var createTime = data[i].createBy;
                 var category = data[i].category.name;
                 var title = data[i].title;
                 var summary = data[i].summary;
