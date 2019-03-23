@@ -34,7 +34,11 @@
  </div>
 
  <div id="content">
-     <textarea style="display:none;" id="here"></textarea>
+     <textarea id="here"></textarea>
+ </div>
+
+ <div  id="modify">
+     <textarea name="test-editormd-markdown-doc" id="modify1" ></textarea>
  </div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
@@ -63,6 +67,18 @@
 
         LoadPage();
 
+        editormd("modify", {
+            width   : "90%",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "editormd/lib/",
+            //使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
+            //saveHTMLToTextarea : true,
+            imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "imageUpload",
+        });
+
         /*
         // or
         testEditor = editormd({
@@ -85,6 +101,7 @@
                 console.log("成功了！");
                 console.log("______: "+data);
                 $("#here").html(data.summary);
+                $("#modify1").html(data.summary);
             }, error: function () {
                 alert("数据加载错误");
             }
