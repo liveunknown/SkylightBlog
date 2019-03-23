@@ -103,11 +103,38 @@
         WHERE ai.id = #{id}
     </select>
 
+
+
     <insert id="addArticleInfo" parameterType="com.skylight.blog.model.ArticleInfo" useGeneratedKeys="true" keyProperty="id">
     insert into article_info(category_id,title,summary,views,is_deleted) values (#{ai.categoryId},#{ai.title},#{ai.summary},#{ai.views},#{ai.isDeleted})
     </insert>
-    
+
+    <update id="deleteArticleInfo">
+    update article_info set is_deleted = 1 where id = #{id}
+    </update>
+
     <select id="getArticleInfoById" resultMap="ArticleInfoMap">
         select  * from article_info where id = #{id}
     </select>
+
+    <update id="updateArticleInfo">
+        update article_info set category_id = #{ai.categoryId},title = #{ai.title},summary = #{ai.summary}
+        where id = #{ai.id} AND is_deleted =0
+    </update>
+
+
+
+    <insert id="addArticleContent" parameterType="com.skylight.blog.model.ArticleContent" useGeneratedKeys="true" keyProperty="id">
+    insert into article_content(content,article_id) values (#{ac.content},#{ac.articleId})
+    </insert>
+
+    <delete id="deleteArticleContent">
+    delete from article_content
+    where id = #{id}
+    </delete>
+
+    <update id="updateArticleContent">
+        update article_content set content = #{ac.content}
+        where id = #{ac.id}
+    </update>
 </mapper>
