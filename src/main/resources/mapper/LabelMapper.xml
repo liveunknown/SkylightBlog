@@ -46,4 +46,14 @@
     update label set name = #{l.name}
     where id = #{l.id}
     </update>
+
+
+    <insert id="addArticleLabel" parameterType="com.skylight.blog.model.ArticleLabel" useGeneratedKeys="true" keyProperty="id">
+    insert into article_label(article_id,label_id) values (#{al.articleId},#{al.labelId})
+    </insert>
+
+    <update id="deleteArticleLabel">
+    delete from article_label
+    where id = #{id}
+    </update>
 </mapper>
