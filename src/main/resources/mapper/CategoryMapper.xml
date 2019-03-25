@@ -13,4 +13,23 @@
     <select id="getCategoryList" resultMap="CategoryMap">
         select * from category;
     </select>
+
+
+    <insert id="addCategory" parameterType="com.skylight.blog.model.Category" useGeneratedKeys="true" keyProperty="id">
+    insert into category(name,number) values (#{c.name},#{c.number})
+    </insert>
+
+    <update id="deleteCategory">
+    delete from category
+    where id = #{id}
+    </update>
+
+    <select id="getCategoryById" resultMap="CategoryMap">
+    select * from category where id = #{id}
+    </select>
+
+    <update id="updateCategory">
+    update category set name = #{c.name},number = #{c.number}
+    where id = #{c.id}
+    </update>
 </mapper>

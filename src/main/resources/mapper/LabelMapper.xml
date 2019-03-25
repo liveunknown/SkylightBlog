@@ -27,4 +27,23 @@
         ORDER BY create_by
         limit #{page} , #{number};
     </select>
+
+
+    <insert id="addLabel" parameterType="com.skylight.blog.model.Label" useGeneratedKeys="true" keyProperty="id">
+    insert into label(name) values (#{l.name})
+    </insert>
+
+    <update id="deleteLabel">
+    delete from label
+    where id = #{id}
+    </update>
+
+    <select id="getLabelById" resultMap="LabelMap">
+    select * from label where id = #{id}
+    </select>
+
+    <update id="updateLabel">
+    update label set name = #{l.name}
+    where id = #{l.id}
+    </update>
 </mapper>
