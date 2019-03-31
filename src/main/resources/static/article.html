@@ -126,11 +126,11 @@
                 </div>
             </div>
 
-            <form id="attractionForm"  method="post" enctype="multipart/form-data" action = "/uploadImage">
-                <input type="file" name="file" style="position:absolute;width:190px" accept="image/png, image/jpeg, image/gif, image/jpg" value=""/>
+            <form id="attractionForm"  method="post" enctype="multipart/form-data" action = "/uploadImage" onsubmit="return false">
+                <input type="file" id="file" style="position:absolute;width:190px" accept="image/png, image/jpeg, image/gif, image/jpg" value=""/>
                 <br>
-                <!--<button type="button" onclick="pictureUpload()">上传图片</button>-->
-                <button type="submit">上传图片</button>
+                <button type="button" onclick="pictureUpload()">上传图片</button>
+                <!--<button type="submit">上传图片</button>-->
             </form>
             <br>
 
@@ -167,12 +167,16 @@
 <script type="text/javascript">
     function pictureUpload() {
         var file = document.getElementById("file");
-        console.log("这里是文件"+file);
+        var image = file.files[0];
+        var fd = new FormData();
+        fd.append('file',image);
+        console.log("这里是文件"+image);
         $.ajax({
             url:"/uploadImage",
             type:"POST",
             dataType:"json",
-            data:file,
+            data:fd,
+            contentType: false,
             processData: false,
             success:function(data){
                 console.log("上传成功"+data);
