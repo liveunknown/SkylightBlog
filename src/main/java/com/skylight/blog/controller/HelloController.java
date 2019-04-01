@@ -44,7 +44,7 @@ public class HelloController {
     //UploadImage
     @RequestMapping(value="/uploadImage",method=RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> imageUpload(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response)
+    public Map<String,Object> imageUpload(@RequestParam(value = "editormd-image-file", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response)
     {
         Map<String,Object> resultMap = new HashMap<>();
         try {
@@ -57,6 +57,7 @@ public class HelloController {
             // 文件保存路径(服务器存放文件的地址)
             String Root = "C:\\Users\\Air\\Desktop\\images\\";
             String path = "";
+            String Url = "http://localhost:8080/image/";
 
             System.out.println("Root: "+Root);
             String contentType=file.getContentType();
@@ -70,7 +71,8 @@ public class HelloController {
 
             resultMap.put("success", 1);
             resultMap.put("message", "上传成功");
-            resultMap.put("url",Root+path);
+            //resultMap.put("url",Root+path);
+            resultMap.put("url",Url+path);
 
         } catch (Exception e) {
             try {
