@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>文章详情页</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="editormd/css/editormd.css" />
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <style>
+        .i-head{
+            font-size: 25px;
+            font-family: 楷体;
+        }
+
+        .division {
+            margin: 58px 0 30px;
+            padding: 0.5em 1em;
+            border-left: solid 2px #992c12;
+            background-color: #f9f9f9;
+            list-style: none;
+            font-size: 17px;
+            line-height: 22px;
+            font-family: 楷体;
+        }
+
+        .article-i-say {
+            border-left: solid 2px #992c12;
+            margin-top: 30px;
+            text-align: left;
+            padding: 15px 7px;
+            background-color: #aed9d3;
+            font-size: 16px;
+            font-family: 楷体;
+        }
+
+        .article-i-say-me {
+            margin-right: 15px;
+            float: right;
+        }
+
+        .post-copyright {
+            margin: 58px 0 30px;
+            padding: 0.5em 1em;
+            border-left: 3px solid #ff1700;
+            background-color: #f9f9f9;
+            list-style: none;
+            font-size: 12px;
+            line-height: 22px;
+        }
+    </style>
+</head>
+<body>
+
+<!--导航条-->
+<nav class="nav navbar-inverse navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!--在移动端的时候导航条折叠起来，三横的样式出现，点击该样式可以显示或隐藏导航条上的内容-->
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">创作中心&#12288;&#12288;&#12288;&#12288;&#12288;</a>
+        </div>
+        <div id="menu" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">写博客</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">小天窗已失明 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人主页</a></li>
+                        <li><a href="#">账户管理</a></li>
+                        <li><a href="#">反馈</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-md-offset-2">
+            <div class="division">文章信息：</div>
+            <form class="form-horizontal">
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-2 control-label" for="title" style="font-size: 14px">文章标题:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" id="title" placeholder="输入文章标题">
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-2 control-label" for="summary" style="font-size: 14px">文章简介:</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="summary" rows="4" placeholder="输入文章简介" style="resize: none;"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <label class="col-sm-2 control-label" for="category" style="font-size: 14px">分类:&#12288;</label>
+                    <select class="selectpicker" id="category">
+                    <option value="1">Java</option>
+                    <option value="2">MySQL</option>
+                    <option value="3">HTML</option>
+                    <option value="4">JS</option>
+                    <option value="5">CSS</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <label class="col-sm-2 control-label" for="labels" style="font-size: 14px">标签:&#12288;</label>
+                    <select class="selectpicker" id="labels" multiple data-live-search="true" data-selected-text-format="count > 3">
+                        <option value="1">原创</option>
+                        <option value="2">前端</option>
+                        <option value="3">后端</option>
+                        <option value="4">数据库</option>
+                        <option value="5">面试</option>
+                    </select>
+                </div>
+            </form>
+
+            <div class="division">文章内容：</div>
+
+            <div id="article">
+                <div id="topic">
+                    <p class="i-head text-center">这里是文章标题</p>
+                    <br>
+                    <p class="text-center">
+                        <span class="label label-success">原创</span>&#8194;
+                        <span class="glyphicon glyphicon-time">&#8197;2019-03-15</span>
+                        <span class="glyphicon glyphicon-user">&#8197;郁磊</span>
+                        <span class="glyphicon glyphicon-tag">&#8197;MySQL</span>
+                    </p>
+                    <div class="article-i-say">多年以后，愿你的城市，有清风，有烈酒，也有人是你的归途。<span class="article-i-say-me">--- 张海洋</span></div>
+                </div>
+
+                <div id="article-content">
+                    <div id="content">
+                        <textarea id="here"></textarea>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-top">
+                    </div>
+                    <div class="comment-bottom">
+                    </div>
+                </div>
+            </div>
+
+            <form id="attractionForm"  method="post" enctype="multipart/form-data" action = "/uploadImage" onsubmit="return false">
+                <input type="file" id="file" style="position:absolute;width:190px" accept="image/png, image/jpeg, image/gif, image/jpg" value=""/>
+                <br>
+                <button type="button" onclick="pictureUpload()">上传图片</button>
+                <!--<button type="submit">上传图片</button>-->
+            </form>
+            <br>
+
+            <div>
+                <ul class="post-copyright">
+                    <li><strong>本文作者：</strong><span id="authorFooter">郁磊</span></li>
+                    <li><strong>原文链接：</strong><span id="urlFooter"><a href="' + data.articleUrl + '">www.baidurex.com</a></span></li>
+                    <li><strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用<span id="copyRightFooter"><a href="https://creativecommons.org/licenses/by/3.0/cn/" target="_blank"> CC BY 3.0 CN协议</a></span>进行许可。转载请署名作者且注明文章出处。</li>
+                </ul>
+            </div>
+        </div><!-- /.blog-main -->
+    </div><!-- /.row -->
+
+    <hr>
+
+    <footer>
+        <p class="text-center">&copy;2019-2020  <b>Baidurex.com</b> <span class="glyphicon glyphicon-tower"></span> San Junipero 版权所有</p>
+        <p class="text-center"><b>豫ICP备19005657号</b></p>
+    </footer>
+</div><!-- /.container -->
+<h1></h1>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+<script src="editormd/lib/marked.min.js"></script>
+<script src="editormd/lib/prettify.min.js"></script>
+<script src="editormd/lib/flowchart.min.js"></script>
+<script src="editormd/lib/raphael.min.js"></script>
+<script src="editormd/lib/underscore.min.js"></script>
+<script src="editormd/lib/jquery.flowchart.min.js"></script>
+<script src="editormd/lib/sequence-diagram.min.js"></script>
+<script src="editormd/editormd.min.js"></script>
+<script type="text/javascript">
+    function pictureUpload() {
+        var file = document.getElementById("file");
+        var image = file.files[0];
+        var fd = new FormData();
+        fd.append('file',image);
+        console.log("这里是文件"+image);
+        $.ajax({
+            url:"/uploadImage",
+            type:"POST",
+            dataType:"json",
+            data:fd,
+            contentType: false,
+            processData: false,
+            success:function(data){
+                console.log("上传成功"+data);
+            },
+            error:function(){
+                alert("添加失败");
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(function() {
+        LoadPage();
+    });
+
+    function LoadPage() {
+        $.ajax({
+            url: "/aInfo",
+            type: "Get",
+            async: false,
+            data: {id:4},
+
+            success: function (data) {
+                console.log("成功了！");
+                console.log("______: "+data);
+                $("#here").html(data.summary);
+            }, error: function () {
+                alert("数据加载错误");
+            }
+
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        editormd.markdownToHTML("content", {//注意：这里是上面DIV的id
+            htmlDecode: "style,script,iframe",
+            emoji: true,
+            taskList: true,
+            tex: true, // 默认不解析
+            flowChart: true, // 默认不解析
+            sequenceDiagram: true, // 默认不解析
+            codeFold: true,
+        });});
+</script>
+<script src="js/article.js"></script>
+</body>
+</html>
