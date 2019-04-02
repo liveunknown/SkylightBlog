@@ -66,7 +66,7 @@
     <div class="row">
         <div class="">
             <div class="division">文章信息：</div>
-            <form class="form-horizontal" action="/addArticleInfo" method="post">
+            <form class="form-horizontal" action="/addArticleInfo" method="post" onsubmit="return false">
                 <div class="form-group form-group-sm">
                     <label class="col-sm-2 control-label" for="title" style="font-size: 14px">文章标题:</label>
                     <div class="col-sm-8">
@@ -103,11 +103,11 @@
 
                 <div class="division">文章内容：</div>
                 <div class="editormd" id="test-editormd">
-                    <textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc"></textarea>
+                    <textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc" id="content"></textarea>
                     <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
                     <textarea class="editormd-html-textarea" name="text"></textarea>
                 </div>
-                <button type="submit" class="btn btn-info col-md-offset-5 col-md-2">添加文章</button>
+                <button type="button" class="btn btn-info col-md-offset-5 col-md-2" onclick="addArticle()">添加文章</button>
             </form>
         </div>
     </div><!-- /.row -->

@@ -7,11 +7,15 @@ import com.skylight.blog.model.Label;
 import com.skylight.blog.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.alibaba.fastjson.JSONObject;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
+//@RequestMapping("/admin")
 public class ManageController {
 
     @Autowired
@@ -62,7 +66,17 @@ public class ManageController {
 
     // Article
     @RequestMapping("/addArticle")
-    public boolean addArticle(String title,String summary,Long categoryId,String content, Long[] ids){
+    public boolean addArticle(String title,String summary,Long categoryId,String content,@RequestParam("ids")String labels){
+        System.out.println("进入这个方法了： "+title  );
+        System.out.println("进入这个方法了： "+summary  );
+        System.out.println("进入这个方法了： "+categoryId  );
+        System.out.println("进入这个方法了： "+content  );
+        System.out.println("进入这个方法了： "+labels  );
+
+        JSONObject json = new JSONObject();
+        List<Long> labelList = json.parseArray(labels,Long.class);
+        Long[] ids = labelList.toArray(new Long[labelList.size()]);
+        
         ArticleInfo articleInfo = new ArticleInfo();
         articleInfo.setTitle(title);
         articleInfo.setSummary(summary);
