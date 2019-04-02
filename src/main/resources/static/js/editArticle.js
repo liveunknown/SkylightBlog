@@ -10,6 +10,9 @@ $(function(){
         imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
         imageUploadURL : "/uploadImage",
     });
+
+    LoadCategories();
+    LoadLabels();
 });
 
 function addArticle() {
@@ -70,6 +73,54 @@ function addArticleByFormData() {
         processData: false,
         success: function (data) {
             console.log(data);
+        }
+    });
+}
+
+function LoadCategories() {
+    $.ajax({
+        url: "/categories",
+        type: "GET",
+        async: false,
+        data: {},
+        success: function (data) {
+            console.log("成功了！");
+            var content = "";
+            var id;
+            var name;
+            for(var i in data)
+            {
+                id = data[i].id;
+                name = data[i].name;
+                content = content +'<option value="'+id+'">'+name+'</option>';
+            }
+            $("#category").html(content);
+        }, error: function () {
+            alert("数据加载错误");
+        }
+    });
+}
+
+function LoadLabels() {
+    $.ajax({
+        url: "/labels",
+        type: "Get",
+        async: false,
+        data: {},
+        success: function (data) {
+            console.log("成功了！");
+            var content = "";
+            var id;
+            var name;
+            for(var i in data)
+            {
+                id = data[i].id;
+                name = data[i].name;
+                content = content + '<option value="'+id+'">'+name+'</option>';
+            }
+            $("#labels").html(content);
+        }, error: function () {
+            alert("数据加载错误");
         }
     });
 }
