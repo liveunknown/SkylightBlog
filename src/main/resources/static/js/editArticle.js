@@ -44,3 +44,32 @@ function addArticle() {
         }
     });
 }
+
+function addArticleByFormData() {
+    var title = $('#title').val();
+    console.log("title: " +title);
+    var summary = $('#summary').val();
+    var categoryId = $('#category').val();
+    console.log("categoryId: " +categoryId);
+    var content = $('#content').val();
+    var labels = $('#labels').val();
+    console.log("labels: " +labels);
+    var fd = new FormData();
+    fd.append('title',title);
+    fd.append('summary',summary);
+    fd.append('categoryId',categoryId);
+    fd.append('content',content);
+    fd.append('labels',JSON.stringify(labels));
+    console.log(fd);
+    $.ajax({
+        url: "/addArticle",
+        type: "POST",
+        data:fd,
+        dataType: "json",
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            console.log(data);
+        }
+    });
+}
