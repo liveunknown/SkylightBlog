@@ -66,7 +66,7 @@ public class ManageController {
 
     // Article
     @RequestMapping("/addArticle")
-    public boolean addArticle(String title,String summary,Long categoryId,String content,@RequestParam("ids")String labels){
+    public boolean addArticle(String title,String summary,Long categoryId,String content,String labels){
         System.out.println("进入这个方法了： "+title  );
         System.out.println("进入这个方法了： "+summary  );
         System.out.println("进入这个方法了： "+categoryId  );
@@ -76,7 +76,7 @@ public class ManageController {
         JSONObject json = new JSONObject();
         List<Long> labelList = json.parseArray(labels,Long.class);
         Long[] ids = labelList.toArray(new Long[labelList.size()]);
-        
+
         ArticleInfo articleInfo = new ArticleInfo();
         articleInfo.setTitle(title);
         articleInfo.setSummary(summary);

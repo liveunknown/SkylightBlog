@@ -26,7 +26,7 @@ function addArticle() {
     fd.append('summary',summary);
     fd.append('categoryId',categoryId);
     fd.append('content',content);
-    fd.append('ids',labels);
+    fd.append('labels',labels);
     //console.log(fd);
     $.ajax({
         url: "/addArticle",
@@ -36,7 +36,7 @@ function addArticle() {
             summary:summary,
             categoryId:categoryId,
             content:content,
-            ids:JSON.stringify(labels)
+            labels:JSON.stringify(labels)
         },
         dataType: "json",
         success: function (data) {
