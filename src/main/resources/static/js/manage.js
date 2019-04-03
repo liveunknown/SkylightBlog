@@ -34,8 +34,8 @@ function LoadPage(page) {
                     '                        <td>'+title+'</td>'+
                     '                        <td>'+views+'</td>'+
                     '                        <td>'+createTime+'</td>'+
-                    '<td><button class="btn btn-success btn-xs" onclick=""><span class="glyphicon glyphicon-pencil"></span> 编辑</button>&#8194;'+
-                    '<button class="btn btn-danger btn-xs" onclick=""><span class="glyphicon glyphicon-trash"></span> 删除</button></td>'+
+                    '<td><button class="btn btn-success btn-xs" onclick="" ><span class="glyphicon glyphicon-pencil"></span> 编辑</button>&#8194;'+
+                    '<button class="btn btn-danger btn-xs" onclick="loadModal('+id+')" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span> 删除</button></td>'+
                     '                    </tr>';
                     '                </div>';
                 if(i==data.length)
@@ -52,4 +52,26 @@ function LoadPage(page) {
 
 function writeArticle() {
     window.location.href = "/editArticle.html";
+}
+
+function deleteArticle(id) {
+    $.ajax({
+        type: "GET",
+        url: "/deleteArticle",
+        data: {id:id},
+        success: function (data) {
+            console.log(data);
+            alert("删除文章成功");
+            $('#myModal').modal('hide')
+            document.location.reload();
+        }, error: function () {
+            alert("数据加载错误");
+        }
+    });
+}
+
+function loadModal(id) {
+    var Buttons =  '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>'+
+                   '<button type="button" class="btn btn-primary" onclick="deleteArticle('+id+')">删除</button>'
+    $("#modalFooter").html(Buttons);
 }
