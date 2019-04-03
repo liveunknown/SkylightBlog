@@ -44,6 +44,8 @@ function addArticle() {
         dataType: "json",
         success: function (data) {
             console.log(data);
+        }, error: function () {
+            alert("数据加载错误");
         }
     });
 }
@@ -73,6 +75,12 @@ function addArticleByFormData() {
         processData: false,
         success: function (data) {
             console.log(data);
+            $('#modalContent').html("添加文章成功~");
+            $('#myModal').modal('show');
+        }, error: function () {
+            $('#modalContent').html("添加文章失败");
+            $('#myModal').modal('show');
+            alert("数据加载错误");
         }
     });
 }
@@ -123,4 +131,9 @@ function LoadLabels() {
             alert("数据加载错误");
         }
     });
+}
+
+
+function reloadPage() {
+    document.location.reload();
 }

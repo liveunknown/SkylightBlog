@@ -57,6 +57,6 @@ public class ArticleServiceImpl implements ArticleService {
 
     public List<ArticleWrap> getArticleInfosByPageNumber(int page,int number)
     {
-        return articleInfoMapper.getArticleInfosByPageNumber(page,number);
+        return articleInfoMapper.getArticleInfosByPageNumber((page - 1)*number, number);
     }
 }

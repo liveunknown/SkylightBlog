@@ -62,7 +62,7 @@ function deleteArticle(id) {
         success: function (data) {
             console.log(data);
             alert("删除文章成功");
-            $('#myModal').modal('hide')
+            $('#myModal').modal('hide');
             document.location.reload();
         }, error: function () {
             alert("数据加载错误");
