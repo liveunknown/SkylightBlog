@@ -11,9 +11,32 @@ $(function(){
         imageUploadURL : "/uploadImage",
     });
 
+    var id = getQueryVariable("id");
+    console.log("-----: "+id);
+    var edit = getQueryVariable("edit");
+    console.log("-----: "+edit);
+
     LoadCategories();
     LoadLabels();
+    // 判断是新建还是编辑
+    if(edit=='true')
+    {
+      getArticleDetailById(id);
+    }
+
 });
+
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return pair[1];
+        }
+    }
+    return (false);
+}
 
 function addArticle() {
     var title = $('#title').val();
@@ -136,4 +159,55 @@ function LoadLabels() {
 
 function reloadPage() {
     document.location.reload();
+}
+
+function getArticleDetailById(id) {
+    $.ajax({
+        type: "GET",
+        url: "/articleWrapDetail",
+        async: false,
+        data: {id:id},
+        success: function (data) {
+            console.log(data);
+            var title = data.title;
+            var summary = data.summary;
+            var categoryId = data.categoryId;
+            var labels = new Array();
+            var content = data.articleContent.content;
+            //在这里将articleInfo和articleContent的id传给editArticle()
+            var editButton = "<button type=\"button\" class=\"btn btn-info col-md-offset-5 col-md-2\" onclick=\"\">修改文章</button>"
+
+            $("#category").selectpicker('val',categoryId);
+
+            for(var i=0;i<data.articleLabelList.length;i++)
+            {
+                labels[i] = data.articleLabelList[i].label.id;
+            }
+
+            $("#labels").selectpicker('val',labels);
+
+            $("#title").val(title);
+            $("#summary").val(summary);
+            $("#content").html(content);
+            $("#button-area").html(editButton);
+
+        }, error: function () {
+            alert("数据加载错误");
+        }
+    });
+}
+
+// 需要articleInfo和articleContent的id
+function editArticle() {
+    $.ajax({
+        type: "POST",
+        url: "/updateArticle",
+        async: false,
+        data: {},
+        success: function (data) {
+            console.log(data);
+        }, error: function () {
+            alert("数据加载错误");
+        }
+    });
 }

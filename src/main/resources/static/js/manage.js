@@ -34,7 +34,7 @@ function LoadPage(page) {
                     '                        <td>'+title+'</td>'+
                     '                        <td>'+views+'</td>'+
                     '                        <td>'+createTime+'</td>'+
-                    '<td><button class="btn btn-success btn-xs" onclick="" ><span class="glyphicon glyphicon-pencil"></span> 编辑</button>&#8194;'+
+                    '<td><button class="btn btn-success btn-xs" onclick="editArticle('+id+')" ><span class="glyphicon glyphicon-pencil"></span> 编辑</button>&#8194;'+
                     '<button class="btn btn-danger btn-xs" onclick="loadModal('+id+')" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span> 删除</button></td>'+
                     '                    </tr>';
                     '                </div>';
@@ -74,4 +74,8 @@ function loadModal(id) {
     var Buttons =  '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>'+
                    '<button type="button" class="btn btn-primary" onclick="deleteArticle('+id+')">删除</button>'
     $("#modalFooter").html(Buttons);
+}
+
+function editArticle(id) {
+    window.location.href="/editArticle.html?"+"id="+id+'&edit=true';
 }
