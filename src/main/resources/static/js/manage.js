@@ -49,3 +49,7 @@ function LoadPage(page) {
         }
     });
 }
+
+function writeArticle() {
+    window.location.href = "/editArticle.html";
+}
