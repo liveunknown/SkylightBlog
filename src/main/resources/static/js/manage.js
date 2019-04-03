@@ -4,7 +4,7 @@ $(function(){
 
 function LoadPage(page) {
     $.ajax({
-        url: "/articleInfoDetailsByCategoryId",
+        url: "/articleInfoList",
         type: "POST",
         async: false,
         data: {page:page},

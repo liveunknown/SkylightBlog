@@ -15,4 +15,6 @@ public interface ArticleService {
     List<ArticleWrap> getArticleInfoDetails(Long categoryId, int page, int number);
 
     ArticleWrap getArticleWrapByArticleInfoId(Long id);
+
+    List<ArticleWrap> getArticleInfosByPageNumber(int page,int number);
 }
