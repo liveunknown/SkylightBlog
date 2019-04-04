@@ -72,7 +72,7 @@ function deleteArticle(id) {
 
 function loadModal(id) {
     var Buttons =  '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>'+
-                   '<button type="button" class="btn btn-primary" onclick="deleteArticle('+id+')">删除</button>'
+                   '<button type="button" class="btn btn-primary" onclick="deleteArticle('+id+')">删除</button>';
     $("#modalFooter").html(Buttons);
 }
 
