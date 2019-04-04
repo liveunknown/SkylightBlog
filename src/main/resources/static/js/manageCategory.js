@@ -37,7 +37,7 @@ function LoadPage(page) {
                     '                        <td>'+name+'</td>'+
                     '                        <td>'+number+'</td>'+
                     '                        <td>'+createTime+'</td>'+
-                    '<td><button class="btn btn-success btn-xs" onclick="" ><span class="glyphicon glyphicon-pencil"></span> 编辑</button>&#8194;'+
+                    '<td><button class="btn btn-success btn-xs" onclick="loadModifyModal('+id+')" ><span class="glyphicon glyphicon-pencil"></span> 编辑</button>&#8194;'+
                     '<button class="btn btn-danger btn-xs" onclick="deleteCategory('+id+')" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span> 删除</button></td>'+
                     '                    </tr>';
                 '                </div>';
@@ -89,9 +89,41 @@ function deleteCategory(id) {
     });
 }
 
+function modifyCategory(id) {
+    var category = $('#modifyCategory').val();
+    $.ajax({
+        type: "POST",
+        url: "/updateCategory",
+        async: false,
+        data: {
+            id:id,
+            name:category
+        },
+        success: function (data) {
+            console.log(data);
+            alert("更新分类成功~")
+            Reload();
+        }, error: function () {
+            alert("数据加载错误");
+        }
+    });
+}
+
 function loadModal() {
     $('#myModal').modal('show');
     var Buttons = '<button type="button" class="btn btn-primary" onclick="addCategory()">确定</button>'+
                   '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>';
     $("#modalFooter").html(Buttons);
+}
+
+function Reload() {
+    document.location.reload();
+}
+
+function loadModifyModal(id) {
+    $('#modifyModal').modal('show');
+    $('#history').val(id);
+    var Buttons = '<button type="button" class="btn btn-primary" onclick="modifyCategory('+id+')">确定</button>'+
+        '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>';
+    $("#modifyModalFooter").html(Buttons);
 }
