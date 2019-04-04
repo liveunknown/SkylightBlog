@@ -232,5 +232,5 @@ function editArticle(articleId,contentId) {
 }
 
 function BackToManagePage() {
-    window.location.href="manage.html";
+    window.location.href="manageArticle.html";
 }
