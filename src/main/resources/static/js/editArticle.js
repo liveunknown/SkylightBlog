@@ -175,7 +175,7 @@ function getArticleDetailById(id) {
             var labels = new Array();
             var content = data.articleContent.content;
             //在这里将articleInfo和articleContent的id传给editArticle()
-            var editButton = "<button type=\"button\" class=\"btn btn-info col-md-offset-5 col-md-2\" onclick=\"\">修改文章</button>"
+            var editButton = '<button type=\"button\" class=\"btn btn-info col-md-offset-5 col-md-2\" onclick=\"editArticle('+ data.articleInfoId+','+data.articleContent.id+')\">修改文章</button>'
 
             $("#category").selectpicker('val',categoryId);
 
@@ -198,16 +198,39 @@ function getArticleDetailById(id) {
 }
 
 // 需要articleInfo和articleContent的id
-function editArticle() {
+function editArticle(articleId,contentId) {
+    var title = $('#title').val();
+    var summary = $('#summary').val();
+    var categoryId = $('#category').val();
+    var content = $('#content').val();
+
+    var backButton = '<button type="button" class="btn btn-primary" id="reload" data-dismiss="modal" onclick="BackToManagePage()">确定</button>';
     $.ajax({
         type: "POST",
         url: "/updateArticle",
         async: false,
-        data: {},
+        data: {
+            articleId:articleId,
+            title:title,
+            summary:summary,
+            categoryId:categoryId,
+            contentId:contentId,
+            content:content
+        },
         success: function (data) {
             console.log(data);
+            $('#modalContent').html("修改文章成功~");
+            $("#modalFooter").html(backButton);
+            $('#myModal').modal('show');
         }, error: function () {
+            $('#modalContent').html("修改文章失败");
+            $('#myModal').modal('show');
             alert("数据加载错误");
         }
     });
+
+}
+
+function BackToManagePage() {
+    window.location.href="manage.html";
 }

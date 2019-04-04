@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSONObject;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -96,7 +97,16 @@ public class ManageController {
     }
 
     @RequestMapping("/updateArticle")
-    public boolean updateArticle(ArticleInfo articleInfo, ArticleContent articleContent){
+    public boolean updateArticle(Long articleId, String title, String summary, Long categoryId,Long contentId, String content){
+        ArticleInfo articleInfo = new ArticleInfo();
+        ArticleContent articleContent = new ArticleContent();
+        articleInfo.setId(articleId);
+        articleInfo.setTitle(title);
+        articleInfo.setSummary(summary);
+        articleInfo.setCategoryId(categoryId);
+
+        articleContent.setId(contentId);
+        articleContent.setContent(content);
         return manageService.updateArticle(articleInfo, articleContent);
     }
 
