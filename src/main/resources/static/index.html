@@ -51,15 +51,9 @@
                     <a href="#"><span class="glyphicon glyphicon-glass"></span> 友链</a>
                 </li>
                 <li>
-                    <a href="#"><span class="glyphicon glyphicon-qrcode"></span> 关于&#12288;&#12288;&#12288;</a>
+                    <a href="#"><span class="glyphicon glyphicon-qrcode"></span> 关于</a>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="输入...">
-                </div>
-                <button type="submit" class="btn btn-default">搜索</button>
-            </form>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">登录</a></li>
                 <li><a href="#">注册</a></li>
@@ -76,25 +70,12 @@
              <br>
              <div class="row" id="lastOne">
              </div><!--/row-->
-             <nav aria-label="Page navigation" class="col-sm-offset-5">
-                <ul class="pagination" id="pagination">
-                    <li id="previous">
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-             </nav>
+             <ul class="pager">
+                 共&#8194;<li id="sum"></li>&#8194;篇文章
+                 <li><a href="javascript:previousPage()">上一页</a></li>
+                 第&#8194;<li id="page">1</li>&#8194;页
+                 <li><a href="javascript:nextPage()">下一页</a></li>
+             </ul>
         </div><!--/.col-xs-12.col-sm-9-->
 
         <br>
