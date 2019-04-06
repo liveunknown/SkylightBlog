@@ -1,5 +1,4 @@
 $(function(){
-    alert("你好呀！");
     LoadCategories();
     LoadArticleInfo(1);
 });
