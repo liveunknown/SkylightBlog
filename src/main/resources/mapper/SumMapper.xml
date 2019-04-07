@@ -13,4 +13,9 @@
       and category_id = #{categoryId}
       </if>;
     </select>
+
+    <select id="getArticleSumByLabelId" resultType="int">
+        SELECT COUNT(id) FROM article_label
+        WHERE label_id = #{labelId}
+    </select>
 </mapper>

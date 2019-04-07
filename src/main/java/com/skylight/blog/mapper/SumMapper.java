@@ -8,4 +8,6 @@ public interface SumMapper {
     int getArticleSum();
 
     int getArticleSumByCategoryId(@Param("categoryId")Long categoryId);
+
+    int getArticleSumByLabelId(@Param("labelId")Long labelId);
 }

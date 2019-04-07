@@ -22,4 +22,10 @@ public class SumController {
             categoryId = new Long(0);
         return sumMapper.getArticleSumByCategoryId(categoryId);
     }
+
+    @RequestMapping("/articleSumByLabelId")
+    public int getArticleSumByLabelId(Long labelId)
+    {
+        return sumMapper.getArticleSumByLabelId(labelId);
+    }
 }
