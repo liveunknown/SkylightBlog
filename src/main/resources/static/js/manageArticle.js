@@ -1,5 +1,8 @@
+var articleSum;
+
 $(function(){
     LoadPage(1);
+    getArticleSum();
 });
 
 function LoadPage(page) {
@@ -78,4 +81,45 @@ function loadModal(id) {
 
 function editArticle(id) {
     window.location.href="/editArticle.html?"+"id="+id+'&edit=true';
+}
+
+function getArticleSum() {
+    $.ajax({
+        url: "/articleSum",
+        type: "GET",
+        async: false,
+        data: {},
+        success: function (data) {
+            console.log("成功了！");
+            articleSum = data;
+            console.log(articleSum);
+            $("#sum").text(articleSum);
+        }, error: function () {
+            alert("数据加载错误");
+        }
+    });
+}
+
+function previousPage(){
+    var page=$("#page").text();
+    page=page-1;
+    if(page<1){
+        alert("已是第一页");
+    }
+    else{
+        LoadPage(page);
+        $("#page").text(page);
+    }
+}
+
+function nextPage(){
+    var page=$("#page").text();
+    page=page-0+1;
+    if((page-1)*10>=articleSum){
+        alert("已是最后一页");
+    }
+    else{
+        LoadPage(page);
+        $("#page").text(page);
+    }
 }

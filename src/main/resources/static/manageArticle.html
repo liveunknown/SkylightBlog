@@ -57,6 +57,13 @@
             <div class="table-responsive">
                 <table class="table table-striped" id="table">
                 </table>
+                <ul class="pager">
+                    &#12288;&#12288;&#12288;&#12288;&#12288;
+                    <li><a href="javascript:previousPage()">上一页</a></li>
+                    第&#8194;<li id="page">1</li>&#8194;页
+                    <li><a href="javascript:nextPage()">下一页</a></li>
+                    共&#8194;<li id="sum"></li>&#8194;篇文章
+                </ul>
             </div>
             <!-- DeleteArticleModal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -75,7 +82,7 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn btn-info col-md-offset-5 col-md-1" onclick="writeArticle()">写文章</button>
+            <button type="button" class="btn btn btn-info col-md-offset-5 col-md-2" onclick="writeArticle()">写文章</button>
 
         </div>
     </div>
