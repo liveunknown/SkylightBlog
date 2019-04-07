@@ -1,6 +1,9 @@
+var chosenCategoryId = 0;
+
 $(function(){
     LoadCategories();
     LoadArticleInfo(1);
+    console.log("Original value is: "+chosenCategoryId);
 });
 
 function LoadCategories() {
@@ -84,6 +87,9 @@ function LoadArticleInfo(page) {
 }
 
 function LoadArticleInfoByCategoryId(page,id) {
+    chosenCategoryId = id;
+    console.log("The chosen one is: "+chosenCategoryId);
+
     $.ajax({
         url: "/articleInfoDetailsByCategoryId",
         type: "GET",

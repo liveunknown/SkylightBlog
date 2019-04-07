@@ -15,4 +15,11 @@ public class SumController {
     public int getArticleSum() {
         return sumMapper.getArticleSum();
     }
+
+    @RequestMapping("/articleSumByCategoryId")
+    public int getArticleSumByCategoryId(Long categoryId) {
+        if(categoryId==null)
+            categoryId = new Long(0);
+        return sumMapper.getArticleSumByCategoryId(categoryId);
+    }
 }

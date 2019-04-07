@@ -5,4 +5,12 @@
     <select id="getArticleSum" resultType="int">
       SELECT COUNT(id) FROM article_info WHERE is_deleted=0;
     </select>
+
+    <select id="getArticleSumByCategoryId" resultType="int">
+      SELECT COUNT(id) FROM article_info
+      WHERE 1=1 and is_deleted=0
+      <if test="categoryId != 0 ">
+      and category_id = #{categoryId}
+      </if>;
+    </select>
 </mapper>
