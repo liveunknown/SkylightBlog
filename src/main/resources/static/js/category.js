@@ -1,9 +1,11 @@
+var articleSum;
 var chosenCategoryId = 0;
 
 $(function(){
     LoadCategories();
     LoadArticleInfo(1);
     console.log("Original value is: "+chosenCategoryId);
+    getArticleSum();
 });
 
 function LoadCategories() {
@@ -89,6 +91,8 @@ function LoadArticleInfo(page) {
 function LoadArticleInfoByCategoryId(page,id) {
     chosenCategoryId = id;
     console.log("The chosen one is: "+chosenCategoryId);
+    $("#page").text(1);
+    getArticleSumByCategoryId(id);
 
     $.ajax({
         url: "/articleInfoDetailsByCategoryId",
@@ -137,4 +141,75 @@ function LoadArticleInfoByCategoryId(page,id) {
         }
 
     });
+}
+
+function getArticleSum() {
+    $.ajax({
+        url: "/articleSum",
+        type: "GET",
+        async: false,
+        data: {},
+        success: function (data) {
+            console.log("成功了！");
+            articleSum = data;
+            console.log(articleSum);
+            $("#sum").text(articleSum);
+        }, error: function () {
+            alert("数据加载错误");
+        }
+    });
+}
+
+function getArticleSumByCategoryId(id) {
+    $.ajax({
+        url: "/articleSumByCategoryId",
+        type: "GET",
+        async: false,
+        data: {categoryId:id},
+        success: function (data) {
+            console.log("成功了！");
+            articleSum = data;
+            console.log(articleSum);
+            $("#sum").text(articleSum);
+        }, error: function () {
+            alert("数据加载错误");
+        }
+    });
+}
+
+function previousPage(){
+    var page=$("#page").text();
+    page=page-1;
+    if(page<1){
+        alert("已是第一页");
+    }
+    else{
+        if(chosenCategoryId==0)
+        {
+            LoadArticleInfo(page);
+        }
+        else {
+            LoadArticleInfoByCategoryId(page,chosenCategoryId);
+        }
+
+       $("#page").text(page);
+    }
+}
+
+function nextPage(){
+    var page=$("#page").text();
+    page=page-0+1;
+    if((page-1)*10>=articleSum){
+        alert("已是最后一页");
+    }
+    else{
+        if(chosenCategoryId==0)
+        {
+            LoadArticleInfo(page);
+        }
+        else {
+            LoadArticleInfoByCategoryId(page,chosenCategoryId);
+        }
+        $("#page").text(page);
+    }
 }
