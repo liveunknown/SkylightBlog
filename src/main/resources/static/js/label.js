@@ -1,6 +1,10 @@
+var articleSum;
+var chosenLabelId = 0;
+
 $(function(){
     LoadLabels();
     LoadArticleInfo(1);
+    getArticleSum();
 });
 
 function LoadLabels() {
@@ -85,6 +89,11 @@ function LoadArticleInfo(page) {
 }
 
 function LoadArticleInfoByLabelId(page,id) {
+    chosenLabelId = id;
+    console.log("The chosen one is: "+chosenLabelId);
+    $("#page").text(1);
+    getArticleSumByLabelId(id);
+
     $.ajax({
         url: "/articleInfoDetailsByLabelId",
         type: "GET",
@@ -132,4 +141,75 @@ function LoadArticleInfoByLabelId(page,id) {
         }
 
     });
+}
+
+function getArticleSum() {
+    $.ajax({
+        url: "/articleSum",
+        type: "GET",
+        async: false,
+        data: {},
+        success: function (data) {
+            console.log("成功了！");
+            articleSum = data;
+            console.log(articleSum);
+            $("#sum").text(articleSum);
+        }, error: function () {
+            alert("数据加载错误");
+        }
+    });
+}
+
+function getArticleSumByLabelId(id) {
+    $.ajax({
+        url: "/articleSumByLabelId",
+        type: "GET",
+        async: false,
+        data: {labelId:id},
+        success: function (data) {
+            console.log("成功了！");
+            articleSum = data;
+            console.log(articleSum);
+            $("#sum").text(articleSum);
+        }, error: function () {
+            alert("数据加载错误");
+        }
+    });
+}
+
+function previousPage(){
+    var page=$("#page").text();
+    page=page-1;
+    if(page<1){
+        alert("已是第一页");
+    }
+    else{
+        if(chosenLabelId==0)
+        {
+            LoadArticleInfo(page);
+        }
+        else {
+            LoadArticleInfoByLabelId(page,chosenLabelId);
+        }
+
+        $("#page").text(page);
+    }
+}
+
+function nextPage(){
+    var page=$("#page").text();
+    page=page-0+1;
+    if((page-1)*10>=articleSum){
+        alert("已是最后一页");
+    }
+    else{
+        if(chosenLabelId==0)
+        {
+            LoadArticleInfo(page);
+        }
+        else {
+            LoadArticleInfoByLabelId(page,chosenLabelId);
+        }
+        $("#page").text(page);
+    }
 }
