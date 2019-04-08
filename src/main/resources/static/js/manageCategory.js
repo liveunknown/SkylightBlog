@@ -38,7 +38,7 @@ function LoadPage(page) {
                     '                        <td>'+number+'</td>'+
                     '                        <td>'+createTime+'</td>'+
                     '<td><button class="btn btn-success btn-xs" onclick="loadModifyModal('+id+')" ><span class="glyphicon glyphicon-pencil"></span> 编辑</button>&#8194;'+
-                    '<button class="btn btn-danger btn-xs" onclick="deleteCategory('+id+')" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span> 删除</button></td>'+
+                    '<button class="btn btn-danger btn-xs" onclick="loadDeleteModal('+id+')" data-toggle="modal" data-target="#CategoryDeleteModal"><span class="glyphicon glyphicon-trash"></span> 删除</button></td>'+
                     '                    </tr>';
                 '                </div>';
                 if(i==data.length)
@@ -126,4 +126,10 @@ function loadModifyModal(id) {
     var Buttons = '<button type="button" class="btn btn-primary" onclick="modifyCategory('+id+')">确定</button>'+
         '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>';
     $("#modifyModalFooter").html(Buttons);
+}
+
+function loadDeleteModal(id) {
+    var Buttons =  '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>'+
+        '<button type="button" class="btn btn-primary" onclick="deleteCategory('+id+')">删除</button>';
+    $("#deleteModalFooter").html(Buttons);
 }
