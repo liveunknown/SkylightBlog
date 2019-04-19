@@ -30,7 +30,7 @@ public class HelloController {
 
     @RequestMapping("/hello")
     public String hello() {
-        logger.warn("HelloController里的日志输出！ warn");
+        logger.info("HelloController里的日志输出！info");
         return "Hello MyBlog!";
     }
 
