@@ -2,6 +2,8 @@ package com.skylight.blog.controller;
 
 import com.skylight.blog.mapper.UserMapper;
 import com.skylight.blog.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,8 +26,11 @@ public class HelloController {
     @Autowired
     UserMapper userMapper;
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @RequestMapping("/hello")
     public String hello() {
+        logger.warn("HelloController里的日志输出！ warn");
         return "Hello MyBlog!";
     }
 
