@@ -2,6 +2,8 @@ package com.skylight.blog.controller;
 
 
 import com.skylight.blog.exception.MyException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,6 +15,8 @@ import java.util.Map;
 
 @ControllerAdvice
 public class MyExceptionHandler {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
@@ -34,6 +38,7 @@ public class MyExceptionHandler {
 
     @ExceptionHandler(value = MyException.class)
     public ModelAndView myErrorHandler(MyException e) {
+        logger.info("注意: 执行到MyException的处理方法中了！");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("error");
         modelAndView.addObject("code", e.getCode());

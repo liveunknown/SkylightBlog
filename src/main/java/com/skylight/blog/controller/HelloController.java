@@ -31,6 +31,7 @@ public class HelloController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("/hello")
+    @ResponseBody
     public String hello() {
         logger.info("HelloController里的日志输出！info");
         return "Hello MyBlog!";
@@ -38,7 +39,12 @@ public class HelloController {
 
     @RequestMapping("/myError")
     public String test(){
-        return "error";
+        return "error/404";
+    }
+
+    @RequestMapping("/wrong")
+    public int zero(){
+        return 1/0;
     }
 
     @RequestMapping("/exception")
