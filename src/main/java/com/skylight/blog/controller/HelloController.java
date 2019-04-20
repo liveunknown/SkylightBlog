@@ -36,10 +36,10 @@ public class HelloController {
         return "Hello MyBlog!";
     }
 
-/*    @RequestMapping("/error")
+    @RequestMapping("/myError")
     public String test(){
         return "error";
-    }*/
+    }
 
     @RequestMapping("/exception")
     public String exception() throws Exception {
