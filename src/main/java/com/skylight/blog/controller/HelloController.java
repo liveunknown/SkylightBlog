@@ -6,6 +6,7 @@ import com.skylight.blog.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,7 +22,7 @@ import java.util.UUID;
 /**
  * 测试控制器
  */
-@RestController
+@Controller
 public class HelloController {
 
     @Autowired
@@ -34,6 +35,11 @@ public class HelloController {
         logger.info("HelloController里的日志输出！info");
         return "Hello MyBlog!";
     }
+
+/*    @RequestMapping("/error")
+    public String test(){
+        return "error";
+    }*/
 
     @RequestMapping("/exception")
     public String exception() throws Exception {
