@@ -1,5 +1,6 @@
 package com.skylight.blog.controller;
 
+import com.skylight.blog.exception.MyException;
 import com.skylight.blog.mapper.UserMapper;
 import com.skylight.blog.model.User;
 import org.slf4j.Logger;
@@ -32,6 +33,18 @@ public class HelloController {
     public String hello() {
         logger.info("HelloController里的日志输出！info");
         return "Hello MyBlog!";
+    }
+
+    @RequestMapping("/exception")
+    public String exception() throws Exception {
+        logger.info("访问/hello时抛出了异常！");
+        throw new Exception("访问/hello时抛出了异常！");
+    }
+
+    @RequestMapping("/myException")
+    public String myException() throws MyException {
+        logger.info("访问/hello时抛出了自定义异常！");
+        throw new MyException("666","这里是自定义异常！");
     }
 
     @RequestMapping("/user")
