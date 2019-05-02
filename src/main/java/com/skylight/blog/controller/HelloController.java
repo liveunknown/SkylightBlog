@@ -85,9 +85,13 @@ public class HelloController {
             System.out.println("输出file: "+file);
 
             // 文件保存路径(服务器存放文件的地址)
-            String Root = "C:\\Users\\Air\\Desktop\\images\\";
+            //     /usr/local/MyBlog/images
+            //String Root = "C:\\Users\\Air\\Desktop\\images\\";
+            String Root = "/usr/local/MyBlog/images/";
+
             String path = "";
-            String Url = "http://localhost:8080/image/";
+            //String Url = "http://localhost:8080/image/";
+            String Url = "http://www.baidurex.com/image/";
 
             System.out.println("Root: "+Root);
             String contentType=file.getContentType();
