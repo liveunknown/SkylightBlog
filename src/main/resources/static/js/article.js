@@ -34,6 +34,8 @@ function getArticleById(id) {
         success: function (data) {
            var categories = "";
            var labels = "";
+           var articleId = data.articleInfoId;
+           var title = data.title;
            console.log(data);
            $("#title").html(data.title);
            $("#here").val(data.articleContent.content);
@@ -43,9 +45,22 @@ function getArticleById(id) {
                         '<span class="glyphicon glyphicon-user">&#8197;郁磊&#8197;&#8197;</span>'+
                         '<span class="glyphicon glyphicon-tag">&#8197;'+data.category.name+'</span>';
            $("#category").html(categories);
-
+           addShare(articleId,title);
         }, error: function () {
             alert("数据加载错误");
         }
     });
+}
+
+
+function addShare(id,title) {
+    console.log("share!");
+    $('#share').append('<div class="social-share" data-initialized="true" data-url="http://www.baidurex.com/article.html?id='+ id +'" data-title="'+ title +'">'+
+        /*'        <a href="#" class="social-share-icon icon-qq" data-am-popover="{content: \'分享到QQ\', trigger: \'hover focus\'}"></a>'+*/
+        '        <a href="#" class="social-share-icon icon-wechat"></a>'+
+        '        <a href="#" class="social-share-icon icon-douban" data-am-popover="{content: \'分享至豆瓣\', trigger: \'hover focus\'}"></a>'+
+        '        <a href="#" class="social-share-icon icon-qzone" data-am-popover="{content: \'分享至QQ空间\', trigger: \'hover focus\'}"></a>'+
+        '        <a href="#" class="social-share-icon icon-weibo" data-am-popover="{content: \'分享至微博\', trigger: \'hover focus\'}"></a>'+
+        '    </div>'
+    );
 }
