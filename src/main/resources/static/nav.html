@@ -1,152 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
 
-	<!-- Start Navigation -->
-	<nav class="navbar navbar-default navbar-sticky bootsnav">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>导航栏</title>
+	<link href="bootsnav/fonts/FontAwesome/font-awesome.css" rel="stylesheet">
+	<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
+	<link href="bootsnav/css/animate.css" rel="stylesheet">
+	<link href="bootsnav/css/bootsnav.css" rel="stylesheet">
+	<link href="bootsnav/css/htmleaf-demo.css" rel="stylesheet" type="text/css" >
+	<link href="bootsnav/css/overwrite.css" rel="stylesheet">
+	<link href="bootsnav/css/style.css" rel="stylesheet">
+	<link href="bootsnav/skins/color.css" rel="stylesheet">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+    <script src="bootsnav/js/respond.min.js"></script>
+	<![endif]-->
+	<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-		<!-- Start Top Search -->
-		<div class="top-search">
-			<div class="container">
-				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-search"></i></span>
-					<input type="text" class="form-control" placeholder="Search">
-					<span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-				</div>
+<body id="home">
+<!-- Start Home -->
+<!-- <div class="pageheader">
+    <div class="container">
+        <h2 class="title">顶部黏贴的导航菜单</h2>
+        <p>Navigation menu with sticky style</p>
+    </div>
+</div> -->
+<!-- End Home -->
+<!-- Start Navigation -->
+<nav class="navbar navbar-default navbar-sticky bootsnav">
+
+	<!-- Start Top Search -->
+	<div class="top-search">
+		<div class="container">
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-search"></i></span>
+				<input type="text" class="form-control" placeholder="Search">
+				<span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
 			</div>
 		</div>
-		<!-- End Top Search -->
+	</div>
+	<!-- End Top Search -->
 
-		<div class="container">
-			<!-- Start Atribute Navigation -->
-			<div class="attr-nav">
-				<ul>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-shopping-bag"></i>
-                            <!-- <span class="badge">3</span> -->
-                        </a>
+	<div class="container">
+		<!-- Start Atribute Navigation -->
+		<div class="attr-nav">
+			<ul>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<i class="fa fa-shopping-bag"></i>
+						<!-- <span class="badge">3</span> -->
+					</a>
 
-					</li>
-					<li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-					<li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
-				</ul>
+				</li>
+				<li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+				<li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
+			</ul>
+		</div>
+		<!-- End Atribute Navigation -->
+
+		<!-- Start Header Navigation -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				<i class="fa fa-bars"></i>
+			</button>
+			<div>
+				<!-- <a class="navbar-brand" href=""><img src="images/brand/logo-black.jpeg" class="logo img-circle"></a> -->
+				<a class="navbar-brand" href="#" ><img src="bootsnav/images/brand/logo-black.jpeg" class="logo img-circle" style="display: inline-block;"><b style="margin:15px 0px 15px 0px;font-family:verdana;">&#12288;Live Unknown</b></a>
 			</div>
-			<!-- End Atribute Navigation -->
+		</div>
+		<!-- End Header Navigation -->
 
-			<!-- Start Header Navigation -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-          <i class="fa fa-bars"></i>
-        </button>
-				<div>
-					<!-- <a class="navbar-brand" href=""><img src="images/brand/logo-black.jpeg" class="logo img-circle"></a> -->
-					<a class="navbar-brand" href="#" ><img src="bootsnav/images/brand/logo-black.jpeg" class="logo img-circle" style="display: inline-block;"><b style="margin:15px 0px 15px 0px;font-family:verdana;">&#12288;Live Unknown</b></a>
-				</div>
-			</div>
-			<!-- End Header Navigation -->
-
-			<!-- 导航栏 -->
-			<div class="collapse navbar-collapse" id="navbar-menu">
-				<ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-					<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
-					<li><a href="category.html"><span class="glyphicon glyphicon-th-large"></span> 分类</a></li>
-					<li><a href="label.html"><span class="glyphicon glyphicon-paperclip"></span> 标签</a></li>
-					<li class="dropdown megamenu-fw">
-						<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-paperclip"></span> 标签</a>
-						<ul class="dropdown-menu megamenu-content" role="menu">
-							<li>
-								<div class="row">
-									<div class="col-menu col-md-3">
-										<h6 class="title">Title Menu One</h6>
-										<div class="content">
-											<ul class="menu-col">
-												<li><a href="#">Custom Menu</a></li>
-											</ul>
-										</div>
-									</div>
-									<!-- end col-3 -->
-									<div class="col-menu col-md-3">
-										<h6 class="title">Title Menu Two</h6>
-										<div class="content">
-											<ul class="menu-col">
-												<li><a href="#">Custom Menu</a></li>
-											</ul>
-										</div>
-									</div>
-									<!-- end col-3 -->
-									<div class="col-menu col-md-3">
-										<h6 class="title">Title Menu Three</h6>
-										<div class="content">
-											<ul class="menu-col">
-												<li><a href="#">Custom Menu</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-menu col-md-3">
-										<h6 class="title">Title Menu Four</h6>
-										<div class="content">
-											<ul class="menu-col">
-												<li><a href="#">Custom Menu</a></li>
-											</ul>
-										</div>
-									</div>
-									<!-- end col-3 -->
-								</div>
-								<!-- end row -->
-							</li>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-time"></span> 更新</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Custom Menu</a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Custom Menu</a></li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
-										<ul class="dropdown-menu">
+		<!-- 导航栏 -->
+		<div class="collapse navbar-collapse" id="navbar-menu">
+			<ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
+				<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+				<li><a href="category.html"><span class="glyphicon glyphicon-th-large"></span> 分类</a></li>
+				<li><a href="label.html"><span class="glyphicon glyphicon-paperclip"></span> 标签</a></li>
+				<li class="dropdown megamenu-fw">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-paperclip"></span> 标签</a>
+					<ul class="dropdown-menu megamenu-content" role="menu">
+						<li>
+							<div class="row">
+								<div class="col-menu col-md-3">
+									<h6 class="title">Title Menu One</h6>
+									<div class="content">
+										<ul class="menu-col">
 											<li><a href="#">Custom Menu</a></li>
 										</ul>
-									</li>
-									<li><a href="#">Custom Menu</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Custom Menu</a></li>
-						</ul>
-					</li>
-					<li><a href="#"><span class="glyphicon glyphicon-glass"></span> 友链</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-qrcode"></span> 关于</a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
+									</div>
+								</div>
+								<!-- end col-3 -->
+								<div class="col-menu col-md-3">
+									<h6 class="title">Title Menu Two</h6>
+									<div class="content">
+										<ul class="menu-col">
+											<li><a href="#">Custom Menu</a></li>
+										</ul>
+									</div>
+								</div>
+								<!-- end col-3 -->
+								<div class="col-menu col-md-3">
+									<h6 class="title">Title Menu Three</h6>
+									<div class="content">
+										<ul class="menu-col">
+											<li><a href="#">Custom Menu</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-menu col-md-3">
+									<h6 class="title">Title Menu Four</h6>
+									<div class="content">
+										<ul class="menu-col">
+											<li><a href="#">Custom Menu</a></li>
+										</ul>
+									</div>
+								</div>
+								<!-- end col-3 -->
+							</div>
+							<!-- end row -->
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-time"></span> 更新</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Custom Menu</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Custom Menu</a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sub Menu</a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Custom Menu</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Custom Menu</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Custom Menu</a></li>
+					</ul>
+				</li>
+				<li><a href="#"><span class="glyphicon glyphicon-glass"></span> 友链</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-qrcode"></span> 关于</a></li>
+			</ul>
 		</div>
+		<!-- /.navbar-collapse -->
+	</div>
 
-		<!-- Start Side Menu -->
-		<div class="side">
-			<a href="#" class="close-side"><i class="fa fa-times"></i></a>
-			<div class="widget">
-				<h6 class="title">Custom Pages</h6>
-				<ul class="link">
-					<li><a href="#">About</a></li>
-					<li><a href="#">Services</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Portfolio</a></li>
-					<li><a href="#">Contact</a></li>
-				</ul>
-			</div>
-			<div class="widget">
-				<h6 class="title">Additional Links</h6>
-				<ul class="link">
-					<li><a href="#">Retina Homepage</a></li>
-					<li><a href="#">New Page Examples</a></li>
-					<li><a href="#">Parallax Sections</a></li>
-					<li><a href="#">Shortcode Central</a></li>
-					<li><a href="#">Ultimate Font Collection</a></li>
-				</ul>
+	<!-- Start Side Menu -->
+	<div class="side">
+		<a href="#" class="close-side"><i class="fa fa-times"></i></a>
+		<div class="widget">
+			<h6 class="title">Custom Pages</h6>
+			<ul class="link">
+				<li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Blog</a></li>
+				<li><a href="#">Portfolio</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+		<div class="widget">
+			<h6 class="title">Additional Links</h6>
+			<ul class="link">
+				<li><a href="#">Retina Homepage</a></li>
+				<li><a href="#">New Page Examples</a></li>
+				<li><a href="#">Parallax Sections</a></li>
+				<li><a href="#">Shortcode Central</a></li>
+				<li><a href="#">Ultimate Font Collection</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- End Side Menu -->
+</nav>
+<!-- End Navigation -->
+
+<div class="clearfix"></div>
+<!-- Start Demo -->
+<div id="demo" class="section">
+	<div class="container">
+		<!-- Start Heading -->
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
 			</div>
 		</div>
-		<!-- End Side Menu -->
-	</nav>
-	<!-- End Navigation -->
+	</div>
+</div>
 
+<!-- End Heading -->
 
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="bootsnav/js/bootsnav.js"></script>
+</body>
+
+</html>
