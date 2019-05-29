@@ -30,8 +30,8 @@ function LoadPage(page) {
                     labels = labels + '<span class="glyphicon glyphicon-paperclip"></span> ' + data[i].articleLabelList[j].label.name + '&#8194;';
                 }
 
-                content = content +
-                    '<div class="col-xs-12 col-lg-12 shadow distance">'+
+                content =
+                    '<div class="col-xs-12 col-lg-12 shadow distance am-animation-slide-left">'+
                     '                    <h3>'+title+'</h3>'+
                     '                    <p>'+
                     '                    <span class="glyphicon glyphicon-time"></span>'+createTime+ '&#8197;'+
@@ -43,10 +43,12 @@ function LoadPage(page) {
                     '                    <p>'+ labels +'</p>'+
                     '                </div>';
                 labels = "";
+
+                $("#lastOne").append(content);
             }
 
 
-            $("#lastOne").html(content);
+            //$("#lastOne").html(content);
 
         }, error: function () {
             alert("数据加载错误");
@@ -80,6 +82,7 @@ function previousPage(){
         alert("已是第一页");
     }
     else{
+        $("#lastOne").html("");
         LoadPage(page);
         $("#page").text(page);
     }
@@ -92,6 +95,7 @@ function nextPage(){
         alert("已是最后一页");
     }
     else{
+        $("#lastOne").html("");
         LoadPage(page);
         $("#page").text(page);
     }
