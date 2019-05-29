@@ -1,0 +1,22 @@
+.labelList{
+    margin-top: 6px;
+    padding: 3px;
+}
+
+.labelList a {
+    color: #616161;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #999;
+    text-decoration: none;
+}
+
+.labelList a:hover{
+    color: #16d1ff;
+    border-bottom: 1px solid #999;
+    text-decoration: none;
+}
+
+.labelList li{
+    margin-top: 6px;
+    padding-bottom: 2px;
+}

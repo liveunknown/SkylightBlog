@@ -43,7 +43,7 @@ document.writeln("			<!-- End Header Navigation -->");
 document.writeln("");
 document.writeln("			<!-- 导航栏 -->");
 document.writeln("			<div class=\'collapse navbar-collapse\' id=\'navbar-menu\'>");
-document.writeln("				<ul class=\'nav navbar-nav navbar-center\' data-in=\'fadeInDown\' data-out=\'fadeOutUp\'>");
+document.writeln("				<ul class=\'nav navbar-nav navbar-center am-animation-slide-left\' data-in=\'fadeInDown\' data-out=\'fadeOutUp\'>");
 document.writeln("					<li><a href=\'index.html\'><span class=\'glyphicon glyphicon-home\'></span> 首页</a></li>");
 document.writeln("					<li><a href=\'category.html\'><span class=\'glyphicon glyphicon-th-large\'></span> 分类</a></li>");
 document.writeln("                  <li><a href=\'label.html\'><span class=\'glyphicon glyphicon-paperclip\'></span> 标签</a></li>");

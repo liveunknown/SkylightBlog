@@ -1,0 +1,22 @@
+.category{
+    margin-top: 6px;
+    padding: 3px;
+}
+
+.category a {
+    color: #616161;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #999;
+    text-decoration: none;
+}
+
+.category a:hover{
+    color: #16d1ff;
+    border-bottom: 1px solid #999;
+    text-decoration: none;
+}
+
+.category li{
+    margin-top: 6px;
+    padding-bottom: 2px;
+}
