@@ -1,8 +1,15 @@
 var articleSum;
+//网站最后更新时间（版本更新需更改）
+var siteLastUpdateTime = '2019年06月01日12点';
+
+//网站开始时间
+var siteBeginRunningTime = '2018-06-01 20:00:00';
 
 $(function(){
     LoadPage(1);
     getArticleSum();
+    setLastUpdateTime();
+    getRunningTime();
 });
 
 function LoadPage(page) {
@@ -100,3 +107,49 @@ function nextPage(){
         $("#page").text(page);
     }
 }
+
+//网站最后更新时间
+function setLastUpdateTime() {
+    $('.siteUpdateTime').html(siteLastUpdateTime);
+}
+
+
+//网站运行时间
+//beginTime为建站时间的时间戳
+function siteRunningTime(time) {
+    var theTime;
+    var strTime = "";
+    if (time >= 86400){
+        theTime = parseInt(time/86400);
+        strTime += theTime + "天";
+        time -= theTime*86400;
+    }
+    if (time >= 3600){
+        theTime = parseInt(time/3600);
+        strTime += theTime + "时";
+        time -= theTime*3600;
+    }
+    if (time >= 60){
+        theTime = parseInt(time/60);
+        strTime += theTime + "分";
+        time -= theTime*60;
+    }
+    strTime += time + "秒";
+
+    $('.siteRunningTime').html(strTime);
+
+    console.log(strTime);
+}
+
+function getRunningTime() {
+    var nowDate = new Date().getTime();
+    //网站开始运行日期
+    var oldDate = new Date(siteBeginRunningTime.replace(/-/g,'/'));
+    var time = oldDate.getTime();
+    var theTime = parseInt((nowDate-time)/1000);
+    setInterval(function () {
+        siteRunningTime(theTime);
+        theTime++;
+    },1000);
+}
+
