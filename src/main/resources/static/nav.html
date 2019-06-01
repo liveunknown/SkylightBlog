@@ -15,13 +15,70 @@
 	<link href="bootsnav/css/style.css" rel="stylesheet">
 	<link href="bootsnav/skins/color.css" rel="stylesheet">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<link href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!--[if lt IE 9]>
     <script src="bootsnav/js/respond.min.js"></script>
 	<![endif]-->
 	<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+	#weixin img{
+		width:160px;
+		border: 10px;
+	}
+	.author-name{
+		margin: 20px 0 0;
+		text-align: center;
+		color: #f5f5f5;
+		font-weight: normal;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.img-author .author-words p{
+		line-height: 20px;
+		margin: 0;
+		font-size: 16px;
+	}
+	.author-words{
+		margin: 20px 0 0;
+		line-height: 20px;
+		text-align: center;
+		color: whitesmoke;
+	}
 
+	#icons div{
+		display: inline-block;
+		margin-left: 17px;
+	}
+
+	.site-state{
+		line-height: 1.4;
+		white-space: nowrap;
+		text-align: center;
+	}
+	.site-state-item{
+		margin-top: 23px;
+		margin-bottom: 23px;
+		padding: 0 15px;
+		display: inline-block;
+
+	}
+	.site-state-item +.site-state-item{
+		border-left:1px solid #999;
+	}
+	.site-state-item a{
+		color: #999;
+		text-decoration: none;
+	}
+	.site-state-item-count{
+		display: block;
+		color: inherit;
+		font-weight: 600;
+		font-size: 18px;
+	}
+</style>
 <body id="home">
 <!-- Start Home -->
 <!-- <div class="pageheader">
@@ -156,25 +213,46 @@
 	<!-- Start Side Menu -->
 	<div class="side">
 		<a href="#" class="close-side"><i class="fa fa-times"></i></a>
-		<div class="widget">
-			<h6 class="title">Custom Pages</h6>
-			<ul class="link">
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Blog</a></li>
-				<li><a href="#">Portfolio</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
+		<br>
+		<br>
+		<div class="img-author" style="text-align: center">
+			<p style="font-size:large;font-family: 仿宋;color: whitesmoke">微信公众号</p>
+			<div id="weixin">
+				<img class="weixinPublic" src="images/WeChat.png">
+			</div>
+			<div class="author-name">
+				小天窗已失明
+			</div>
+			<div class="author-words">
+				<p>专注于Java Web后端技术探索</p>
+				<p>以及MySQL数据库开发和SSM,SpringBoot等后端框架学习</p>
+			</div>
 		</div>
-		<div class="widget">
-			<h6 class="title">Additional Links</h6>
-			<ul class="link">
-				<li><a href="#">Retina Homepage</a></li>
-				<li><a href="#">New Page Examples</a></li>
-				<li><a href="#">Parallax Sections</a></li>
-				<li><a href="#">Shortcode Central</a></li>
-				<li><a href="#">Ultimate Font Collection</a></li>
-			</ul>
+		<br>
+		<div id="icons">
+		    <div><a href="https://github.com/LittleSkylight" class="am-icon-btn am-icon-github"></a></div>
+			<div><a href="#" class="am-icon-btn am-icon-qq am-secondary"></a></div>
+			<div><a href="#" class="am-icon-btn am-icon-wechat am-success"></a></div>
+		</div>
+		<div class="site-state" style="opacity: 1; display: block; transform: translateX(0px);">
+			<div class="site-state-item learn-posts">
+				<a href="index.html">
+					<span class="archivesNum site-state-item-count">56</span>
+					<span class="site-state-item-name">文章</span>
+				</a>
+			</div>
+			<div class="site-state-item learn-categories">
+				<a href="category.html" id="site-state-item-a">
+					<span class="categoriesNum site-state-item-count">11</span>
+					<span class="site-state-item-name">分类</span>
+				</a>
+			</div>
+			<div class="site-state-item learn-tags">
+				<a href="label.html">
+					<span class="tagsNum site-state-item-count">31</span>
+					<span class="site-state-item-name">标签</span>
+				</a>
+			</div>
 		</div>
 	</div>
 	<!-- End Side Menu -->
@@ -197,6 +275,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
 <script src="bootsnav/js/bootsnav.js"></script>
 </body>
 
