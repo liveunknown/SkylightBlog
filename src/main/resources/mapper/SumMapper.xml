@@ -18,4 +18,12 @@
         SELECT COUNT(id) FROM article_label
         WHERE label_id = #{labelId}
     </select>
+
+    <select id="getCategorySum" resultType="int">
+      SELECT COUNT(id) FROM category;
+    </select>
+
+    <select id="getLabelSum" resultType="int">
+      SELECT COUNT(id) FROM label;
+    </select>
 </mapper>

@@ -8,8 +8,7 @@ var siteBeginRunningTime = '2018-06-01 20:00:00';
 $(function(){
     LoadPage(1);
     getArticleSum();
-    setLastUpdateTime();
-    getRunningTime();
+    getSiteInfoDetail();
 });
 
 function LoadPage(page) {
@@ -108,6 +107,36 @@ function nextPage(){
     }
 }
 
+//获取网站信息
+function getSiteInfoDetail() {
+    getSiteInfo();
+    setLastUpdateTime();
+    getRunningTime();
+}
+
+
+//网站信息
+function getSiteInfo() {
+
+    $.ajax({
+        type: 'GET',
+        url: '/getSiteInfo',
+        dataType: 'json',
+        data: {
+        },
+        success: function (data) {
+            console.log(data);
+            $('#articleNum').html(data.articleNum);
+            $('#categoryNum').html(data.categoryNum);
+            $('#labelNum').html(data.labelNum);
+        },
+        error: function () {
+            alert("获取网站信息失败！");
+        }
+    });
+
+}
+
 //网站最后更新时间
 function setLastUpdateTime() {
     $('.siteUpdateTime').html(siteLastUpdateTime);
@@ -138,7 +167,7 @@ function siteRunningTime(time) {
 
     $('.siteRunningTime').html(strTime);
 
-    console.log(strTime);
+    //console.log(strTime);
 }
 
 function getRunningTime() {

@@ -1,5 +1,6 @@
 package com.skylight.blog.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.skylight.blog.mapper.SumMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,5 +28,14 @@ public class SumController {
     public int getArticleSumByLabelId(Long labelId)
     {
         return sumMapper.getArticleSumByLabelId(labelId);
+    }
+
+    @RequestMapping("/getSiteInfo")
+    public JSONObject getSiteInfo() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("articleNum", sumMapper.getArticleSum());
+        jsonObject.put("categoryNum", sumMapper.getCategorySum());
+        jsonObject.put("labelNum",sumMapper.getLabelSum());
+        return jsonObject;
     }
 }
