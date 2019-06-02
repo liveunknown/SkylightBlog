@@ -129,6 +129,10 @@ function getSiteInfo() {
             $('#articleNum').html(data.articleNum);
             $('#categoryNum').html(data.categoryNum);
             $('#labelNum').html(data.labelNum);
+            // 侧边栏
+            $('#slideArticleNum').html(data.articleNum);
+            $('#slideCategoryNum').html(data.categoryNum);
+            $('#slideLabelNum').html(data.labelNum);
         },
         error: function () {
             alert("获取网站信息失败！");
