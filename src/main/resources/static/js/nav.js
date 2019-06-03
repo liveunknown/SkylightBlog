@@ -138,9 +138,9 @@ document.writeln("				<p>以及MySQL数据库开发和SSM,SpringBoot等后端框
 document.writeln("			</div>");
 document.writeln("		</div>");
 document.writeln("		<br>");
-document.writeln("		<div id=\'icons\'>");
+document.writeln("		<div id=\'icons\'>"); 
 document.writeln("		    <div><a href=\'https://github.com/LittleSkylight\' class=\'am-icon-btn am-icon-github\'></a></div>");
-document.writeln("			<div><a href=\'#\' class=\'am-icon-btn am-icon-qq am-secondary\'></a></div>");
+document.writeln("			<div><a href=\'http://wpa.qq.com/msgrd?v=3&uin=907310977&site=qq&menu=yes\' class=\'am-icon-btn am-icon-qq am-secondary\'></a></div>");
 document.writeln("			<div><a href=\'#\' class=\'am-icon-btn am-icon-wechat am-success\'></a></div>");
 document.writeln("		</div>");
 document.writeln("		<div class=\'site-state\' style=\'opacity: 1; display: block; transform: translateX(0px);\'>");
