@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skylight.blog.mapper.UpdateLogMapper">
+    <resultMap id="UpdateLogMap" type="com.skylight.blog.model.UpdateLog">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="update_date" jdbcType="VARCHAR" property="updateDate" />
+        <result column="update_content" jdbcType="VARCHAR" property="updateContent" />
+    </resultMap>
+
+    <insert id="addUpdateLog" parameterType="com.skylight.blog.model.UpdateLog" useGeneratedKeys="true" keyProperty="id">
+    insert into updatelog(update_date,update_content) values (#{ul.updateDate},#{ul.updateContent})
+    </insert>
+
+    <delete id="deleteUpdateLog">
+    delete from updatelog
+    where id = #{id}
+    </delete>
+
+    <select id="getUpdateLogList" resultMap="UpdateLogMap">
+        select * from updatelog
+        ORDER BY update_date desc
+    </select>
+
+    <update id="updateUpdateLog" parameterType="com.skylight.blog.model.UpdateLog">
+    update updatelog set update_date = #{ul.updateDate},update_content = #{ul.updateContent}
+    where id = #{ul.id}
+    </update>
+</mapper>
