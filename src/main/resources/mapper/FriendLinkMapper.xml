@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skylight.blog.mapper.FriendlinkMapper">
+    <resultMap id="FriendlinkMap" type="com.skylight.blog.model.Friendlink">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="blogger" jdbcType="VARCHAR" property="blogger" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
+        <result column="is_famous" jdbcType="BIGINT" property="isFamous" />
+    </resultMap>
+
+    <insert id="addFriendlink" parameterType="com.skylight.blog.model.Friendlink" useGeneratedKeys="true" keyProperty="id">
+    insert into friendlink(blogger,url,is_famous) values (#{fl.blogger},#{fl.url},#{fl.isFamous})
+    </insert>
+
+    <delete id="deleteFriendlink">
+    delete from friendlink
+    where id = #{id}
+    </delete>
+
+    <select id="getFriendlinkList" resultMap="FriendlinkMap">
+        select * from friendlink WHERE 1=1
+        <if test="isFamous != null ">
+            and is_famous = #{isFamous}
+        </if>;
+    </select>
+
+    <update id="updateFriendlink" parameterType="com.skylight.blog.model.Friendlink">
+    update friendlink set blogger = #{fl.blogger},url = #{fl.url},is_famous = #{fl.isFamous}
+    where id = #{fl.id}
+    </update>
+</mapper>
