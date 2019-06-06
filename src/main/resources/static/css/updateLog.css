@@ -1,0 +1,71 @@
+@media screen and (min-width: 768px) {
+    .yl-word p{
+        text-indent: 7em;
+    }
+    .yl-update{
+        margin: 0 19%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .yl-word p{
+        text-indent: 2em;
+    }
+    .yl-update{
+        margin: 0 3%;
+    }
+}
+.title-img{
+    text-align: center;
+    margin-top: 5px;
+    padding: 10px;
+}
+.title-img img{
+    width: 500px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.yl-update-log-title{
+    margin-top: 10px;
+}
+.yl-update-log-title h1{
+    font-size: 22px;
+    color: #222;
+    text-indent: 1em;
+    font-weight: bold;
+}
+.yl-update-log-title p{
+    text-indent: 1.5em;
+    font-weight: bold;
+}
+.yl-update-log-content{
+    margin-top: 10px;
+}
+
+.update-log i{
+    color: #999999;
+    margin-right: 5px;
+}
+.update-log h2{
+    display: inline-block;
+    font-size: 1.3em;
+    color: #333;
+}
+.update-log-date{
+    font-size: 16px;
+    font-weight: bold;
+    word-wrap: break-word;
+    font-family: Î¢ÈíÑÅºÚ;
+}
+.update-log-content{
+    margin: 15px 26px;
+}
+.update-log-content blockquote{
+    padding: 0 10px 0 20px;
+    border-left: 4px solid #ddd;
+}
+.update-log-content p{
+    font-size: 16px;
+    word-wrap: break-word;
+    font-family: Î¢ÈíÑÅºÚ;
+}
