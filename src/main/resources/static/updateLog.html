@@ -26,16 +26,159 @@
     <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
     <script src="js/baidu_statistics.js"></script>
+    <style>
+        @media screen and (min-width: 768px) {
+            .yl-word p{
+                text-indent: 7em;
+            }
+            .yl-update{
+                margin: 0 19%;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .yl-word p{
+                text-indent: 2em;
+            }
+            .yl-update{
+                margin: 0 3%;
+            }
+        }
+        .title-img{
+            text-align: center;
+            margin-top: 5px;
+            padding: 10px;
+        }
+        .title-img img{
+            width: 500px;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        .yl-update-log-title{
+            margin-top: 10px;
+        }
+        .yl-update-log-title h1{
+            font-size: 22px;
+            color: #222;
+            text-indent: 1em;
+            font-weight: bold;
+        }
+        .yl-update-log-title p{
+            text-indent: 1.5em;
+            font-weight: bold;
+        }
+        .yl-update-log-content{
+            margin-top: 10px;
+        }
+
+        .update-log i{
+            color: #999999;
+            margin-right: 5px;
+        }
+        .update-log h2{
+            display: inline-block;
+            font-size: 1.3em;
+            color: #333;
+        }
+        .update-log-date{
+            font-size: 16px;
+            font-weight: bold;
+            word-wrap: break-word;
+            font-family: 微软雅黑;
+        }
+        .update-log-content{
+            margin: 15px 26px;
+        }
+        .update-log-content blockquote{
+            padding: 0 10px 0 20px;
+            border-left: 4px solid #ddd;
+        }
+        .update-log-content p{
+            font-size: 16px;
+            word-wrap: break-word;
+            font-family: 微软雅黑;
+        }
+    </style>
 </head>
 <body>
 
 <script src="js/nav.js"></script>
 
 <div class="container">
-    <br>
     <div class="row">
-    </div>
+        <div class="col-sm-10 col-md-offset-1">
+            <div>
+                <div class="title am-animation-slide-top">
+                    <div class="title-words">
+                        <h1 class="title-words-h1"></h1>
+                    </div>
 
+                    <div class="title-img">
+                        <p>
+                            <img class="enlargePicture am-img-thumbnail am-radius" data-src="" src="images/timetravel.gif" lg-event-uid="&amp;1">
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="yl-update">
+                <div class="yl-update-log-title am-scrollspy-init am-scrollspy-inview am-animation-slide-bottom" data-am-scrollspy="{animation: 'slide-bottom'}">
+                    <h1>更新日志</h1>
+                </div>
+
+                <div class="yl-update-log-content">
+                    <div class="update-log ">
+                        <div class="update-log-date">
+                            <i class="am-icon-hashtag"></i>
+                            <h2>2019年5月19日</h2>
+                        </div>
+                        <div class="update-log-content">
+                            <blockquote><p>增加用户未读消息提醒，记得及时查看消息哦</p>
+                                <p>用户查看评论留言样式大整改，快去个人主页看看呦</p>
+                                <p>完善管理员后台分类管理、友链管理、点赞管理功能</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="update-log ">
+                        <div class="update-log-date">
+                            <i class="am-icon-hashtag"></i>
+                            <h2>2018年7月25日</h2>
+                        </div>
+                        <div class="update-log-content">
+                            <blockquote><p>正式上线个人博客网站，并进行长期维护</p>
+                                <p>增加用户评论、留言功能，以及用户个人主页</p>
+                                <p>新增反馈功能</p>
+                                <p>调试所有页面手机端适配问题，提高手机端浏览舒适度</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="update-log ">
+                        <div class="update-log-date">
+                            <i class="am-icon-hashtag"></i>
+                            <h2>2018年6月24日</h2>
+                        </div>
+                        <div class="update-log-content">
+                            <blockquote><p>新增在线写博客功能，优化博客显示页面</p>
+                                <p>优化博客静态资源，浏览速度更快</p>
+                                <p>修复部分Bug</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="update-log ">
+                        <div class="update-log-date">
+                            <i class="am-icon-hashtag"></i>
+                            <h2>2018年5月25日</h2>
+                        </div>
+                        <div class="update-log-content">
+                            <blockquote><p>博客网站发布</p>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="js/footer.js"></script>
 </div><!-- /.container -->
 <h1></h1>

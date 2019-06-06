@@ -47,7 +47,7 @@ document.writeln("				<ul class=\'nav navbar-nav navbar-center am-animation-slid
 document.writeln("					<li><a href=\'index.html\'><span class=\'glyphicon glyphicon-home\'></span> 首页</a></li>");
 document.writeln("					<li><a href=\'category.html\'><span class=\'glyphicon glyphicon-th-large\'></span> 分类</a></li>");
 document.writeln("                  <li><a href=\'label.html\'><span class=\'glyphicon glyphicon-paperclip\'></span> 标签</a></li>");
-document.writeln("					<li><a href=\'#\'><span class=\'glyphicon glyphicon-time\'></span> 更新</a></li>");
+document.writeln("					<li><a href=\'updateLog.html\'><span class=\'glyphicon glyphicon-time\'></span> 更新</a></li>");
 /*document.writeln("					<li class=\'dropdown megamenu-fw\'>");
 document.writeln("						<a href=\'label.html\' class=\'dropdown-toggle\' data-toggle=\'dropdown\'><span class=\'glyphicon glyphicon-paperclip\'></span> 标签</a>");
 document.writeln("						<ul class=\'dropdown-menu megamenu-content\' role=\'menu\'>");
@@ -113,8 +113,8 @@ document.writeln("							</li>");
 document.writeln("							<li><a href=\'#\'>Custom Menu</a></li>");
 document.writeln("						</ul>");
 document.writeln("					</li>");*/
-document.writeln("					<li><a href=\'#\'><span class=\'glyphicon glyphicon-glass\'></span> 友链</a></li>");
-document.writeln("					<li><a href=\'#\'><span class=\'glyphicon glyphicon-qrcode\'></span> 关于</a></li>");
+document.writeln("					<li><a href=\'friendLink.html\'><span class=\'glyphicon glyphicon-glass\'></span> 友链</a></li>");
+document.writeln("					<li><a href=\'about.html\'><span class=\'glyphicon glyphicon-qrcode\'></span> 关于</a></li>");
 document.writeln("				</ul>");
 document.writeln("			</div>");
 document.writeln("			<!-- /.navbar-collapse -->");
