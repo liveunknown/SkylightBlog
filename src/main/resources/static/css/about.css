@@ -1,0 +1,23 @@
+.title-img{
+    text-align: center;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.title-img img{
+    width: 777px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.blogger-info-words{
+    text-indent: 2em;
+    font-size: 15px;
+    font-family: 'Î¢ÈíÑÅºÚ', 'ËÎÌå', sans-serif;
+    font-weight: 200;
+}
+
+blockquote ul li{
+    font-size: 15px;
+    line-height: 25px;
+}
