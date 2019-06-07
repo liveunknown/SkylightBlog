@@ -1,5 +1,9 @@
 $(function(){
     LoadUpdateLogs();
+
+    $('.update-log').scrollspy({
+        animation: 'slide-left'
+    })
 });
 
 function LoadUpdateLogs() {
@@ -26,7 +30,7 @@ function LoadUpdateLogs() {
                   updateLogs = updateLogs + '<p>'+ updateLogArray[j] +'</p>';
                 }
 
-                content = content + '<div class="update-log " data-am-scrollspy="{animation: \'slide-left\'}" style="opacity: 100;">'+
+                content = content + '<div class="update-log">'+
                     '                        <div class="update-log-date">'+
                     '                            <i class="am-icon-hashtag"></i>'+
                     '                            <h2>'+ updateDate +'</h2>'+
