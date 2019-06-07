@@ -55,7 +55,7 @@
     font-size: 16px;
     font-weight: bold;
     word-wrap: break-word;
-    font-family: 微软雅黑;
+    font-family: Microsoft YaHei;
 }
 .update-log-content{
     margin: 15px 26px;
@@ -67,5 +67,5 @@
 .update-log-content p{
     font-size: 16px;
     word-wrap: break-word;
-    font-family: 微软雅黑;
+    font-family: Microsoft YaHei;
 }
