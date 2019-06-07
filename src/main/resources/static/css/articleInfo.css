@@ -1,0 +1,13 @@
+.shadow{
+    -webkit-box-shadow: #666 0px 0px 10px;
+    -moz-box-shadow: #666 0px 0px 10px;
+    box-shadow: #666 0px 0px 10px;
+}
+
+.distance{
+    margin-bottom: 10px;
+}
+
+.top-distance{
+    margin-top: -5px;
+}

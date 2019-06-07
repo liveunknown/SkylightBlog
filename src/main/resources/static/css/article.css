@@ -1,1 +1,29 @@
+.i-head{
+    font-size: 25px;
+    font-family: Ώ¬Με;
+}
 
+.article-i-say {
+    border-left: solid 2px #992c12;
+    margin-top: 30px;
+    text-align: left;
+    padding: 15px 7px;
+    background-color: #aed9d3;
+    font-size: 16px;
+    font-family: Ώ¬Με;
+}
+
+.article-i-say-me {
+    margin-right: 15px;
+    float: right;
+}
+
+.post-copyright {
+    margin: 58px 0 30px;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+    font-size: 12px;
+    line-height: 22px;
+}
