@@ -36,6 +36,7 @@
 }
 .yl-friendlylink-title i{
     color: dodgerblue;
+    margin-left: 30px;
 }
 .yl-friendlylink-title span{
     color: #999999;
@@ -64,6 +65,7 @@
     font-weight: 600;
 }
 .yl-friendlylink-words blockquote ul li{
+    margin-left: -15px;
     font-size: 17px;
     font-family: Georgia,"Times New Roman",Times,Kai,"Kaiti SC",KaiTi,BiauKai,FontAwesome,serif;
     color: #4d4d4d;
@@ -78,6 +80,7 @@
 
 .friendLinks{
     font-size: 1.6rem;
+    text-align:center;
 }
 
 .friendLink{
