@@ -7,7 +7,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Live Unknown | 标签管理</title>
+    <title>Live Unknown | 更新日志</title>
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -47,8 +47,10 @@
             <ul class="nav nav-sidebar">
                 <li><a href="managePage.html"><span class="glyphicon glyphicon-list-alt"></span> <b>数据统计</b></a></li>
                 <li><a href="manageCategory.html"><span class="glyphicon glyphicon-th-large"></span> <b>分类管理</b></a></li>
-                <li class="active"><a href="manageLabel.html"><span class="glyphicon glyphicon-paperclip"></span> <b>标签管理</b></a></li>
+                <li><a href="manageLabel.html"><span class="glyphicon glyphicon-paperclip"></span> <b>标签管理</b></a></li>
                 <li><a href="manageArticle.html"><span class="glyphicon glyphicon-book"></span> <b>文章管理</b></a></li>
+                <li class="active"><a href="manageUpdateLog.html"><span class="glyphicon glyphicon-time"></span> <b>更新日志</b></a></li>
+                <li><a href="manageFriendLink.html"><span class="glyphicon glyphicon-glass"></span> <b>友链管理</b></a></li>
             </ul>
         </div>
 
@@ -60,23 +62,29 @@
                 </table>
             </div>
             <div id="button-area">
-                <button type="button" class="btn btn-info col-md-offset-4 col-md-2" onclick="loadModal()">添加标签</button>
+                <button type="button" class="btn btn-info col-md-offset-4 col-md-2" onclick="loadModal()">添加更新日志</button>
             </div>
         </div>
 
-        <!-- AddCategoryModal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!-- AddUpdateLogModal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalUpdateLog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">添加标签</h4>
+                        <h4 class="modal-title" id="myModalUpdateLog">添加更新日志</h4>
                     </div>
                     <div class="modal-body" id="modalContent">
                         <form class="form-inline" role="form">
                             <div class="form-group col-sm-offset-3">
-                                <label class="form-label">标签名称：</label>
-                                <input type="text" class="form-control" id="label" placeholder="输入标签名称">
+                                <label class="form-label">更新时间：</label>
+                                <input type="text" class="form-control" id="updateDate" placeholder="输入更新时间">
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group col-sm-offset-3">
+                                <label class="form-label">更新内容：</label>
+                                <input type="text" class="form-control" id="updateContent" placeholder="输入更新内容">
                             </div>
                         </form>
                     </div>
@@ -86,25 +94,31 @@
             </div>
         </div>
 
-        <!-- ModifyCategoryModal -->
-        <div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!-- ModifyUpdateLogModal -->
+        <div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalUpdateLog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="modifyModalLabel">修改标签</h4>
+                        <h4 class="modal-title" id="modifyUpdateLog">修改更新日志</h4>
                     </div>
                     <div class="modal-body" id="modifyModalContent">
                         <form class="form-inline" role="form">
                             <div class="form-group col-sm-offset-3">
-                                <label class="form-label">标签ID：</label>
+                                <label class="form-label">更新日志ID：</label>
                                 <input type="text" class="form-control" id="history" disabled="disabled">
                             </div>
                             <br>
                             <br>
                             <div class="form-group col-sm-offset-3">
-                                <label class="form-label">新名称：</label>
-                                <input type="text" class="form-control" id="modifyLabel" placeholder="输入新的标签名称">
+                                <label class="form-label">新的更新时间：</label>
+                                <input type="text" class="form-control" id="modifiedDate" placeholder="输入更新时间">
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group col-sm-offset-3">
+                                <label class="form-label">新的更新内容：</label>
+                                <input type="text" class="form-control" id="modifiedContent" placeholder="输入更新内容">
                             </div>
                         </form>
                     </div>
@@ -114,8 +128,8 @@
             </div>
         </div>
 
-        <!-- DeleteLabelModal -->
-        <div class="modal fade" id="LabelDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!-- DeleteUpdateLogModal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalUpdateLog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -123,17 +137,18 @@
                         <h4 class="modal-title">提示</h4>
                     </div>
                     <div class="modal-body" id="deleteModalContent">
-                        你确定要删除这个标签吗？
+                        你确定要删除这个更新日志吗？
                     </div>
                     <div class="modal-footer" id="deleteModalFooter">
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="js/manageLabel.js"></script>
+<script src="js/manageUpdateLog.js"></script>
 </body>
 </html>
