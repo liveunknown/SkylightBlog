@@ -55,12 +55,112 @@
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <!--表格区域-->
+            <h4 class="sub-header" id="tableType"></h4>
+            <div class="table-responsive">
+                <table class="table table-striped" id="table">
+                </table>
+            </div>
+            <div id="button-area">
+                <button type="button" class="btn btn-info col-md-offset-4 col-md-2" onclick="loadModal()">添加友链</button>
+            </div>
         </div>
-        
+
+        <!-- AddFriendLinkModal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalFriendLink">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalFriendLink">添加友链</h4>
+                    </div>
+                    <div class="modal-body" id="modalContent">
+                        <form class="form-inline" role="form">
+                            <div class="form-group col-sm-offset-3">
+                                <label class="form-label">网站名称：</label>
+                                <input type="text" class="form-control" id="blogger" placeholder="输入网站名称">
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group col-sm-offset-3">
+                                <label class="form-label">网站链接：</label>
+                                <input type="text" class="form-control" id="url" placeholder="输入网站链接">
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group col-sm-offset-3">
+                                <label class="form-label">是否著名：</label>
+                                <input type="text" class="form-control" id="isFamous" placeholder="博主是否著名">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer" id="modalFooter">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ModifyFriendLinkModal -->
+        <div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalFriendLink">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modifyFriendLink">修改友链信息</h4>
+                    </div>
+                    <div class="modal-body" id="modifyModalContent">
+                        <form class="form-inline" role="form">
+                            <div class="form-group col-sm-offset-3">
+                                <label class="form-label">友链ID：</label>
+                                <input type="text" class="form-control" id="history" disabled="disabled">
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group col-sm-offset-3">
+                                <label class="form-label">网站名称：</label>
+                                <input type="text" class="form-control" id="modifiedBlogger" placeholder="输入网站名称">
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group col-sm-offset-3">
+                                <label class="form-label">网站链接：</label>
+                                <input type="text" class="form-control" id="modifiedUrl" placeholder="输入网站链接">
+                            </div>
+                            <br>
+                            <br>
+                            <div class="form-group col-sm-offset-3">
+                                <label class="form-label">是否著名：</label>
+                                <input type="text" class="form-control" id="modifiedIsFamous" placeholder="博主是否著名">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer" id="modifyModalFooter">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DeleteFriendLinkModal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalFriendLink">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">提示</h4>
+                    </div>
+                    <div class="modal-body" id="deleteModalContent">
+                        你确定要删除这个友链吗？
+                    </div>
+                    <div class="modal-footer" id="deleteModalFooter">
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src=""></script>
+<script src="js/manageFriendLink.js"></script>
 </body>
 </html>
