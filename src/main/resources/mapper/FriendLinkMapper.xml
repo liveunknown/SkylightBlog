@@ -20,9 +20,10 @@
 
     <select id="getFriendlinkList" resultMap="FriendlinkMap">
         select * from friendlink WHERE 1=1
-        <if test="isFamous != null ">
+        <if test="isFamous != 9 ">
             and is_famous = #{isFamous}
-        </if>;
+        </if>
+        ORDER BY is_famous,id
     </select>
 
     <update id="updateFriendlink" parameterType="com.skylight.blog.model.Friendlink">

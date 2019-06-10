@@ -1,12 +1,12 @@
 $(function(){
-    LoadFriendLink(1);
+    LoadFriendLink(9); // 加载所有友链
 });
 
-function LoadFriendLink(page) {
+function LoadFriendLink(type) {
     $.ajax({
         url: "/getFriendLinkList",
         type: "GET",
-        data:{isFamous:page},
+        data:{isFamous:type},
         async: false,
         success: function (data) {
             console.log("成功了！");

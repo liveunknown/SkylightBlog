@@ -1,8 +1,8 @@
 $(function(){
-    LoadPage(1);
+    LoadAllUpdateLog();
 });
 
-function LoadPage(page) {
+function LoadAllUpdateLog() {
     $.ajax({
         url: "/getUpdateLogList",
         type: "GET",
