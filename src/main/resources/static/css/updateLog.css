@@ -69,3 +69,7 @@
     word-wrap: break-word;
     font-family: Microsoft YaHei;
 }
+
+.update-log-date > h2{
+    font-weight: 400;
+}
