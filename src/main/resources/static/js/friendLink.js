@@ -21,7 +21,7 @@ function LoadFamousFriendLinks() {
 
                 content = content + '<div class="friendLink">'+
                     '                       <i class="am-icon-street-view "></i>'+
-                    '                       <a href=" '+ url +' " target="_blank">' + blogger + '</a>'+
+                    '                       <a href="http://'+ url +' " target="_blank">' + blogger + '</a>'+
                     '                   </div>';
             }
 
@@ -51,7 +51,7 @@ function LoadNormalFriendLinks() {
 
                 content = content + '<div class="friendLink">'+
                     '                       <i class="am-icon-street-view "></i>'+
-                    '                       <a href=" '+ url +' " target="_blank">' + blogger + '</a>'+
+                    '                       <a href="http://'+ url +' " target="_blank">' + blogger + '</a>'+
                     '                   </div>';
             }
 
