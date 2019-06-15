@@ -21,11 +21,7 @@ public interface ArticleInfoMapper {
 
     boolean deleteArticleInfo(@Param("id")Long id);
 
-    ArticleInfo getArticleInfoById(@Param("id")Long id);
-
     boolean updateArticleInfo(@Param("ai")ArticleInfo articleInfo);
-
-    List<ArticleWrap> getArticleInfosByPageNumber(@Param("page")int page, @Param("number")int number);
 
     // Only ArticleContent    No need for query
     boolean addArticleContent(@Param("ac")ArticleContent articleContent);

@@ -17,7 +17,6 @@ public class ArticleController {
     @Autowired
     ArticleInfoMapper articleInfoMapper;
 
-
     @RequestMapping("/categories")
     public List<Category> getCategoryList()
     {
@@ -47,25 +46,4 @@ public class ArticleController {
         return articleService.getArticleWrapByArticleInfoId(id);
     }
 
-    @RequestMapping("/articleInfoList")
-    public List<ArticleWrap> getArticleInfosByPageNumber(int page) {
-        return articleService.getArticleInfosByPageNumber(page,10);
-    }
-    
-    //MD Test
-    @RequestMapping("/addArticleInfo")
-    public boolean addArticleInfo(String text) {
-        ArticleInfo articleInfo = new ArticleInfo();
-        articleInfo.setIsDeleted(0);
-        articleInfo.setCategoryId(new Long(1));
-        articleInfo.setSummary(text);
-        articleInfo.setViews(1);
-        articleInfo.setTitle("md测试");
-        return articleInfoMapper.addArticleInfo(articleInfo);
-    }
-
-    @RequestMapping("/aInfo")
-    public ArticleInfo getArticleInfoById(Long id) {
-        return articleInfoMapper.getArticleInfoById(id);
-    }
 }
