@@ -46,4 +46,9 @@ public class ArticleController {
         return articleService.getArticleWrapByArticleInfoId(id);
     }
 
+    @RequestMapping("/articleInfoList")
+    public List<ArticleWrap> getArticleInfosByPageNumber(int page) {
+        return articleService.getArticleInfosByPageNumber(page,10);
+    }
+
 }

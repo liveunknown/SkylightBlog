@@ -18,7 +18,6 @@ public class LoginController {
     @Autowired
     UserMapper userMapper;
 
-
     @PostMapping("/login")
     @ResponseBody
     public boolean login(int id, String password, HttpServletRequest request, HttpServletResponse response){

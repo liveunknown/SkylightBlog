@@ -1,6 +1,5 @@
 package com.skylight.blog.controller;
 
-
 import com.skylight.blog.exception.MyException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.Map;
-
 
 @ControllerAdvice
 public class MyExceptionHandler {

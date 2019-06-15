@@ -116,6 +116,15 @@
         where id = #{ai.id} AND is_deleted =0
     </update>
 
+    <select id="getArticleInfosByPageNumber" resultMap="ArticleWrapMap">
+        SELECT ai.*,
+        c.id cid,c.name,c.number,c.create_by c_create_by,c.modified_by c_modified_by
+        FROM article_info ai LEFT JOIN
+        (SELECT * FROM category  c ) c ON ai.category_id = c.id
+        WHERE 1 = 1 and is_deleted = 0
+        ORDER BY id
+        limit #{page} , #{number};
+    </select>
 
 
     <insert id="addArticleContent" parameterType="com.skylight.blog.model.ArticleContent" useGeneratedKeys="true" keyProperty="id">
