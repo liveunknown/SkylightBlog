@@ -20,7 +20,6 @@ public class FriendLinkController {
     @Autowired
     FriendlinkMapper friendlinkMapper;
 
-
     @RequestMapping("/addFriendLink")//@PostMapping("/addFriendLink")
     @ResponseBody
     public boolean addFriendLink(Friendlink friendlink){
