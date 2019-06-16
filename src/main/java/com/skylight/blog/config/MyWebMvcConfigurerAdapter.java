@@ -18,7 +18,9 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
     }
 
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new WebInterceptor()).addPathPatterns("/admin/**").excludePathPatterns("/admin/login");
+/*      registry.addInterceptor(new WebInterceptor()).addPathPatterns("/admin/**").excludePathPatterns("/admin/login");
+        registry.addInterceptor(new VisitorInterceptor()).addPathPatterns("/**").excludePathPatterns("/login.html", "/admin/**","/index","/js/**");*/
+        registry.addInterceptor(new WebInterceptor()).addPathPatterns("/admins/**").excludePathPatterns("/admins/login");
         registry.addInterceptor(new VisitorInterceptor()).addPathPatterns("/**").excludePathPatterns("/login.html", "/admin/**","/index","/js/**");
         super.addInterceptors(registry);
         System.out.println("===========   拦截器注册完毕   ===========");

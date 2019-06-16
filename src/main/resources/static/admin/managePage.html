@@ -7,12 +7,12 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Live Unknown | 文章管理</title>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>Live Unknown | 数据统计</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -45,53 +45,22 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="managePage.html"><span class="glyphicon glyphicon-list-alt"></span> <b>数据统计</b></a></li>
+                <li class="active"><a href="managePage.html"><span class="glyphicon glyphicon-list-alt"></span> <b>数据统计</b></a></li>
                 <li><a href="manageCategory.html"><span class="glyphicon glyphicon-th-large"></span> <b>分类管理</b></a></li>
                 <li><a href="manageLabel.html"><span class="glyphicon glyphicon-paperclip"></span> <b>标签管理</b></a></li>
-                <li class="active"><a href="manageArticle.html"><span class="glyphicon glyphicon-book"></span> <b>文章管理</b></a></li>
+                <li><a href="manageArticle.html"><span class="glyphicon glyphicon-book"></span> <b>文章管理</b></a></li>
                 <li><a href="manageUpdateLog.html"><span class="glyphicon glyphicon-time"></span> <b>更新日志</b></a></li>
                 <li><a href="manageFriendLink.html"><span class="glyphicon glyphicon-glass"></span> <b>友链管理</b></a></li>
             </ul>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <!--表格区域-->
-            <h4 class="sub-header" id="tableType"></h4>
-            <div class="table-responsive">
-                <table class="table table-striped" id="table">
-                </table>
-                <ul class="pager">
-                    &#12288;&#12288;&#12288;&#12288;&#12288;
-                    <li><a href="javascript:previousPage()">上一页</a></li>
-                    第&#8194;<li id="page">1</li>&#8194;页
-                    <li><a href="javascript:nextPage()">下一页</a></li>
-                    共&#8194;<li id="sum"></li>&#8194;篇文章
-                </ul>
-            </div>
-            <!-- DeleteArticleModal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">提示</h4>
-                        </div>
-                        <div class="modal-body" id="modalContent">
-                        你确定要删除这篇文章吗？
-                        </div>
-                        <div class="modal-footer" id="modalFooter">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button type="button" class="btn btn btn-info col-md-offset-5 col-md-2" onclick="writeArticle()">写文章</button>
-
         </div>
+        
     </div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="js/manageArticle.js"></script>
+<script src=""></script>
 </body>
 </html>
