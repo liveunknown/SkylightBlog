@@ -8,7 +8,7 @@ $(function(){
 function LoadPage(page) {
     $.ajax({
         url: "/articleInfoList",
-        type: "POST",
+        type: "GET",
         async: false,
         data: {page:page},
         success: function (data) {

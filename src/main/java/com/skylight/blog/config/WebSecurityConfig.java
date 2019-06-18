@@ -62,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         // 忽略URL
-        web.ignoring().antMatchers("/**/*.html", "/**/*.css", "/**/*.js", "/images/**", "/img/**", "/bootsnav/images/brand/logo-black.jpeg");
+        web.ignoring().antMatchers("/*.html", "/**/*.css", "/**/*.js", "/images/**", "/img/**", "/bootsnav/images/brand/logo-black.jpeg");
     }
 
     @Override
@@ -71,7 +71,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/register", "/doRegister","/index")
                 .permitAll()
-                .antMatchers("/getKaptchaImage","/verifyCode","/loginError").permitAll()
+                .antMatchers("/articleInfoList", "/articleWrapDetail","/articleInfoDetailsByCategoryId","/articleInfoDetailsByLabelId","/labels","/categories")
+                .permitAll()
+                .antMatchers("/getFriendLinkList", "/getUpdateLogList","/getSiteInfo")
+                .permitAll()
+                .antMatchers("/articleSum", "/articleSumByCategoryId","/articleSumByLabelId")
+                .permitAll()
+                .antMatchers("/getKaptchaImage","/verifyCode","/loginError")
+                .permitAll()
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .anyRequest().authenticated() //任何请求,登录后可以访问
                 .and()
                 .formLogin()
