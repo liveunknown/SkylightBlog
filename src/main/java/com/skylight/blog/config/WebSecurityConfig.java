@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         authenticationProvider.setPasswordEncoder(passwordEncoder());
 
         System.out.println("加密后的密码是: ");
-        String password = passwordEncoder().encode("abel");
+        String password = passwordEncoder().encode("yulei");
         System.out.println("加密后的密码是: "+password);
 
         return authenticationProvider;

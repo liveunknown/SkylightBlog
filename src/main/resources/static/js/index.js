@@ -14,7 +14,7 @@ $(function(){
 function LoadPage(page) {
     $.ajax({
         url: "/articleInfoDetailsByCategoryId",
-        type: "POST",
+        type: "GET",
         async: false,
         data: {page:page},
 
