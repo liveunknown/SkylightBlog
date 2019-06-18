@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
+    <title>Live Unknown | 登录</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <!--<link href="/static/css/lrtk.css" rel="stylesheet"/>-->
     <link href="css/lrtk.css" rel="stylesheet"/>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
@@ -86,7 +87,7 @@
                     console.log(data);
                     if (data.msg == '登录成功') {
                         alert("登录成功！");//登录成功
-                        window.location.href="/home";
+                        window.location.href="/";
                     } else if (data.msg == '登录失败') {
                         alert("用户名或密码错误!");
                         location.reload();
