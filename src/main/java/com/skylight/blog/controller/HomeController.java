@@ -16,6 +16,11 @@ public class HomeController {
         return "login";
     }
 
+    @RequestMapping("/index")
+    public String index(){
+        return "index";
+    }
+
     @RequestMapping("/home")
     public String index(Model model){
         Msg msg =  new Msg("测试标题","测试内容","额外信息，只对管理员显示");

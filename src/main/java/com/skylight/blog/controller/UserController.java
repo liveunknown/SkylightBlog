@@ -16,9 +16,7 @@ public class UserController {
 
     @Autowired
     UserMapper userMapper;
-
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
+    
     @RequestMapping("/getUserByName")
     @ResponseBody
     public User getUserByName(String name) {

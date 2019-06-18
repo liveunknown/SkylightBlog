@@ -1,32 +1,16 @@
 package com.skylight.blog.controller;
 
 import com.skylight.blog.exception.MyException;
-import com.skylight.blog.mapper.UserMapper;
-import com.skylight.blog.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 /**
  * 测试控制器
  */
 @Controller
 public class HelloController {
-
-    /*@Autowired
-    UserMapper userMapper;*/
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -58,17 +42,5 @@ public class HelloController {
         logger.info("访问/hello时抛出了自定义异常！");
         throw new MyException("666","这里是自定义异常！");
     }
-
-/*    @RequestMapping("/user")
-    @ResponseBody
-    public User getUser(int id) {
-        return userMapper.GetUserById(id);
-    }
-
-    @RequestMapping("/users")
-    @ResponseBody
-    public List<User> getUsers() {
-        return userMapper.GetUsersByPageNumber();
-    }*/
 
 }

@@ -69,6 +69,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(new KaptchaAuthenticationFilter("/login", "/loginError"), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
+                .antMatchers("/", "/index")
+                .permitAll()
                 .antMatchers("/register", "/doRegister","/index")
                 .permitAll()
                 .antMatchers("/articleInfoList", "/articleWrapDetail","/articleInfoDetailsByCategoryId","/articleInfoDetailsByLabelId","/labels","/categories")
