@@ -25,8 +25,8 @@ import java.util.UUID;
 @Controller
 public class HelloController {
 
-    @Autowired
-    UserMapper userMapper;
+    /*@Autowired
+    UserMapper userMapper;*/
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -59,7 +59,7 @@ public class HelloController {
         throw new MyException("666","这里是自定义异常！");
     }
 
-    @RequestMapping("/user")
+/*    @RequestMapping("/user")
     @ResponseBody
     public User getUser(int id) {
         return userMapper.GetUserById(id);
@@ -69,6 +69,6 @@ public class HelloController {
     @ResponseBody
     public List<User> getUsers() {
         return userMapper.GetUsersByPageNumber();
-    }
+    }*/
 
 }

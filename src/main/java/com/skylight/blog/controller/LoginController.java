@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/admin")
 public class LoginController {
 
-    @Autowired
+    /*@Autowired
     UserMapper userMapper;
 
     @PostMapping("/login")
@@ -41,6 +41,6 @@ public class LoginController {
       }
 
       return false;
-    }
+    }*/
 
 }

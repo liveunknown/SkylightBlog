@@ -1,19 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.skylight.blog.mapper.UserMapper">
-    <resultMap id="UserMap" type="com.skylight.blog.model.User">
-        <id column="id" jdbcType="BIGINT" property="id" />
-        <result column="username" jdbcType="VARCHAR" property="name" />
-        <result column="password" jdbcType="VARCHAR" property="password" />
-        <result column="introduction" jdbcType="VARCHAR" property="introduction" />
-        <result column="created_at" jdbcType="VARCHAR" property="createTime" />
-        <result column="updated_at" jdbcType="VARCHAR" property="updateTime" />
+    <resultMap id="userMap" type="com.skylight.blog.model.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <collection property="roles" ofType="com.skylight.blog.model.Role">
+            <result column="id" property="id"/>
+            <result column="name" property="name"/>
+        </collection>
     </resultMap>
-    <select id="GetUserById" parameterType="int" resultMap="UserMap">
-        select * from user where id=#{id}
+
+    <select id="findByUserName"  resultMap="userMap">
+        select u.*
+        ,r.name
+        from User u
+        LEFT JOIN user_role ur on u.id= ur.user_id
+        LEFT JOIN Role r on ur.Role_id=r.id
+        where username= #{username}
     </select>
-    <select id="GetUsersByPageNumber" resultMap="UserMap">
+
+
+    <insert id="addUser" parameterType="com.skylight.blog.model.User" useGeneratedKeys="true" keyProperty="id">
+    insert into user(username,password) values (#{u.username},#{u.password})
+    </insert>
+
+    <delete id="deleteUser">
+    delete from user
+    where id = #{id}
+    </delete>
+
+    <select id="getUserById"  resultMap="userMap">
+        select u.*
+        ,r.name
+        from user u
+        LEFT JOIN user_role ur on u.id= ur.user_id
+        LEFT JOIN role r on ur.role_id=r.id
+        where id= #{id}
+    </select>
+
+    <select id="getUserList" resultMap="userMap">
         select * from user
+        ORDER BY id
+        limit #{page} , #{number}
     </select>
+
+    <update id="modifyUser">
+    update user set username = #{u.username},password = #{u.password}
+    where id = #{u.id}
+    </update>
 </mapper>
