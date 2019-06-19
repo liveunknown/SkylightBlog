@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,9 +19,9 @@ public class MyExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public Map defaultExceptionHandler(Exception e) {
+    public Map defaultExceptionHandler(HttpServletResponse response, Exception e) {
         Map map = new HashMap();
-        map.put("code", e.getCause());
+        map.put("code", response.getStatus());
         map.put("msg", e.getMessage());
         return map;
     }

@@ -37,6 +37,7 @@ public class ManageController {
     }
 
     @RequestMapping("/deleteCategory")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean deleteCategory(Long id) {
         return manageService.deleteCategory(id);
     }
@@ -48,18 +49,21 @@ public class ManageController {
     }
 
     @RequestMapping("/updateCategory")
-    @PreAuthorize("hasRole('ROLE_GOD')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    /*@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_GOD')")*/
     public boolean updateCategory(Category category){
         return manageService.updateCategory(category);
     }
 
     // Label
     @RequestMapping("/addLabel")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean addLabel(String name){
         return manageService.addLabel(name);
     }
 
     @RequestMapping("/deleteLabel")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean deleteLabel(Long id){
         return manageService.deleteLabel(id);
     }
@@ -71,12 +75,14 @@ public class ManageController {
     }
 
     @RequestMapping("/updateLabel")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean updateLabel(Label label){
         return manageService.updateLabel(label);
     }
 
     // Article
     @RequestMapping("/addArticle")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean addArticle(String title,String summary,Long categoryId,String content,String labels){
 
         JSONObject json = new JSONObject();
@@ -97,11 +103,13 @@ public class ManageController {
     }
 
     @RequestMapping("/deleteArticle")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean deleteArticle(Long id){
         return manageService.deleteArticle(id);
     }
 
     @RequestMapping("/updateArticle")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean updateArticle(Long articleId, String title, String summary, Long categoryId,Long contentId, String content){
         ArticleInfo articleInfo = new ArticleInfo();
         ArticleContent articleContent = new ArticleContent();
@@ -116,11 +124,13 @@ public class ManageController {
     }
 
     @RequestMapping("/addLabelByArticleId")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean addLabelByArticleId(Long articleId,Long labelId){
         return manageService.addLabelByArticleId(articleId, labelId);
     }
 
     @RequestMapping("/deleteArticleLabel")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean deleteArticleLabel(Long id){
         return manageService.deleteArticleLabel(id);
     }
@@ -129,6 +139,7 @@ public class ManageController {
     //UploadImage
     @RequestMapping(value="/uploadImage",method=RequestMethod.POST)
     @ResponseBody
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Map<String,Object> imageUpload(@RequestParam(value = "editormd-image-file", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response)
     {
         Map<String,Object> resultMap = new HashMap<>();

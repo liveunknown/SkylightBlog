@@ -9,7 +9,6 @@ function LoadPage(page) {
         async: false,
         data: {},
         success: function (data) {
-            console.log("成功了！");
             $("#tableType").html("分类列表");
             var content = '<thead>'+
                 '                    <tr>'+
@@ -70,7 +69,8 @@ function addCategory() {
                     document.location.reload();
                 }
                 else{
-                    alert("添加错误！");
+                    alert(data.msg);
+                    console.log("返回的信息是："+data.msg);
                 }
             }, error: function () {
                 alert("数据加载错误");
@@ -105,14 +105,15 @@ function modifyCategory(id) {
             name:category
         },
         success: function (data) {
-            console.log(data);
+            console.log("返回值是："+data);
             if(data==true)
             {
               alert("更新分类成功~");
               Reload();
             }
             else{
-              alert("更新分类出错！");
+              alert(data.msg);
+              console.log("返回的信息是："+data.msg);
             }
         }, error: function () {
             alert("数据加载错误");

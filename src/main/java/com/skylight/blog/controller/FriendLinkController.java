@@ -5,6 +5,7 @@ import com.skylight.blog.mapper.UserMapper;
 import com.skylight.blog.model.Friendlink;
 import com.skylight.blog.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,18 +23,21 @@ public class FriendLinkController {
 
     @RequestMapping("/addFriendLink")//@PostMapping("/addFriendLink")
     @ResponseBody
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean addFriendLink(Friendlink friendlink){
        return friendlinkMapper.addFriendlink(friendlink);
     }
 
     @RequestMapping("/deleteFriendLink")
     @ResponseBody
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean deleteFriendLink(int id){
         return friendlinkMapper.deleteFriendlink(id);
     }
 
     @RequestMapping("/updateFriendLink")
     @ResponseBody
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean updateFriendLink(Friendlink friendlink){
         return friendlinkMapper.updateFriendlink(friendlink);
     }
