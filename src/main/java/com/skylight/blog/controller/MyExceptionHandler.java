@@ -20,8 +20,8 @@ public class MyExceptionHandler {
     @ResponseBody
     public Map defaultExceptionHandler(Exception e) {
         Map map = new HashMap();
-        map.put("code", 100);
-        map.put("msg", e.getMessage()+"来自Controller层的异常！");
+        map.put("code", e.getCause());
+        map.put("msg", e.getMessage());
         return map;
     }
 

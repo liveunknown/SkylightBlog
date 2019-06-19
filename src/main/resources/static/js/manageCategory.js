@@ -65,8 +65,13 @@ function addCategory() {
             dataType: "json",
             success: function (data) {
                 console.log(data);
-                alert("添加成功~");
-                document.location.reload();
+                if(data == true) {
+                    alert("添加成功~");
+                    document.location.reload();
+                }
+                else{
+                    alert("添加错误！");
+                }
             }, error: function () {
                 alert("数据加载错误");
             }
@@ -101,8 +106,14 @@ function modifyCategory(id) {
         },
         success: function (data) {
             console.log(data);
-            alert("更新分类成功~")
-            Reload();
+            if(data==true)
+            {
+              alert("更新分类成功~");
+              Reload();
+            }
+            else{
+              alert("更新分类出错！");
+            }
         }, error: function () {
             alert("数据加载错误");
         }

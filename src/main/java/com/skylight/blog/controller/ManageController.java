@@ -48,6 +48,7 @@ public class ManageController {
     }
 
     @RequestMapping("/updateCategory")
+    @PreAuthorize("hasRole('ROLE_GOD')")
     public boolean updateCategory(Category category){
         return manageService.updateCategory(category);
     }
