@@ -6,6 +6,7 @@ import com.skylight.blog.model.Category;
 import com.skylight.blog.model.Label;
 import com.skylight.blog.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +30,8 @@ public class ManageController {
 
     // Category
     @RequestMapping("/addCategory")
+    @ResponseBody
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public boolean addCategory(String name) {
         return manageService.addCategory(name);
     }
