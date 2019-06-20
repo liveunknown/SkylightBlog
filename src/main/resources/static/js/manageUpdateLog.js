@@ -62,8 +62,14 @@ function addUpdateLog() {
             dataType: "json",
             success: function (data) {
                 console.log(data);
-                alert("添加成功~");
-                document.location.reload();
+                if(data == true) {
+                    alert("添加更新日志成功~");
+                    document.location.reload();
+                }
+                else{
+                    alert(data.msg);
+                    console.log("返回的信息是："+data.msg);
+                }
             }, error: function () {
                 alert("添加更新日志错误");
             }
@@ -78,8 +84,14 @@ function deleteUpdateLog(id) {
         data: {id:id},
         success: function (data) {
             console.log(data);
-            alert("删除更新日志成功");
-            document.location.reload();
+            if(data == true) {
+                alert("删除更新日志成功~");
+                document.location.reload();
+            }
+            else{
+                alert(data.msg);
+                console.log("返回的信息是："+data.msg);
+            }
         }, error: function () {
             alert("删除更新日志失败！");
         }
@@ -100,8 +112,15 @@ function modifyUpdateLog(id) {
         },
         success: function (data) {
             console.log(data);
-            alert("更新更新日志成功~")
-            Reload();
+            if(data==true)
+            {
+                alert("更新更新日志成功~");
+                Reload();
+            }
+            else{
+                alert(data.msg);
+                console.log("返回的信息是："+data.msg);
+            }
         }, error: function () {
             alert("更新更新日志失败");
         }

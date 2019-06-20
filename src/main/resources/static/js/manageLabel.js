@@ -9,7 +9,6 @@ function LoadPage(page) {
         async: false,
         data: {},
         success: function (data) {
-            console.log("成功了！");
             $("#tableType").html("标签列表");
             var content = '<thead>'+
                 '                    <tr>'+
@@ -61,8 +60,14 @@ function addLabel() {
             dataType: "json",
             success: function (data) {
                 console.log(data);
-                alert("添加成功~");
-                document.location.reload();
+                if(data == true) {
+                    alert("添加标签成功~");
+                    document.location.reload();
+                }
+                else{
+                    alert(data.msg);
+                    console.log("返回的信息是："+data.msg);
+                }
             }, error: function () {
                 alert("数据加载错误");
             }
@@ -77,8 +82,14 @@ function deleteLabel(id) {
         data: {id:id},
         success: function (data) {
             console.log(data);
-            alert("删除分类成功");
-            document.location.reload();
+            if(data == true) {
+                alert("删除标签成功~");
+                document.location.reload();
+            }
+            else{
+                alert(data.msg);
+                console.log("返回的信息是："+data.msg);
+            }
         }, error: function () {
             alert("数据加载错误");
         }
@@ -96,9 +107,16 @@ function modifyLabel(id) {
             name:label
         },
         success: function (data) {
-            console.log(data);
-            alert("更新分类成功~")
-            Reload();
+            console.log("返回值是："+data);
+            if(data==true)
+            {
+                alert("更新标签成功~");
+                Reload();
+            }
+            else{
+                alert(data.msg);
+                console.log("返回的信息是："+data.msg);
+            }
         }, error: function () {
             alert("数据加载错误");
         }

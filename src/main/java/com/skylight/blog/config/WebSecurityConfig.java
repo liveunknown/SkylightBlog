@@ -81,8 +81,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/getKaptchaImage","/verifyCode","/loginError")
                 .permitAll()
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .anyRequest().authenticated() //任何请求,登录后可以访问
+                .antMatchers("/admin/**").hasAnyRole("ADMIN","USER")
+                .anyRequest()
+                .authenticated() //任何请求,登录后可以访问
                 .and()
                 .formLogin()
                 .loginPage("/login")

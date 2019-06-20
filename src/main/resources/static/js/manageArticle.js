@@ -64,11 +64,18 @@ function deleteArticle(id) {
         data: {id:id},
         success: function (data) {
             console.log(data);
-            alert("删除文章成功");
-            $('#myModal').modal('hide');
-            document.location.reload();
+            if(data == true) {
+                alert("删除文章成功~");
+                $('#myModal').modal('hide');
+                document.location.reload();
+            }
+            else{
+                alert(data.msg);
+                $('#myModal').modal('hide');
+                console.log("返回的信息是："+data.msg);
+            }
         }, error: function () {
-            alert("数据加载错误");
+            alert("删除文章失败！");
         }
     });
 }

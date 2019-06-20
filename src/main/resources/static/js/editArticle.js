@@ -67,6 +67,14 @@ function addArticle() {
         dataType: "json",
         success: function (data) {
             console.log(data);
+            if(data == true) {
+                alert("添加文章成功~");
+                document.location.reload();
+            }
+            else{
+                alert(data.msg);
+                console.log("返回的信息是："+data.msg);
+            }
         }, error: function () {
             alert("数据加载错误");
         }
@@ -98,12 +106,21 @@ function addArticleByFormData() {
         processData: false,
         success: function (data) {
             console.log(data);
-            $('#modalContent').html("添加文章成功~");
-            $('#myModal').modal('show');
+            if(data == true) {
+                //alert("添加文章成功~");
+                $('#modalContent').html("添加文章成功~");
+                $('#myModal').modal('show');
+                //document.location.reload();
+            }
+            else{
+                alert(data.msg);
+                console.log("返回的信息是："+data.msg);
+            }
+
         }, error: function () {
             $('#modalContent').html("添加文章失败");
             $('#myModal').modal('show');
-            alert("数据加载错误");
+            alert("添加文章失败");
         }
     });
 }
@@ -219,13 +236,22 @@ function editArticle(articleId,contentId) {
         },
         success: function (data) {
             console.log(data);
-            $('#modalContent').html("修改文章成功~");
-            $("#modalFooter").html(backButton);
-            $('#myModal').modal('show');
+            if(data==true)
+            {
+                //alert("修改文章成功~");
+                //Reload();
+                $('#modalContent').html("修改文章成功~");
+                $("#modalFooter").html(backButton);
+                $('#myModal').modal('show');
+            }
+            else{
+                alert(data.msg);
+                console.log("返回的信息是："+data.msg);
+            }
         }, error: function () {
             $('#modalContent').html("修改文章失败");
             $('#myModal').modal('show');
-            alert("数据加载错误");
+            alert("修改文章失败");
         }
     });
 

@@ -65,7 +65,7 @@ function addCategory() {
             success: function (data) {
                 console.log(data);
                 if(data == true) {
-                    alert("添加成功~");
+                    alert("添加分类成功~");
                     document.location.reload();
                 }
                 else{
@@ -86,8 +86,14 @@ function deleteCategory(id) {
         data: {id:id},
         success: function (data) {
             console.log(data);
-            alert("删除分类成功");
-            document.location.reload();
+            if(data == true) {
+                alert("删除分类成功~");
+                document.location.reload();
+            }
+            else{
+                alert(data.msg);
+                console.log("返回的信息是："+data.msg);
+            }
         }, error: function () {
             alert("数据加载错误");
         }

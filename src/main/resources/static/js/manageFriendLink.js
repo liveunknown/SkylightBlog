@@ -69,8 +69,14 @@ function addFriendLink() {
             dataType: "json",
             success: function (data) {
                 console.log(data);
-                alert("添加成功~");
-                document.location.reload();
+                if(data == true) {
+                    alert("添加友链成功~");
+                    document.location.reload();
+                }
+                else{
+                    alert(data.msg);
+                    console.log("返回的信息是："+data.msg);
+                }
             }, error: function () {
                 alert("添加友链错误");
             }
@@ -85,8 +91,14 @@ function deleteFriendLink(id) {
         data: {id:id},
         success: function (data) {
             console.log(data);
-            alert("删除友链成功");
-            document.location.reload();
+            if(data == true) {
+                alert("删除友链成功~");
+                document.location.reload();
+            }
+            else{
+                alert(data.msg);
+                console.log("返回的信息是："+data.msg);
+            }
         }, error: function () {
             alert("删除友链失败！");
         }
@@ -110,8 +122,15 @@ function modifyFriendLink(id) {
         },
         success: function (data) {
             console.log(data);
-            alert("更新友链成功~")
-            Reload();
+            if(data==true)
+            {
+                alert("更新友链成功~");
+                Reload();
+            }
+            else{
+                alert(data.msg);
+                console.log("返回的信息是："+data.msg);
+            }
         }, error: function () {
             alert("更新友链失败");
         }
