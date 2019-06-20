@@ -66,6 +66,7 @@ function addLabel() {
                 }
                 else{
                     alert(data.msg);
+                    $('#myModal').modal('hide');
                     console.log("返回的信息是："+data.msg);
                 }
             }, error: function () {
@@ -88,6 +89,7 @@ function deleteLabel(id) {
             }
             else{
                 alert(data.msg);
+                $('#LabelDeleteModal').modal('hide');
                 console.log("返回的信息是："+data.msg);
             }
         }, error: function () {
@@ -115,6 +117,7 @@ function modifyLabel(id) {
             }
             else{
                 alert(data.msg);
+                $('#modifyModal').modal('hide');
                 console.log("返回的信息是："+data.msg);
             }
         }, error: function () {
@@ -143,7 +146,7 @@ function loadModifyModal(id) {
 }
 
 function loadDeleteModal(id) {
-    var Buttons =  '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>'+
-        '<button type="button" class="btn btn-primary" onclick="deleteLabel('+id+')">删除</button>';
+    var Buttons = '<button type="button" class="btn btn-primary" onclick="deleteLabel('+id+')">删除</button>' +
+        '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>';
     $("#deleteModalFooter").html(Buttons);
 }

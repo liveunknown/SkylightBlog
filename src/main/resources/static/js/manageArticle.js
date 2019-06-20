@@ -66,7 +66,6 @@ function deleteArticle(id) {
             console.log(data);
             if(data == true) {
                 alert("删除文章成功~");
-                $('#myModal').modal('hide');
                 document.location.reload();
             }
             else{
@@ -81,8 +80,8 @@ function deleteArticle(id) {
 }
 
 function loadModal(id) {
-    var Buttons =  '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>'+
-                   '<button type="button" class="btn btn-primary" onclick="deleteArticle('+id+')">删除</button>';
+    var Buttons = '<button type="button" class="btn btn-primary" onclick="deleteArticle('+id+')">删除</button>' +
+        '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>';
     $("#modalFooter").html(Buttons);
 }
 
