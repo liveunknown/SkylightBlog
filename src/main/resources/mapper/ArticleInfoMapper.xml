@@ -56,7 +56,7 @@
         c.id cid,c.name,c.number,c.create_by c_create_by,c.modified_by c_modified_by,
         al.id al_id,al.article_id al_article_id,al.label_id,al.create_by al_create_by,al.modified_by al_modified_by,
         l.id lid,l.name l_name,l.create_by l_create_by,l.modified_by l_modified_by
-        FROM (select * from article_info WHERE 1 = 1
+        FROM (select * from article_info WHERE 1 = 1 and is_deleted=0
         <if test="categoryId != 0 ">
             and category_id = #{categoryId}
         </if> limit #{page} , #{number})

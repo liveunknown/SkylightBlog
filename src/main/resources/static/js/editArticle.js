@@ -258,5 +258,5 @@ function editArticle(articleId,contentId) {
 }
 
 function BackToManagePage() {
-    window.location.href="manageArticle.html";
+    window.location.href="/admin/manageArticle.html";
 }
