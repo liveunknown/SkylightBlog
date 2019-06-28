@@ -62,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         // 忽略URL
-        web.ignoring().antMatchers("/*.html", "/**/*.css", "/**/*.js", "/images/**", "/img/**", "/bootsnav/images/brand/logo-black.jpeg");
+        web.ignoring().antMatchers("/*.html", "/**/*.css", "/**/*.js", "/images/**", "/img/**", "/bootsnav/images/brand/logo-black.jpeg", "/fonts/**");
     }
 
     @Override
