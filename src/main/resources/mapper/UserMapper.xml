@@ -14,9 +14,9 @@
     <select id="findByUserName"  resultMap="userMap">
         select u.*
         ,r.name
-        from User u
+        from user u
         LEFT JOIN user_role ur on u.id= ur.user_id
-        LEFT JOIN Role r on ur.Role_id=r.id
+        LEFT JOIN role r on ur.role_id=r.id
         where username= #{username}
     </select>
 
