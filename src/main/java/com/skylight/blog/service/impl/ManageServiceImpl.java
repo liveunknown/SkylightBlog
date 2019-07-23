@@ -75,6 +75,8 @@ public class ManageServiceImpl implements ManageService {
 
     public boolean deleteArticle(Long id)
     {
+        articleInfoMapper.deleteArticleContentByArticleInfoId(id);
+        labelMapper.deleteArticleLabelByArticleInfoId(id);
         return articleInfoMapper.deleteArticleInfo(id);
     }
 

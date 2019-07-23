@@ -28,7 +28,7 @@ public interface ArticleInfoMapper {
     // Only ArticleContent    No need for query
     boolean addArticleContent(@Param("ac")ArticleContent articleContent);
 
-    boolean deleteArticleContent(@Param("id")Long id);
+    boolean deleteArticleContentByArticleInfoId(@Param("id")Long id);
 
     boolean updateArticleContent(@Param("ac")ArticleContent articleContent);
 }

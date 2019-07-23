@@ -52,8 +52,13 @@
     insert into article_label(article_id,label_id) values (#{al.articleId},#{al.labelId})
     </insert>
 
-    <update id="deleteArticleLabel">
+    <delete id="deleteArticleLabel">
     delete from article_label
     where id = #{id}
-    </update>
+    </delete>
+
+    <delete id="deleteArticleLabelByArticleInfoId">
+    delete from article_label
+    where article_id = #{id}
+    </delete>
 </mapper>

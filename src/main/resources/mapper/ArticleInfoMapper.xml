@@ -107,9 +107,9 @@
     insert into article_info(category_id,title,summary,views,is_deleted) values (#{ai.categoryId},#{ai.title},#{ai.summary},#{ai.views},#{ai.isDeleted})
     </insert>
 
-    <update id="deleteArticleInfo">
-    update article_info set is_deleted = 1 where id = #{id}
-    </update>
+    <delete id="deleteArticleInfo">
+    delete from article_info  where id = #{id}
+    </delete>
 
     <update id="updateArticleInfo">
         update article_info set category_id = #{ai.categoryId},title = #{ai.title},summary = #{ai.summary}
@@ -131,9 +131,9 @@
     insert into article_content(content,article_id) values (#{ac.content},#{ac.articleId})
     </insert>
 
-    <delete id="deleteArticleContent">
+    <delete id="deleteArticleContentByArticleInfoId">
     delete from article_content
-    where id = #{id}
+    where article_id = #{id}
     </delete>
 
     <update id="updateArticleContent">

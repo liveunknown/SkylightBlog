@@ -26,4 +26,6 @@ public interface LabelMapper {
     boolean addArticleLabel(@Param("al")ArticleLabel articleLabel);
 
     boolean deleteArticleLabel(@Param("id")Long id);
+
+    boolean deleteArticleLabelByArticleInfoId(@Param("id")Long id);
 }
