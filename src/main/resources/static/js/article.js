@@ -1,6 +1,6 @@
 $(function(){
     var id = getQueryVariable("id");
-    console.log("-----: "+id);
+    console.log("文章ID为: "+id);
     getArticleById(id);
     editormd.markdownToHTML("content", {//注意：这里是上面DIV的id
         htmlDecode: "style,script,iframe",
@@ -33,20 +33,26 @@ function getArticleById(id) {
         async: false,
         data: {id:id},
         success: function (data) {
-           var categories = "";
-           var labels = "";
-           var articleId = data.articleInfoId;
-           var title = data.title;
-           console.log(data);
-           $("#title").html(data.title);
-           $("#here").val(data.articleContent.content);
 
-           categories = '<span class="label label-success">原创</span>&#8194'+
-                        '<span class="glyphicon glyphicon-time">&#8197;'+data.createBy+'&#8197;&#8197;</span>'+
-                        '<span class="glyphicon glyphicon-user">&#8197;郁磊&#8197;&#8197;</span>'+
-                        '<span class="glyphicon glyphicon-tag">&#8197;'+data.category.name+'</span>';
-           $("#category").html(categories);
-           addShare(articleId,title);
+           if(data == "") {
+               alert("该文章不存在！");
+               history.back(-1);
+           } else {
+               var categories = "";
+               var labels = "";
+               var articleId = data.articleInfoId;
+               var title = data.title;
+               console.log(data);
+               $("#title").html(data.title);
+               $("#here").val(data.articleContent.content);
+
+               categories = '<span class="label label-success">原创</span>&#8194'+
+                   '<span class="glyphicon glyphicon-time">&#8197;'+data.createBy+'&#8197;&#8197;</span>'+
+                   '<span class="glyphicon glyphicon-user">&#8197;郁磊&#8197;&#8197;</span>'+
+                   '<span class="glyphicon glyphicon-tag">&#8197;'+data.category.name+'</span>';
+               $("#category").html(categories);
+               addShare(articleId,title);
+           }
         }, error: function () {
             alert("数据加载错误");
         }
