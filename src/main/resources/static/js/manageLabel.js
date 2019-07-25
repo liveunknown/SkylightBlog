@@ -50,7 +50,7 @@ function LoadPage(page) {
 
 function addLabel() {
         var label = $('#label').val();
-        console.log("label: " +label);
+
         $.ajax({
             url: "/addLabel",
             type: "POST",
@@ -59,7 +59,6 @@ function addLabel() {
             },
             dataType: "json",
             success: function (data) {
-                console.log(data);
                 if(data == true) {
                     alert("添加标签成功~");
                     document.location.reload();
@@ -82,7 +81,6 @@ function deleteLabel(id) {
         url: "/deleteLabel",
         data: {id:id},
         success: function (data) {
-            console.log(data);
             if(data == true) {
                 alert("删除标签成功~");
                 document.location.reload();
@@ -109,7 +107,6 @@ function modifyLabel(id) {
             name:label
         },
         success: function (data) {
-            console.log("返回值是："+data);
             if(data==true)
             {
                 alert("更新标签成功~");

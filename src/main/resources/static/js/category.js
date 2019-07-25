@@ -16,7 +16,6 @@ function LoadCategories() {
         async: false,
         data: {},
         success: function (data) {
-            console.log("成功了！");
             var content = "";
 
             var id;
@@ -47,8 +46,6 @@ function LoadArticleInfo(page) {
         data: {page:page},
 
         success: function (data) {
-            console.log("成功了！");
-
             var content = "";
             var labels = "";
 
@@ -105,8 +102,6 @@ function LoadArticleInfoByCategoryId(page,id) {
         data: {page:page,categoryId:id},
 
         success: function (data) {
-            console.log("成功了！");
-
             var content = "";
             var labels = "";
 
@@ -156,9 +151,8 @@ function getArticleSum() {
         async: false,
         data: {},
         success: function (data) {
-            console.log("成功了！");
             articleSum = data;
-            console.log(articleSum);
+            console.log("文章总数为：" + articleSum);
             $("#sum").text(articleSum);
         }, error: function () {
             alert("数据加载错误");
@@ -173,9 +167,9 @@ function getArticleSumByCategoryId(id) {
         async: false,
         data: {categoryId:id},
         success: function (data) {
-            console.log("成功了！");
+
             articleSum = data;
-            console.log(articleSum);
+            console.log("该分类下的文章数量为：" + articleSum);
             $("#sum").text(articleSum);
         }, error: function () {
             alert("数据加载错误");

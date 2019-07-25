@@ -9,7 +9,6 @@ function LoadFriendLink(type) {
         data:{isFamous:type},
         async: false,
         success: function (data) {
-            console.log("成功了！");
             $("#tableType").html("友链列表");
             var content = '<thead>'+
                 '                    <tr>'+
@@ -68,7 +67,6 @@ function addFriendLink() {
             },
             dataType: "json",
             success: function (data) {
-                console.log(data);
                 if(data == true) {
                     alert("添加友链成功~");
                     document.location.reload();
@@ -91,7 +89,6 @@ function deleteFriendLink(id) {
         url: "/deleteFriendLink",
         data: {id:id},
         success: function (data) {
-            console.log(data);
             if(data == true) {
                 alert("删除友链成功~");
                 document.location.reload();
@@ -123,7 +120,6 @@ function modifyFriendLink(id) {
             isFamous : isFamous
         },
         success: function (data) {
-            console.log(data);
             if(data==true)
             {
                 alert("更新友链成功~");

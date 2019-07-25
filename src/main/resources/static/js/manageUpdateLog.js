@@ -8,7 +8,6 @@ function LoadAllUpdateLog() {
         type: "GET",
         async: false,
         success: function (data) {
-            console.log("成功了！");
             $("#tableType").html("更新日志列表");
             var content = '<thead>'+
                 '                    <tr>'+
@@ -61,7 +60,6 @@ function addUpdateLog() {
             },
             dataType: "json",
             success: function (data) {
-                console.log(data);
                 if(data == true) {
                     alert("添加更新日志成功~");
                     document.location.reload();
@@ -84,7 +82,6 @@ function deleteUpdateLog(id) {
         url: "/deleteUpdateLog",
         data: {id:id},
         success: function (data) {
-            console.log(data);
             if(data == true) {
                 alert("删除更新日志成功~");
                 document.location.reload();
@@ -113,7 +110,6 @@ function modifyUpdateLog(id) {
             updateContent:updateContent
         },
         success: function (data) {
-            console.log(data);
             if(data==true)
             {
                 alert("更新更新日志成功~");

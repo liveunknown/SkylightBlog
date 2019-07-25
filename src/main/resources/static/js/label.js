@@ -16,9 +16,7 @@ function LoadLabels() {
         data: {},
 
         success: function (data) {
-            console.log("成功了！");
             var content = "";
-            console.log("______: "+data);
 
             var id;
             var name;
@@ -47,8 +45,6 @@ function LoadArticleInfo(page) {
         data: {page:page},
 
         success: function (data) {
-            console.log("成功了！");
-
             var content = "";
             var labels = "";
 
@@ -106,8 +102,6 @@ function LoadArticleInfoByLabelId(page,id) {
         data: {page:page,id:id},
 
         success: function (data) {
-            console.log("成功了！");
-
             var content = "";
             var labels = "";
 
@@ -157,9 +151,8 @@ function getArticleSum() {
         async: false,
         data: {},
         success: function (data) {
-            console.log("成功了！");
             articleSum = data;
-            console.log(articleSum);
+            console.log("文章总数为：" + articleSum);
             $("#sum").text(articleSum);
         }, error: function () {
             alert("数据加载错误");
@@ -174,9 +167,8 @@ function getArticleSumByLabelId(id) {
         async: false,
         data: {labelId:id},
         success: function (data) {
-            console.log("成功了！");
             articleSum = data;
-            console.log(articleSum);
+            console.log("该标签下的文章总数为：" + articleSum);
             $("#sum").text(articleSum);
         }, error: function () {
             alert("数据加载错误");

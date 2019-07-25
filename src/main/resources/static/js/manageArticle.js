@@ -12,7 +12,6 @@ function LoadPage(page) {
         async: false,
         data: {page:page},
         success: function (data) {
-            console.log("成功了！");
             $("#tableType").html("文章列表");
             var content = '<thead>'+
                 '                    <tr>'+
@@ -63,7 +62,6 @@ function deleteArticle(id) {
         url: "/deleteArticle",
         data: {id:id},
         success: function (data) {
-            console.log(data);
             if(data == true) {
                 alert("删除文章成功~");
                 document.location.reload();
@@ -96,9 +94,7 @@ function getArticleSum() {
         async: false,
         data: {},
         success: function (data) {
-            console.log("成功了！");
             articleSum = data;
-            console.log(articleSum);
             $("#sum").text(articleSum);
         }, error: function () {
             alert("数据加载错误");

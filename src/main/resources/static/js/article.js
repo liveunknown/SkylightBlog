@@ -42,7 +42,7 @@ function getArticleById(id) {
                var labels = "";
                var articleId = data.articleInfoId;
                var title = data.title;
-               console.log(data);
+
                $("#title").html(data.title);
                $("#here").val(data.articleContent.content);
 
@@ -61,7 +61,6 @@ function getArticleById(id) {
 
 
 function addShare(id,title) {
-    console.log("share!");
     $('#share').append('<div class="social-share" data-initialized="true" data-url="http://www.baidurex.com/article.html?id='+ id +'" data-title="'+ title +'">'+
         /*'        <a href="#" class="social-share-icon icon-qq" data-am-popover="{content: \'分享到QQ\', trigger: \'hover focus\'}"></a>'+*/
         '        <a href="#" class="social-share-icon icon-wechat"></a>'+

@@ -12,9 +12,9 @@ $(function(){
     });
 
     var id = getQueryVariable("id");
-    console.log("-----: "+id);
+    console.log("获取的文章ID: "+id);
     var edit = getQueryVariable("edit");
-    console.log("-----: "+edit);
+    console.log("获取的操作码: "+edit);
 
     LoadCategories();
     LoadLabels();
@@ -66,7 +66,6 @@ function addArticle() {
         },
         dataType: "json",
         success: function (data) {
-            console.log(data);
             if(data == true) {
                 alert("添加文章成功~");
                 document.location.reload();
@@ -83,20 +82,18 @@ function addArticle() {
 
 function addArticleByFormData() {
     var title = $('#title').val();
-    console.log("title: " +title);
     var summary = $('#summary').val();
     var categoryId = $('#category').val();
-    console.log("categoryId: " +categoryId);
     var content = $('#content').val();
     var labels = $('#labels').val();
-    console.log("labels: " +labels);
+
     var fd = new FormData();
     fd.append('title',title);
     fd.append('summary',summary);
     fd.append('categoryId',categoryId);
     fd.append('content',content);
     fd.append('labels',JSON.stringify(labels));
-    console.log(fd);
+
     $.ajax({
         url: "/addArticle",
         type: "POST",
@@ -105,7 +102,6 @@ function addArticleByFormData() {
         contentType: false,
         processData: false,
         success: function (data) {
-            console.log(data);
             if(data == true) {
                 //alert("添加文章成功~");
                 $('#modalContent').html("添加文章成功~");
@@ -132,7 +128,6 @@ function LoadCategories() {
         async: false,
         data: {},
         success: function (data) {
-            console.log("成功了！");
             var content = "";
             var id;
             var name;
@@ -156,7 +151,6 @@ function LoadLabels() {
         async: false,
         data: {},
         success: function (data) {
-            console.log("成功了！");
             var content = "";
             var id;
             var name;
@@ -185,7 +179,6 @@ function getArticleDetailById(id) {
         async: false,
         data: {id:id},
         success: function (data) {
-            console.log(data);
             var title = data.title;
             var summary = data.summary;
             var categoryId = data.categoryId;
@@ -235,7 +228,6 @@ function editArticle(articleId,contentId) {
             content:content
         },
         success: function (data) {
-            console.log(data);
             if(data==true)
             {
                 //alert("修改文章成功~");

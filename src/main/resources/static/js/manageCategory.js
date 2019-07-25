@@ -54,7 +54,7 @@ function LoadPage(page) {
 
 function addCategory() {
         var category = $('#category').val();
-        console.log("category: " +category);
+
         $.ajax({
             url: "/addCategory",
             type: "POST",
@@ -63,7 +63,6 @@ function addCategory() {
             },
             dataType: "json",
             success: function (data) {
-                console.log(data);
                 if(data == true) {
                     alert("添加分类成功~");
                     document.location.reload();
@@ -86,7 +85,6 @@ function deleteCategory(id) {
         url: "/deleteCategory",
         data: {id:id},
         success: function (data) {
-            console.log(data);
             if(data == true) {
                 alert("删除分类成功~");
                 document.location.reload();
@@ -113,7 +111,6 @@ function modifyCategory(id) {
             name:category
         },
         success: function (data) {
-            console.log("返回值是："+data);
             if(data==true)
             {
               alert("更新分类成功~");
