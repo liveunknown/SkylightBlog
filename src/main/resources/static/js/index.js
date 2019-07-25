@@ -35,7 +35,7 @@ function LoadPage(page) {
                 }
 
                 content =
-                    '<div class="col-xs-12 col-lg-12 shadow distance am-animation-slide-left">'+
+                    '<div class="col-xs-12 col-lg-12 shadow distance article" data-am-scrollspy="{animation: \'slide-left\'}" >'+
                     '                    <h3>'+title+'</h3>'+
                     '                    <p>'+
                     '                    <span class="glyphicon glyphicon-time"></span>'+createTime+ '&#8197;'+
@@ -49,6 +49,10 @@ function LoadPage(page) {
                 labels = "";
 
                 $("#lastOne").append(content);
+
+                $('.article').scrollspy({
+                    animation: 'slide-left'
+                })
             }
 
 

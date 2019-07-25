@@ -62,7 +62,7 @@ function LoadArticleInfo(page) {
                 }
 
                 content =
-                    '<div class="col-xs-12 col-lg-12 shadow distance am-animation-slide-right">'+
+                    '<div class="col-xs-12 col-lg-12 shadow distance article" data-am-scrollspy="{animation: \'slide-left\'}">'+
                     '                    <h3>'+title+'</h3>'+
                     '                    <p>'+
                     '                    <span class="glyphicon glyphicon-time"></span>'+createTime+ '&#8197;'+
@@ -74,9 +74,13 @@ function LoadArticleInfo(page) {
                     '                    <p>'+ labels +'</p>'+
                     '                </div>';
                 labels = "";
+
                 $("#lastOne").append(content);
             }
 
+            $('.article').scrollspy({
+                animation: 'slide-left'
+            })
 
             //$("#lastOne").html(content);
 
@@ -118,7 +122,7 @@ function LoadArticleInfoByCategoryId(page,id) {
                 }
 
                 content =
-                    '<div class="col-xs-12 col-lg-12 shadow distance am-animation-slide-right">'+
+                    '<div class="col-xs-12 col-lg-12 shadow distance article" data-am-scrollspy="{animation: \'slide-left\'}">'+
                     '                    <h3>'+title+'</h3>'+
                     '                    <p>'+
                     '                    <span class="glyphicon glyphicon-time"></span>'+createTime+ '&#8197;'+
@@ -134,6 +138,9 @@ function LoadArticleInfoByCategoryId(page,id) {
                 $("#lastOne").append(content);
             }
 
+            $('.article').scrollspy({
+                animation: 'slide-left'
+            })
 
             //$("#lastOne").html(content);
 
