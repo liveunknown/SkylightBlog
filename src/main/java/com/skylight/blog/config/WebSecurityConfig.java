@@ -69,9 +69,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(new KaptchaAuthenticationFilter("/login", "/loginError"), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/", "/index","/login")
+                .antMatchers("/", "/index","/login","/image/**")
                 .permitAll()
-                .antMatchers("/register", "/doRegister","/index")
+                .antMatchers("/register", "/doRegister")
                 .permitAll()
                 .antMatchers("/articleInfoList", "/articleWrapDetail","/articleInfoDetailsByCategoryId","/articleInfoDetailsByLabelId","/labels","/categories")
                 .permitAll()
@@ -84,6 +84,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasAnyRole("ADMIN","USER")
                 .anyRequest()
                 .authenticated() //任何请求,登录后可以访问
+                .and()
+                .headers().frameOptions().disable()
                 .and()
                 .formLogin()
                 .loginPage("/login")

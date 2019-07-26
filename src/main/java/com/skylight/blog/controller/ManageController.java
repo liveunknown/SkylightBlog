@@ -140,7 +140,7 @@ public class ManageController {
     @RequestMapping(value="/uploadImage",method=RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public Map<String,Object> imageUpload(@RequestParam(value = "editormd-image-file", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response)
+    public Map<String,Object> imageUpload(@RequestParam(value = "editormd-image-file", required = true) MultipartFile file, HttpServletRequest request, HttpServletResponse response)
     {
         Map<String,Object> resultMap = new HashMap<>();
         try {
