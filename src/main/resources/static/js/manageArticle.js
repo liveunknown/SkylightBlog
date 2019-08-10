@@ -53,7 +53,7 @@ function LoadPage(page) {
 }
 
 function writeArticle() {
-    window.location.href = "/editArticle.html";
+    window.location.href = "/admin/editArticle.html";
 }
 
 function deleteArticle(id) {
@@ -84,7 +84,7 @@ function loadModal(id) {
 }
 
 function editArticle(id) {
-    window.location.href="/editArticle.html?"+"id="+id+'&edit=true';
+    window.location.href="/admin/editArticle.html?"+"id="+id+'&edit=true';
 }
 
 function getArticleSum() {
