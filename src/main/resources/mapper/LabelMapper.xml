@@ -24,7 +24,7 @@
     <select id="getArticleLabelListByLabelId" resultMap="ArticleLabelMap">
         select * from article_label
         WHERE label_id = #{id}
-        ORDER BY create_by
+        ORDER BY create_by DESC
         limit #{page} , #{number};
     </select>
 

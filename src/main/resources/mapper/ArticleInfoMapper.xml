@@ -59,14 +59,16 @@
         FROM (select * from article_info WHERE 1 = 1 and is_deleted=0
         <if test="categoryId != 0 ">
             and category_id = #{categoryId}
-        </if> limit #{page} , #{number})
+        </if>
+        ORDER BY create_by DESC
+        limit #{page} , #{number})
         ai LEFT JOIN
         (SELECT * FROM category  c ) c ON ai.category_id = c.id
         LEFT JOIN
         (SELECT * FROM article_label al ) al ON ai.id=al.article_id
         LEFT JOIN
         (SELECT * FROM label l ) l ON al.label_id=l.id
-        ORDER BY create_by
+        ORDER BY ai.create_by DESC
     </select>
 
     <select id="getArticleWrapByArticleInfoId" resultMap="ArticleWrapMap">
@@ -122,7 +124,7 @@
         FROM article_info ai LEFT JOIN
         (SELECT * FROM category  c ) c ON ai.category_id = c.id
         WHERE 1 = 1 and is_deleted = 0
-        ORDER BY id
+        ORDER BY ai.create_by DESC
         limit #{page} , #{number};
     </select>
 
