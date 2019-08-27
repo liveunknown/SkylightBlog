@@ -53,8 +53,16 @@ function LoadArticleInfo(page) {
                 var id = data[i].articleInfoId;
                 var createTime = data[i].createBy;
                 var category = data[i].category.name;
+                var Original = data[i].isOriginal;
                 var title = data[i].title;
                 var summary = data[i].summary;
+
+                var original = isOriginal(Original);
+
+                for(var j=0;j<data[i].articleLabelList.length;j++)
+                {
+                    labels = labels + '<span class="glyphicon glyphicon-paperclip"></span> ' + data[i].articleLabelList[j].label.name + '&#8194;';
+                }
 
                 for(var j=0;j<data[i].articleLabelList.length;j++)
                 {
@@ -65,8 +73,8 @@ function LoadArticleInfo(page) {
                     '<div class="col-xs-12 col-lg-12 shadow distance article" data-am-scrollspy="{animation: \'slide-left\'}">'+
                     '                    <h3>'+title+'</h3>'+
                     '                    <p>'+
-                    '                    <span class="glyphicon glyphicon-time"></span>'+createTime+ '&#8197;'+
-                    '                    <span class="glyphicon glyphicon-user"></span> 原创'+ '&#8197;'+
+                    '                    <span class="glyphicon glyphicon-time"></span>'+ '&#8197;' + createTime + '&#8197;'+
+                    '                    <span class="glyphicon glyphicon-user"></span> '+ original + '&#8197;'+
                     '                    <span class="glyphicon glyphicon-tags"></span> '+category+'</p>'+
                     '                    <p>'+ summary +'</p>'+
                     '                    <p><a class="btn btn-primary" href="/article.html?id='+ id + '" role="button">View details &raquo;</a></p>'+
@@ -113,8 +121,11 @@ function LoadArticleInfoByCategoryId(page,id) {
                 var id = data[i].articleInfoId;
                 var createTime = data[i].createBy;
                 var category = data[i].category.name;
+                var Original = data[i].isOriginal;
                 var title = data[i].title;
                 var summary = data[i].summary;
+
+                var original = isOriginal(Original);
 
                 for(var j=0;j<data[i].articleLabelList.length;j++)
                 {
@@ -125,8 +136,8 @@ function LoadArticleInfoByCategoryId(page,id) {
                     '<div class="col-xs-12 col-lg-12 shadow distance article" data-am-scrollspy="{animation: \'slide-left\'}">'+
                     '                    <h3>'+title+'</h3>'+
                     '                    <p>'+
-                    '                    <span class="glyphicon glyphicon-time"></span>'+createTime+ '&#8197;'+
-                    '                    <span class="glyphicon glyphicon-user"></span> 原创'+ '&#8197;'+
+                    '                    <span class="glyphicon glyphicon-time"></span>'+ '&#8197;' + createTime + '&#8197;'+
+                    '                    <span class="glyphicon glyphicon-user"></span>'+ '&#8197;' + original + '&#8197;'+
                     '                    <span class="glyphicon glyphicon-tags"></span> '+category+'</p>'+
                     '                    <p>'+ summary +'</p>'+
                     '                    <p><a class="btn btn-primary" href="/article.html?id='+ id + '" role="button">View details &raquo;</a></p>'+
@@ -243,4 +254,18 @@ function getSiteInfo() {
         }
     });
 
+}
+
+function isOriginal(isOriginal) {
+
+    var original;
+
+    if(isOriginal == '1')
+    {
+        original = "原创";
+    } else if (isOriginal == '0') {
+        original = "转载";
+    }
+
+    return original;
 }

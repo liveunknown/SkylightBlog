@@ -10,6 +10,7 @@
         <result column="views" property="views" />
         <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
         <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
+        <result property="isOriginal" column="is_original"/>
         <result property="isDeleted" column="is_deleted"/>
     </resultMap>
 
@@ -21,6 +22,7 @@
         <result column="views" property="views" />
         <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
         <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
+        <result property="isOriginal" column="is_original"/>
         <result property="isDeleted" column="is_deleted"/>
         <association property="category" javaType="com.skylight.blog.model.Category">
             <id property="id" column="cid" />
@@ -106,7 +108,7 @@
 
 
     <insert id="addArticleInfo" parameterType="com.skylight.blog.model.ArticleInfo" useGeneratedKeys="true" keyProperty="id">
-    insert into article_info(category_id,title,summary,views,is_deleted) values (#{ai.categoryId},#{ai.title},#{ai.summary},#{ai.views},#{ai.isDeleted})
+    insert into article_info(category_id,title,summary,views,is_deleted,is_original) values (#{ai.categoryId},#{ai.title},#{ai.summary},#{ai.views},#{ai.isDeleted},#{ai.isOriginal})
     </insert>
 
     <delete id="deleteArticleInfo">
@@ -114,7 +116,7 @@
     </delete>
 
     <update id="updateArticleInfo">
-        update article_info set category_id = #{ai.categoryId},title = #{ai.title},summary = #{ai.summary}
+        update article_info set category_id = #{ai.categoryId},title = #{ai.title},summary = #{ai.summary},is_original = #{ai.isOriginal}
         where id = #{ai.id} AND is_deleted =0
     </update>
 

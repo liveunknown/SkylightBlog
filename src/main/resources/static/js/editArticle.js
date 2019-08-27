@@ -182,12 +182,15 @@ function getArticleDetailById(id) {
             var title = data.title;
             var summary = data.summary;
             var categoryId = data.categoryId;
+            var isOriginal = data.isOriginal;
             var labels = new Array();
             var content = data.articleContent.content;
             //在这里将articleInfo和articleContent的id传给editArticle()
             var editButton = '<button type=\"button\" class=\"btn btn-info col-md-offset-5 col-md-2\" onclick=\"editArticle('+ data.articleInfoId+','+data.articleContent.id+')\">修改文章</button>'
 
             $("#category").selectpicker('val',categoryId);
+
+            $("#isOriginal").selectpicker('val',isOriginal);
 
             for(var i=0;i<data.articleLabelList.length;i++)
             {
@@ -212,6 +215,7 @@ function editArticle(articleId,contentId) {
     var title = $('#title').val();
     var summary = $('#summary').val();
     var categoryId = $('#category').val();
+    var isOriginal = $('#isOriginal').val();
     var content = $('#content').val();
 
     var backButton = '<button type="button" class="btn btn-primary" id="reload" data-dismiss="modal" onclick="BackToManagePage()">确定</button>';
@@ -224,6 +228,7 @@ function editArticle(articleId,contentId) {
             title:title,
             summary:summary,
             categoryId:categoryId,
+            isOriginal:isOriginal,
             contentId:contentId,
             content:content
         },

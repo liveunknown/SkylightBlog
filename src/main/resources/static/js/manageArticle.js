@@ -17,6 +17,7 @@ function LoadPage(page) {
                 '                    <tr>'+
                 '                        <th>ID</th>'+
                 '                        <th>分类</th>'+
+                '                        <th>原创</th>'+
                 '                        <th>文章名称</th>'+
                 '                        <th>阅读量</th>'+
                 '                        <th>创建时间</th>'+
@@ -28,11 +29,23 @@ function LoadPage(page) {
                 var id = data[i].articleInfoId;
                 var createTime = data[i].createBy;
                 var category = data[i].category.name;
+                var isOriginal = data[i].isOriginal;
                 var title = data[i].title;
                 var views = data[i].views;
+
+                var original;
+
+                if(isOriginal == '1')
+                {
+                    original = "原创";
+                } else if (isOriginal == '0') {
+                    original = "转载";
+                }
+
                 content = content +'<tr>'+
                     '                        <td>'+id+'</td>'+
                     '                        <td>'+category+'</td>'+
+                    '                        <td>'+original+'</td>'+
                     '                        <td>'+title+'</td>'+
                     '                        <td>'+views+'</td>'+
                     '                        <td>'+createTime+'</td>'+

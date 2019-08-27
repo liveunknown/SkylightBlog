@@ -8,6 +8,7 @@ public class ArticleInfo {
     private int views;
     private String createBy;
     private String modifiedBy;
+    private int isOriginal;
     private int isDeleted;
 
     @Override
@@ -20,6 +21,7 @@ public class ArticleInfo {
                 ", views=" + views +
                 ", createBy='" + createBy + '\'' +
                 ", modifiedBy='" + modifiedBy + '\'' +
+                ", isOriginal=" + isOriginal +
                 ", isDeleted=" + isDeleted +
                 '}';
     }
@@ -78,6 +80,14 @@ public class ArticleInfo {
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+    public int getIsOriginal() {
+        return isOriginal;
+    }
+
+    public void setIsOriginal(int isOriginal) {
+        this.isOriginal = isOriginal;
     }
 
     public int getIsDeleted() {

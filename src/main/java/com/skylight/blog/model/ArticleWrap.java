@@ -11,6 +11,7 @@ public class ArticleWrap {
     private int views;
     private String createBy;
     private String modifiedBy;
+    private int isOriginal;
     private int isDeleted;
 
     private ArticleContent articleContent;
@@ -29,6 +30,7 @@ public class ArticleWrap {
                 ", views=" + views +
                 ", createBy='" + createBy + '\'' +
                 ", modifiedBy='" + modifiedBy + '\'' +
+                ", isOriginal=" + isOriginal +
                 ", isDeleted=" + isDeleted +
                 ", articleContent=" + articleContent +
                 ", articleLabelList=" + articleLabelList +
@@ -98,6 +100,14 @@ public class ArticleWrap {
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+    public int getIsOriginal() {
+        return isOriginal;
+    }
+
+    public void setIsOriginal(int isOriginal) {
+        this.isOriginal = isOriginal;
     }
 
     public int getIsDeleted() {

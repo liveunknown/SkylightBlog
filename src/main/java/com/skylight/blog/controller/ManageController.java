@@ -83,7 +83,7 @@ public class ManageController {
     // Article
     @RequestMapping("/addArticle")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public boolean addArticle(String title,String summary,Long categoryId,String content,String labels){
+    public boolean addArticle(String title,String summary,Long categoryId,String content,String labels,int isOriginal){
 
         JSONObject json = new JSONObject();
         List<Long> labelList = json.parseArray(labels,Long.class);
@@ -94,6 +94,7 @@ public class ManageController {
         articleInfo.setSummary(summary);
         articleInfo.setCategoryId(categoryId);
         articleInfo.setViews(0);
+        articleInfo.setIsOriginal(isOriginal);
         articleInfo.setIsDeleted(0);
 
         ArticleContent articleContent = new ArticleContent();
@@ -110,13 +111,14 @@ public class ManageController {
 
     @RequestMapping("/updateArticle")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public boolean updateArticle(Long articleId, String title, String summary, Long categoryId,Long contentId, String content){
+    public boolean updateArticle(Long articleId, String title, String summary, Long categoryId,int isOriginal,Long contentId, String content){
         ArticleInfo articleInfo = new ArticleInfo();
         ArticleContent articleContent = new ArticleContent();
         articleInfo.setId(articleId);
         articleInfo.setTitle(title);
         articleInfo.setSummary(summary);
         articleInfo.setCategoryId(categoryId);
+        articleInfo.setIsOriginal(isOriginal);
 
         articleContent.setId(contentId);
         articleContent.setContent(content);
