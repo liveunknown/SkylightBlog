@@ -39,14 +39,19 @@ function getArticleById(id) {
                history.back(-1);
            } else {
                var categories = "";
+               var Original = data.isOriginal;
                var labels = "";
                var articleId = data.articleInfoId;
                var title = data.title;
 
+               setArticleLink(articleId);
+
+               var original = isOriginal(Original);
+
                $("#title").html(data.title);
                $("#here").val(data.articleContent.content);
 
-               categories = '<span class="label label-success">原创</span>&#8194'+
+               categories = '<span class="label label-success">'+ original +'</span>&#8194'+
                    '<span class="glyphicon glyphicon-time">&#8197;'+data.createBy+'&#8197;&#8197;</span>'+
                    '<span class="glyphicon glyphicon-user">&#8197;郁磊&#8197;&#8197;</span>'+
                    '<span class="glyphicon glyphicon-tag">&#8197;'+data.category.name+'</span>';
@@ -91,4 +96,24 @@ function getSiteInfo() {
         }
     });
 
+}
+
+function isOriginal(isOriginal) {
+
+    var original;
+
+    if(isOriginal == '1')
+    {
+        original = "原创";
+    } else if (isOriginal == '0') {
+        original = "转载";
+    }
+
+    return original;
+}
+
+function setArticleLink(id) {
+    var link = 'http://www.baidurex.com/article.html?id=' + id;
+    $('#articleLink').attr('href',link);
+    $('#articleLink').text(link);
 }

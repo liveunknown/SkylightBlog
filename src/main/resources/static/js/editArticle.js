@@ -84,6 +84,7 @@ function addArticleByFormData() {
     var title = $('#title').val();
     var summary = $('#summary').val();
     var categoryId = $('#category').val();
+    var isOriginal = $('#isOriginal').val();
     var content = $('#content').val();
     var labels = $('#labels').val();
 
@@ -91,6 +92,7 @@ function addArticleByFormData() {
     fd.append('title',title);
     fd.append('summary',summary);
     fd.append('categoryId',categoryId);
+    fd.append('isOriginal',isOriginal);
     fd.append('content',content);
     fd.append('labels',JSON.stringify(labels));
 
