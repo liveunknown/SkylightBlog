@@ -18,6 +18,7 @@ $(function(){
 
     LoadCategories();
     LoadLabels();
+    authorLinkBind();
     // 判断是新建还是编辑
     if(edit=='true')
     {
@@ -258,4 +259,16 @@ function editArticle(articleId,contentId) {
 
 function BackToManagePage() {
     window.location.href="/admin/manageArticle.html";
+}
+
+function authorLinkBind() {
+    $("#isOriginal").bind("change", function() {
+        if(this.value == "1") {
+            $("#authorDiv").hide();
+            $("#urlDiv").hide();
+        } else if(this.value == "0") {
+            $("#authorDiv").show();
+            $("#urlDiv").show();
+        }
+    })
 }
