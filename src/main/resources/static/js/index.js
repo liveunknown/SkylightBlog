@@ -28,6 +28,7 @@ function LoadPage(page) {
                 var category = data[i].category.name;
                 var Original = data[i].isOriginal;
                 var title = data[i].title;
+                var author = data[i].author;
                 var summary = data[i].summary;
 
                 var original = isOriginal(Original);
@@ -41,8 +42,9 @@ function LoadPage(page) {
                     '<div class="col-xs-12 col-lg-12 shadow distance article" data-am-scrollspy="{animation: \'slide-left\'}" >'+
                     '                    <h3>'+title+'</h3>'+
                     '                    <p>'+
+                    '                    <span class="label label-success">'+ original +'</span>&#8194;'+
                     '                    <span class="glyphicon glyphicon-time"></span>' + '&#8197;' + createTime + '&#8197;'+
-                    '                    <span class="glyphicon glyphicon-user"></span> '+ original + '&#8197;'+
+                    '                    <span class="glyphicon glyphicon-user"></span> '+ author + '&#8197;'+
                     '                    <span class="glyphicon glyphicon-tags"></span> '+ category + '</p>'+
                     '                    <p>'+ summary +'</p>'+
                     '                    <p><a class="btn btn-primary" href="/article.html?id='+ id + '" role="button">View details &raquo;</a></p>'+

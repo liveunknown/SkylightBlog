@@ -43,17 +43,19 @@ function getArticleById(id) {
                var labels = "";
                var articleId = data.articleInfoId;
                var title = data.title;
+               var author = data.author;
+               var url = data.url;
 
-               setArticleLink(articleId);
+               setArticleLink(articleId,Original,author,url);
 
                var original = isOriginal(Original);
 
                $("#title").html(data.title);
                $("#here").val(data.articleContent.content);
 
-               categories = '<span class="label label-success">'+ original +'</span>&#8194'+
+               categories = '<span class="label label-success">'+ original +'</span>&#8194;'+
                    '<span class="glyphicon glyphicon-time">&#8197;'+data.createBy+'&#8197;&#8197;</span>'+
-                   '<span class="glyphicon glyphicon-user">&#8197;郁磊&#8197;&#8197;</span>'+
+                   '<span class="glyphicon glyphicon-user">&#8197;' + author + '&#8197;&#8197;</span>'+
                    '<span class="glyphicon glyphicon-tag">&#8197;'+data.category.name+'</span>';
                $("#category").html(categories);
                addShare(articleId,title);
@@ -112,8 +114,14 @@ function isOriginal(isOriginal) {
     return original;
 }
 
-function setArticleLink(id) {
-    var link = 'http://www.baidurex.com/article.html?id=' + id;
+function setArticleLink(id, original,author, url) {
+    var link;
+    if(original == 1) {
+        link = 'http://www.baidurex.com/article.html?id=' + id;
+    } else if(original == 0) {
+        link = url;
+    }
+    $('#authorFooter').text(author);
     $('#articleLink').attr('href',link);
     $('#articleLink').text(link);
 }
