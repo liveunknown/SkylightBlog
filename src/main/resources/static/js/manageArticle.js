@@ -66,7 +66,7 @@ function LoadPage(page) {
 }
 
 function writeArticle() {
-    window.location.href = "/admin/editArticle.html";
+    window.location.href = "/admin/editArticle.html?edit=false";
 }
 
 function deleteArticle(id) {

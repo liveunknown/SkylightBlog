@@ -4,6 +4,8 @@ public class ArticleInfo {
     private Long id;
     private Long categoryId;
     private String title;
+    private String author;
+    private String url;
     private String summary;
     private int views;
     private String createBy;
@@ -17,6 +19,8 @@ public class ArticleInfo {
                 "id=" + id +
                 ", categoryId=" + categoryId +
                 ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", url='" + url + '\'' +
                 ", summary='" + summary + '\'' +
                 ", views=" + views +
                 ", createBy='" + createBy + '\'' +
@@ -48,6 +52,22 @@ public class ArticleInfo {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getSummary() {

@@ -6,6 +6,8 @@
         <id column="id" jdbcType="BIGINT" property="id" />
         <result column="category_id" jdbcType="BIGINT" property="categoryId" />
         <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="author" jdbcType="VARCHAR" property="author" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
         <result column="summary" jdbcType="VARCHAR" property="summary" />
         <result column="views" property="views" />
         <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
@@ -18,6 +20,8 @@
         <id column="id" jdbcType="BIGINT" property="articleInfoId" />
         <result column="category_id" jdbcType="BIGINT" property="categoryId" />
         <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="author" jdbcType="VARCHAR" property="author" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
         <result column="summary" jdbcType="VARCHAR" property="summary" />
         <result column="views" property="views" />
         <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
@@ -108,7 +112,7 @@
 
 
     <insert id="addArticleInfo" parameterType="com.skylight.blog.model.ArticleInfo" useGeneratedKeys="true" keyProperty="id">
-    insert into article_info(category_id,title,summary,views,is_deleted,is_original) values (#{ai.categoryId},#{ai.title},#{ai.summary},#{ai.views},#{ai.isDeleted},#{ai.isOriginal})
+    insert into article_info(category_id,title,author,url,summary,views,is_deleted,is_original) values (#{ai.categoryId},#{ai.title},#{ai.author},#{ai.url},#{ai.summary},#{ai.views},#{ai.isDeleted},#{ai.isOriginal})
     </insert>
 
     <delete id="deleteArticleInfo">
@@ -116,7 +120,7 @@
     </delete>
 
     <update id="updateArticleInfo">
-        update article_info set category_id = #{ai.categoryId},title = #{ai.title},summary = #{ai.summary},is_original = #{ai.isOriginal}
+        update article_info set category_id = #{ai.categoryId},title = #{ai.title},author = #{ai.author},url = #{ai.url},summary = #{ai.summary},is_original = #{ai.isOriginal}
         where id = #{ai.id} AND is_deleted =0
     </update>
 

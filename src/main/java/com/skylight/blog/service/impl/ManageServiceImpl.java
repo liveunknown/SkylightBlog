@@ -62,6 +62,12 @@ public class ManageServiceImpl implements ManageService {
     // Article
     public boolean addArticle(ArticleInfo articleInfo, ArticleContent articleContent, Long[] ids){
         articleInfoMapper.addArticleInfo(articleInfo);
+        if(articleInfo.getIsOriginal() == 1) {
+            articleInfo.setAuthor("郁磊");
+            articleInfo.setUrl("http://www.baidurex.com/article.html?id=" + articleInfo.getId());
+            articleInfoMapper.updateArticleInfo(articleInfo);
+        }
+
         articleContent.setArticleId(articleInfo.getId());
         articleInfoMapper.addArticleContent(articleContent);
         for (int i = 0; i < ids.length; i++) {

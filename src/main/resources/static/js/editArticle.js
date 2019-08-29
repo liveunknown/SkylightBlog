@@ -18,11 +18,15 @@ $(function(){
 
     LoadCategories();
     LoadLabels();
-    authorLinkBind();
+    if(edit=='false') {
+        authorLinkBind();
+    }
     // 判断是新建还是编辑
     if(edit=='true')
     {
-      getArticleDetailById(id);
+        getArticleDetailById(id);
+        $("#authorDiv").show();
+        $("#urlDiv").show();
     }
 
 });
@@ -41,6 +45,8 @@ function getQueryVariable(variable) {
 
 function addArticle() {
     var title = $('#title').val();
+    var author = $('#author').val();
+    var url = $('#url').val();
     console.log("title: " +title);
     var summary = $('#summary').val();
     var categoryId = $('#category').val();
@@ -50,6 +56,8 @@ function addArticle() {
     console.log("labels: " +labels);
     var fd = new FormData();
     fd.append('title',title);
+    fd.append('author',author);
+    fd.append('url',url);
     fd.append('summary',summary);
     fd.append('categoryId',categoryId);
     fd.append('content',content);
@@ -83,6 +91,8 @@ function addArticle() {
 
 function addArticleByFormData() {
     var title = $('#title').val();
+    var author = $('#author').val();
+    var url = $('#url').val();
     var summary = $('#summary').val();
     var categoryId = $('#category').val();
     var isOriginal = $('#isOriginal').val();
@@ -91,6 +101,8 @@ function addArticleByFormData() {
 
     var fd = new FormData();
     fd.append('title',title);
+    fd.append('author',author);
+    fd.append('url',url);
     fd.append('summary',summary);
     fd.append('categoryId',categoryId);
     fd.append('isOriginal',isOriginal);
@@ -183,6 +195,8 @@ function getArticleDetailById(id) {
         data: {id:id},
         success: function (data) {
             var title = data.title;
+            var author = data.author;
+            var url = data.url;
             var summary = data.summary;
             var categoryId = data.categoryId;
             var isOriginal = data.isOriginal;
@@ -203,6 +217,8 @@ function getArticleDetailById(id) {
             $("#labels").selectpicker('val',labels);
 
             $("#title").val(title);
+            $("#author").val(author);
+            $("#url").val(url);
             $("#summary").val(summary);
             $("#content").html(content);
             $("#button-area").html(editButton);
@@ -216,6 +232,8 @@ function getArticleDetailById(id) {
 // 需要articleInfo和articleContent的id
 function editArticle(articleId,contentId) {
     var title = $('#title').val();
+    var author = $('#author').val();
+    var url = $('#url').val();
     var summary = $('#summary').val();
     var categoryId = $('#category').val();
     var isOriginal = $('#isOriginal').val();
@@ -229,6 +247,8 @@ function editArticle(articleId,contentId) {
         data: {
             articleId:articleId,
             title:title,
+            author:author,
+            url:url,
             summary:summary,
             categoryId:categoryId,
             isOriginal:isOriginal,
