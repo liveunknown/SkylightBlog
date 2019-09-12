@@ -9,6 +9,7 @@ public class ArticleWrap {
     private String title;
     private String author;
     private String url;
+    private String imageUrl;
     private String summary;
     private int views;
     private String createBy;
@@ -30,6 +31,7 @@ public class ArticleWrap {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", url='" + url + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", summary='" + summary + '\'' +
                 ", views=" + views +
                 ", createBy='" + createBy + '\'' +
@@ -88,6 +90,14 @@ public class ArticleWrap {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getSummary() {

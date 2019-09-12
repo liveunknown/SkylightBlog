@@ -89,7 +89,48 @@ function addArticle() {
     });
 }
 
+function imageUpload() {
+    var imageUrl;
+
+    var elementList=document.getElementsByClassName("imageFile");
+    var fd = new FormData();
+    fd.append('image',elementList[0].files[0]);
+    alert(elementList[0].files[0]);
+    $.ajax({
+        url:"/imageUpload",
+        type:"POST",
+        dataType:"json",
+        async:false,
+        data:fd,
+        contentType: false,
+        processData: false,
+        success:function(data){
+            alert("添加成功");
+            console.log(data.url);
+            imageUrl = data.url;
+        },
+        error:function(){
+            alert("添加失败");
+            imageUrl = false;
+        }
+    });
+
+    return imageUrl;
+}
+
 function addArticleByFormData() {
+
+    var imageUrl;
+
+    var uploadResult = imageUpload();
+    if(uploadResult == false) {
+        alert("上传图片失败！");
+        return ;
+    }
+
+    imageUrl = uploadResult;
+    console.log(imageUrl);
+
     var title = $('#title').val();
     var author = $('#author').val();
     var url = $('#url').val();
@@ -103,6 +144,7 @@ function addArticleByFormData() {
     fd.append('title',title);
     fd.append('author',author);
     fd.append('url',url);
+    fd.append('imageUrl',imageUrl);
     fd.append('summary',summary);
     fd.append('categoryId',categoryId);
     fd.append('isOriginal',isOriginal);
