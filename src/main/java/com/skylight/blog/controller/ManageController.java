@@ -1,5 +1,6 @@
 package com.skylight.blog.controller;
 
+import com.skylight.blog.mapper.ArticleInfoMapper;
 import com.skylight.blog.model.ArticleContent;
 import com.skylight.blog.model.ArticleInfo;
 import com.skylight.blog.model.Category;
@@ -26,6 +27,8 @@ public class ManageController {
 
     @Autowired
     ManageService manageService;
+    @Autowired
+    ArticleInfoMapper articleInfoMapper;
 
     // Category
     @RequestMapping("/addCategory")
@@ -115,13 +118,23 @@ public class ManageController {
 
     @RequestMapping("/updateArticle")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public boolean updateArticle(Long articleId, String title,String author,String url, String summary, Long categoryId,int isOriginal,Long contentId, String content){
+    public boolean updateArticle(Long articleId, String title,String author,String url, String imageUrl, String summary, Long categoryId,int isOriginal,Long contentId, String content){
         ArticleInfo articleInfo = new ArticleInfo();
         ArticleContent articleContent = new ArticleContent();
         articleInfo.setId(articleId);
         articleInfo.setTitle(title);
         articleInfo.setAuthor(author);
         articleInfo.setUrl(url);
+
+        System.out.println("传入的imageUrl:" + imageUrl);
+        System.out.println("imageUrl是否不为空:" + (!"false".equals(imageUrl)));
+
+        if(!"false".equals(imageUrl) ) {
+            articleInfo.setImageUrl(imageUrl);
+        } else {
+            articleInfo.setImageUrl(articleInfoMapper.getArticleInfoDetailByArticleInfoId(articleId).getImageUrl());
+        }
+
         articleInfo.setSummary(summary);
         articleInfo.setCategoryId(categoryId);
         articleInfo.setIsOriginal(isOriginal);
@@ -212,7 +225,7 @@ public class ManageController {
             //String Root = "/usr/local/MyBlog/images/";
 
             String path = "";
-            String Url = "http://localhost:8080/image/";
+            String Url = "http://localhost/image/";
             //String Url = "http://www.baidurex.com/image/";
 
             System.out.println("Root: "+Root);

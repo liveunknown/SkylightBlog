@@ -94,8 +94,12 @@ function imageUpload() {
 
     var elementList=document.getElementsByClassName("imageFile");
     var fd = new FormData();
+    //alert(elementList[0].files[0]==null);
+    if(elementList[0].files[0]==null) {
+        return false;
+    }
     fd.append('image',elementList[0].files[0]);
-    alert(elementList[0].files[0]);
+    //alert(elementList[0].files[0]);
     $.ajax({
         url:"/imageUpload",
         type:"POST",
@@ -280,6 +284,16 @@ function editArticle(articleId,contentId) {
     var categoryId = $('#category').val();
     var isOriginal = $('#isOriginal').val();
     var content = $('#content').val();
+    var imageUrl;
+
+    var upload = imageUpload();
+    if(upload == false){
+        imageUrl = false;
+    } else {
+        imageUrl = upload;
+    }
+
+    //alert(imageUrl);
 
     var backButton = '<button type="button" class="btn btn-primary" id="reload" data-dismiss="modal" onclick="BackToManagePage()">确定</button>';
     $.ajax({
@@ -291,6 +305,7 @@ function editArticle(articleId,contentId) {
             title:title,
             author:author,
             url:url,
+            imageUrl:imageUrl,
             summary:summary,
             categoryId:categoryId,
             isOriginal:isOriginal,
