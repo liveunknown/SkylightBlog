@@ -187,7 +187,7 @@ a {
     }
 }
 /*YL*/
-@media only screen and (max-width:1030px) {
+@media only screen and (max-width:1024px) {
     .blog-entry-article {
         padding-bottom:1rem;
         text-align:center;
