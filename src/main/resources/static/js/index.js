@@ -30,6 +30,7 @@ function LoadPage(page) {
                 var title = data[i].title;
                 var author = data[i].author;
                 var summary = data[i].summary;
+                var imageUrl = data[i].imageUrl;
 
                 var original = isOriginal(Original);
 
@@ -38,7 +39,7 @@ function LoadPage(page) {
                     labels = labels + '<span class="glyphicon glyphicon-paperclip"></span> ' + data[i].articleLabelList[j].label.name + '&#8194;';
                 }
 
-                content =
+                /*content =
                     '<div class="col-xs-12 col-lg-12 shadow distance article" data-am-scrollspy="{animation: \'slide-left\'}" >'+
                     '                    <h3>'+title+'</h3>'+
                     '                    <p>'+
@@ -51,16 +52,33 @@ function LoadPage(page) {
                     '                    <hr>'+
                     '                    <p>'+ labels +'</p>'+
                     '                </div>';
+                labels = "";*/
+
+                content =
+                '<div class="articleDiv">'+
+                '<article class="am-g blog-entry-article">'+
+                '                    <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">'+
+                '                        <img src="' + imageUrl + '" alt="" class="am-u-sm-12">'+
+                '                    </div>'+
+                '                    <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text" style="font-size: 15px">'+
+                '                        <span><a href="" class="blog-color">' + original + '&nbsp;</a></span>'+
+                '                        <span> @' + category + ' &nbsp;</span>'+
+                '                        <span>'+ createTime +'</span>'+
+                '                        <h3 style="margin-top: 10px"><b><a href="/article.html?id='+ id +'">'+ title +'</a></b></h3>'+
+                '                        <p style="font-size: 1.5rem; margin-top: 15px">'+ summary +
+                '                        </p>'+
+                '                        <p><a href="" class="blog-continue">continue reading</a></p>'+
+                '                    </div>'+
+                '                </article>'+
+                '</div>';
                 labels = "";
 
                 $("#lastOne").append(content);
 
-                $('.article').scrollspy({
+                $('.articleDiv').scrollspy({
                     animation: 'slide-left'
                 })
             }
-
-
             //$("#lastOne").html(content);
 
         }, error: function () {
