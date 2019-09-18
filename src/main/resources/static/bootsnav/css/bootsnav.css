@@ -153,7 +153,7 @@ nav.bootsnav.navbar-full .navbar-collapse .nav-full::-webkit-scrollbar {
     width: 0;
 }
 
-nav.bootsnav.navbar-full .navbar-collapse .nav-full::-moz-scrollbar {
+/*nav.bootsnav.navbar-full .navbar-collapse .nav-full::-moz-scrollbar {
     width: 0;
 }
 
@@ -163,7 +163,7 @@ nav.bootsnav.navbar-full .navbar-collapse .nav-full::-ms-scrollbar {
 
 nav.bootsnav.navbar-full .navbar-collapse .nav-full::-o-scrollbar {
     width: 0;
-}
+}*/
 
 
 nav.bootsnav.navbar-full .navbar-collapse ul.nav{
@@ -1275,9 +1275,9 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     
     /* Tabs
     =================================*/ 
-    nav.navbar.bootsnav .megamenu-content.tabbed{
+/*    nav.navbar.bootsnav .megamenu-content.tabbed{
         padding-left: 0 !mportant;
-    }
+    }*/
     
     nav.navbar.bootsnav .tabbed > li{
         padding: 25px 0;

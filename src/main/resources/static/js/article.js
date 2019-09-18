@@ -53,7 +53,9 @@ function getArticleById(id) {
                $("#title").html(data.title);
                $("#here").val(data.articleContent.content);
 
-               categories = '<span class="label label-success">'+ original +'</span>&#8194;'+
+               categories =
+                   /*'<span class="am-badge am-badge-success am-radius">'+ original +'</span>&#8194;'+*/
+                                                                    original +
                    '<span class="glyphicon glyphicon-time">&#8197;'+data.createBy+'&#8197;&#8197;</span>'+
                    '<span class="glyphicon glyphicon-user">&#8197;' + author + '&#8197;&#8197;</span>'+
                    '<span class="glyphicon glyphicon-tag">&#8197;'+data.category.name+'</span>';
@@ -106,9 +108,11 @@ function isOriginal(isOriginal) {
 
     if(isOriginal == '1')
     {
-        original = "原创";
+        //original = "原创";
+        original = '<span class="am-badge am-badge-success am-radius">'+ '原创' +'</span>&#8194;'
     } else if (isOriginal == '0') {
-        original = "转载";
+        //original = "转载";
+        original = '<span class="am-badge am-badge-secondary am-radius">'+ '转载' +'</span>&#8194;'
     }
 
     return original;

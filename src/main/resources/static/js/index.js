@@ -54,6 +54,7 @@ function LoadPage(page) {
                     '                </div>';
                 labels = "";*/
 
+
                 content =
                 '<div class="articleDiv">'+
                 '<article class="am-g blog-entry-article">'+
@@ -61,11 +62,13 @@ function LoadPage(page) {
                 '                        <img src="' + imageUrl + '" alt="" class="am-u-sm-12">'+
                 '                    </div>'+
                 '                    <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text" style="font-size: 15px">'+
-                '                        <span><a href="" class="blog-color">' + original + '&nbsp;</a></span>'+
-                '                        <span> @' + category + ' &nbsp;</span>'+
+               /* '                   <span><a href="" class="blog-color">' + original + '&nbsp;</a></span>'+*/
+               /*'                    <span class="label label-info">'+ original +'</span>&#8194;'+*/
+                                                     original +
+                '                        <span style="font-family:Microsoft YaHei">' + category + ' &nbsp;</span>'+
                 '                        <span>'+ createTime +'</span>'+
                 '                        <h3 style="margin-top: 10px"><b><a href="/article.html?id='+ id +'">'+ title +'</a></b></h3>'+
-                '                        <p style="font-size: 1.5rem; margin-top: 15px">'+ summary +
+                '                        <p style="font-size: 1.5rem; margin-top: 15px;font-family:Microsoft YaHei">'+ summary +
                 '                        </p>'+
                 '                        <p><a href="" class="blog-continue">continue reading</a></p>'+
                 '                    </div>'+
@@ -216,9 +219,11 @@ function isOriginal(isOriginal) {
 
     if(isOriginal == '1')
     {
-        original = "原创";
+        //original = "原创";
+        original = '<span class="am-badge am-badge-success am-radius">'+ '原创' +'</span>&#8194;'
     } else if (isOriginal == '0') {
-        original = "转载";
+        //original = "转载";
+        original = '<span class="am-badge am-badge-secondary am-radius">'+ '转载' +'</span>&#8194;'
     }
 
     return original;
