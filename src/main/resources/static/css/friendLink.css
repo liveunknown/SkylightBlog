@@ -47,7 +47,7 @@
     margin: 20px 20px;
 }
 .site-inner .yl-friendlylink-author i{
-    color: red;
+    color: #808080;
 }
 .yl-friendlylink-author a{
     margin: 5px;
@@ -58,10 +58,10 @@
     margin-top: 20px;
 }
 .site-middle .yl-friendlylink-author i{
-    color: #61804E;
+    /*color: #21ffe4;*/
 }
 .yl-friendlylink-words{
-    padding: 27px;
+    padding: 27px 27px 0px 27px;
     font-weight: 600;
 }
 .yl-friendlylink-words blockquote ul li{
