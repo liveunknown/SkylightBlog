@@ -1,39 +1,32 @@
 @media screen and (min-width: 768px) {
     .site-inner{
-        margin: 0 16%;
+        margin: 0 2%;
         text-align: left;
     }
     .site-middle{
-        margin: 30px 16%;
+        margin: 30px 2%;
         text-align: left;
     }
     .yl-link-word{
-        margin: 30px 16%;
+        margin: 30px 2%;
         text-align: left;
-    }
-    .yl-official-weixin img{
-        width: 130px;
-        margin: 0 20%;
     }
 }
 @media screen and (max-width: 768px) {
     .site-inner{
-        margin: 0 5%;
+        margin: 0 0%;
         text-align: left;
     }
     .site-middle{
-        margin: 20px 5%;
+        margin: 20px 0%;
         text-align: left;
     }
     .yl-link-word{
-        margin: 20px 5%;
+        margin: 20px 0%;
         text-align: left;
     }
-    .yl-official-weixin img{
-        width: 73.1667px;
-        margin: 0 20%;
-    }
 }
+
 .yl-friendlylink-title i{
     color: dodgerblue;
     margin-left: 30px;
