@@ -178,7 +178,7 @@ public class ManageController {
 
             String path = "";
             //String Url = "http://localhost:8080/image/";
-            String Url = "http://www.baidurex.com/image/";
+            String Url = "/image/";
 
             System.out.println("Root: "+Root);
             String contentType=file.getContentType();
@@ -226,7 +226,7 @@ public class ManageController {
 
             String path = "";
             //String Url = "http://localhost/image/";
-            String Url = "http://www.baidurex.com/image/";
+            String Url = "/image/";
 
             System.out.println("Root: "+Root);
             String contentType=file.getContentType();

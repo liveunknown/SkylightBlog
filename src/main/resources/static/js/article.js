@@ -121,7 +121,7 @@ function isOriginal(isOriginal) {
 function setArticleLink(id, original,author, url) {
     var link;
     if(original == 1) {
-        link = 'http://www.baidurex.com/article.html?id=' + id;
+        link = 'https://www.baidurex.com/article.html?id=' + id;
     } else if(original == 0) {
         link = url;
     }
