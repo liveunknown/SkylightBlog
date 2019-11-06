@@ -18,7 +18,6 @@
         <java.version>1.8</java.version>
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <commons-io.version>2.4</commons-io.version>
-        <fastjson.version>1.2.21</fastjson.version>
         <com.fasterxml.jackson.core.version>2.9.5</com.fasterxml.jackson.core.version>
         <org.slf4j.version>1.7.19</org.slf4j.version>
     </properties>
@@ -111,8 +110,9 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
+            <version>1.2.51</version>
         </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
@@ -136,6 +136,11 @@
             <version>2.3.2</version>
         </dependency>
 
+        <!-- 整合redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

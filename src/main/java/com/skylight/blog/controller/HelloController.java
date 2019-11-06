@@ -1,20 +1,17 @@
 package com.skylight.blog.controller;
 
 import com.skylight.blog.exception.MyException;
+import com.skylight.blog.mapper.LabelMapper;
+import com.skylight.blog.model.Label;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 测试控制器
@@ -23,6 +20,12 @@ import java.util.UUID;
 public class HelloController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
+
+    @Autowired
+    LabelMapper labelMapper;
 
     @RequestMapping("/hello")
     @ResponseBody
@@ -51,5 +54,24 @@ public class HelloController {
     public String myException() throws MyException {
         logger.info("访问/hello时抛出了自定义异常！");
         throw new MyException("666","这里是自定义异常！");
+    }
+
+    @RequestMapping("/redis")
+    @ResponseBody
+    public List<Label> getAllStudent() {
+        //查询缓存
+        List<Label> labelList= (List<Label>)redisTemplate.opsForValue().get("labelList");
+        if(null == labelList) {
+            //缓存为空，查询一遍数据库
+            labelList = labelMapper.getLabelList();
+            //把数据库查询出来数据，放入Redis中
+            redisTemplate.opsForValue().set("labelList",labelList);
+
+            logger.info("从数据库中获取数据了~");
+        }
+
+        logger.info("调用 Redis 接口了~");
+
+        return labelList;
     }
 }
