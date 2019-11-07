@@ -1,18 +1,26 @@
 package com.skylight.blog.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
+import com.skylight.blog.constant.RedisKeys;
 import com.skylight.blog.mapper.ArticleInfoMapper;
 import com.skylight.blog.mapper.CategoryMapper;
 import com.skylight.blog.mapper.LabelMapper;
 import com.skylight.blog.model.*;
 import com.skylight.blog.service.ArticleService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     ArticleInfoMapper articleInfoMapper;
@@ -20,6 +28,9 @@ public class ArticleServiceImpl implements ArticleService {
     CategoryMapper categoryMapper;
     @Autowired
     LabelMapper labelMapper;
+
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
 
     public List<Category> getCategoryList()
     {
@@ -52,7 +63,21 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     public ArticleWrap getArticleWrapByArticleInfoId(Long id){
-        return articleInfoMapper.getArticleWrapByArticleInfoId(id);
+
+        ArticleWrap articleWrap ;
+        // logger.info("判断缓存数据是否存在" + redisTemplate.hasKey(RedisKeys.ARTICLE + id));
+
+        if (redisTemplate.hasKey(RedisKeys.ARTICLE + id)) {
+            articleWrap = JSONObject.parseObject(redisTemplate.opsForValue().get(RedisKeys.ARTICLE + id).toString(), ArticleWrap.class);
+            logger.info("从 Redis 中获取文章了~");
+        } else {
+            articleWrap = articleInfoMapper.getArticleWrapByArticleInfoId(id);
+            //把数据库查询出来数据，放入Redis中
+            redisTemplate.opsForValue().set(RedisKeys.ARTICLE + id,articleWrap);
+            logger.info("从 数据库 中获取文章了~");
+        }
+
+        return articleWrap;
     }
 
     public List<ArticleWrap> getArticleInfosByPageNumber(int page,int number)
