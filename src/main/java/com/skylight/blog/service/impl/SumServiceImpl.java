@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 
@@ -40,6 +41,17 @@ public class SumServiceImpl implements SumService {
             logger.info("从 数据库 中获取文章总数了~");
         }
         return articleSum;
+    }
+
+    public int getArticleSumByCategoryId(Long categoryId) {
+        if(categoryId==null)
+            categoryId = new Long(0);
+        return sumMapper.getArticleSumByCategoryId(categoryId);
+    }
+
+    public int getArticleSumByLabelId(Long labelId)
+    {
+        return sumMapper.getArticleSumByLabelId(labelId);
     }
 
     public JSONObject getSiteInfo() {

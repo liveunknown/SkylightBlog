@@ -6,6 +6,10 @@ public interface SumService {
 
     int getArticleSum();
 
+    int getArticleSumByCategoryId(Long categoryId);
+
+    int getArticleSumByLabelId(Long labelId);
+
     JSONObject getSiteInfo();
 
 }
