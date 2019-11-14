@@ -2,6 +2,7 @@ package com.skylight.blog.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.skylight.blog.mapper.SumMapper;
+import com.skylight.blog.service.SumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,9 +13,12 @@ public class SumController {
     @Autowired
     SumMapper sumMapper;
 
+    @Autowired
+    SumService sumService;
+
     @RequestMapping("/articleSum")
     public int getArticleSum() {
-        return sumMapper.getArticleSum();
+        return sumService.getArticleSum();
     }
 
     @RequestMapping("/articleSumByCategoryId")
@@ -32,10 +36,6 @@ public class SumController {
 
     @RequestMapping("/getSiteInfo")
     public JSONObject getSiteInfo() {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("articleNum", sumMapper.getArticleSum());
-        jsonObject.put("categoryNum", sumMapper.getCategorySum());
-        jsonObject.put("labelNum",sumMapper.getLabelSum());
-        return jsonObject;
+        return sumService.getSiteInfo();
     }
 }
