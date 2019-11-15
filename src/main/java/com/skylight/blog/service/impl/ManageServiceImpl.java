@@ -1,10 +1,12 @@
 package com.skylight.blog.service.impl;
 
+import com.skylight.blog.constant.RedisKeys;
 import com.skylight.blog.mapper.ArticleInfoMapper;
 import com.skylight.blog.mapper.CategoryMapper;
 import com.skylight.blog.mapper.LabelMapper;
 import com.skylight.blog.model.*;
 import com.skylight.blog.service.ManageService;
+import com.skylight.blog.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +20,12 @@ public class ManageServiceImpl implements ManageService {
     @Autowired
     ArticleInfoMapper articleInfoMapper;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     // Category
     public boolean addCategory(String name){
+        redisUtil.deleteRedisCacheByKey(RedisKeys.SITEINFO);
         Category category = new Category();
         category.setName(name);
         category.setNumber(0);
@@ -27,6 +33,7 @@ public class ManageServiceImpl implements ManageService {
     }
 
     public boolean deleteCategory(Long id){
+        redisUtil.deleteRedisCacheByKey(RedisKeys.SITEINFO);
         return categoryMapper.deleteCategory(id);
     }
 
@@ -42,12 +49,14 @@ public class ManageServiceImpl implements ManageService {
 
     // Label
     public boolean addLabel(String name){
+        redisUtil.deleteRedisCacheByKey(RedisKeys.SITEINFO);
         Label label = new Label();
         label.setName(name);
         return labelMapper.addLabel(label);
     }
 
     public boolean deleteLabel(Long id){
+        redisUtil.deleteRedisCacheByKey(RedisKeys.SITEINFO);
         return labelMapper.deleteLabel(id);
     }
 
@@ -61,6 +70,9 @@ public class ManageServiceImpl implements ManageService {
 
     // Article
     public boolean addArticle(ArticleInfo articleInfo, ArticleContent articleContent, Long[] ids){
+
+        redisUtil.deleteRedisCacheByKey(RedisKeys.ARTICLESUM);
+
         articleInfoMapper.addArticleInfo(articleInfo);
         if(articleInfo.getIsOriginal() == 1) {
             articleInfo.setAuthor("站长");
@@ -81,6 +93,8 @@ public class ManageServiceImpl implements ManageService {
 
     public boolean deleteArticle(Long id)
     {
+        redisUtil.deleteRedisCacheByKey(RedisKeys.ARTICLESUM);
+
         articleInfoMapper.deleteArticleContentByArticleInfoId(id);
         labelMapper.deleteArticleLabelByArticleInfoId(id);
         return articleInfoMapper.deleteArticleInfo(id);
