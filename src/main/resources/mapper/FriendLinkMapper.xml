@@ -18,6 +18,11 @@
     where id = #{id}
     </delete>
 
+    <select id="getFriendlinkById" resultMap="FriendlinkMap">
+    select * from friendlink
+    where id = #{id}
+    </select>
+
     <select id="getFriendlinkList" resultMap="FriendlinkMap">
         select * from friendlink WHERE 1=1
         <if test="isFamous != 9 ">

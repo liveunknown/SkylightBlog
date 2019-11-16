@@ -39,6 +39,10 @@ public class FriendLinkServiceImpl implements FriendLinkService {
         return friendlinkMapper.updateFriendlink(friendlink);
     }
 
+    public Friendlink getFriendLinkById(int id) {
+        return friendlinkMapper.getFriendlinkById(id);
+    }
+
     public List<Friendlink> getFriendLinkList(int isFamous){
         List<Friendlink> friendLinkList;
         String linkType = "";

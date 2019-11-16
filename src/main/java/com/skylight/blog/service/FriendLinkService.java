@@ -11,5 +11,7 @@ public interface FriendLinkService {
 
     boolean updateFriendLink(Friendlink FriendLink);
 
+    Friendlink getFriendLinkById(int id);
+
     List<Friendlink> getFriendLinkList(int isFamous);
 }

@@ -52,6 +52,23 @@ function LoadFriendLink(type) {
     });
 }
 
+function getFriendLinkById(id) {
+    $.ajax({
+        type: "GET",
+        url: "/getFriendLinkById",
+        async: false,
+        data: {id:id},
+        success: function (data) {
+            $('#history').val(id);
+            $('#modifiedBlogger').val(data.blogger);
+            $('#modifiedUrl').val(data.url);
+            $('#modifiedIsFamous').val(data.isFamous);
+        }, error: function () {
+            alert("根据ID获取友链信息失败！");
+        }
+    });
+}
+
 function addFriendLink() {
         var blogger = $('#blogger').val();
         var url = $('#url').val();
@@ -148,8 +165,8 @@ function Reload() {
 }
 
 function loadModifyModal(id) {
+    getFriendLinkById(id);
     $('#modifyModal').modal('show');
-    $('#history').val(id);
     var Buttons = '<button type="button" class="btn btn-primary" onclick="modifyFriendLink('+id+')">确定</button>'+
         '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>';
     $("#modifyModalFooter").html(Buttons);

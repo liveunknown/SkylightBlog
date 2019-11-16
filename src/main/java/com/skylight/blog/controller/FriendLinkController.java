@@ -37,6 +37,12 @@ public class FriendLinkController {
         return friendLinkService.updateFriendLink(friendlink);
     }
 
+    @RequestMapping("/getFriendLinkById")
+    @ResponseBody
+    public Friendlink getFriendLinkById(int id){
+        return friendLinkService.getFriendLinkById(id);
+    }
+
     @RequestMapping("/getFriendLinkList")
     @ResponseBody
     public List<Friendlink> getFriendLinkList(int isFamous){

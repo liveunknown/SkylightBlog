@@ -14,5 +14,7 @@ public interface FriendlinkMapper {
 
     boolean updateFriendlink(@Param("fl")Friendlink friendlink);
 
+    Friendlink getFriendlinkById(@Param("id")int id);
+
     List<Friendlink> getFriendlinkList(@Param("isFamous")int isFamous);
 }
