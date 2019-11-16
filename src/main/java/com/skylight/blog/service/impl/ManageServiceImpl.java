@@ -25,7 +25,10 @@ public class ManageServiceImpl implements ManageService {
 
     // Category
     public boolean addCategory(String name){
+
         redisUtil.deleteRedisCacheByKey(RedisKeys.SITEINFO);
+        redisUtil.deleteRedisCacheByKey(RedisKeys.CATEGORYLIST);
+
         Category category = new Category();
         category.setName(name);
         category.setNumber(0);
@@ -33,7 +36,10 @@ public class ManageServiceImpl implements ManageService {
     }
 
     public boolean deleteCategory(Long id){
+
         redisUtil.deleteRedisCacheByKey(RedisKeys.SITEINFO);
+        redisUtil.deleteRedisCacheByKey(RedisKeys.CATEGORYLIST);
+
         return categoryMapper.deleteCategory(id);
     }
 
@@ -44,19 +50,26 @@ public class ManageServiceImpl implements ManageService {
 
     public boolean updateCategory(Category category)
     {
+        redisUtil.deleteRedisCacheByKey(RedisKeys.CATEGORYLIST);
         return categoryMapper.updateCategory(category);
     }
 
     // Label
     public boolean addLabel(String name){
+
         redisUtil.deleteRedisCacheByKey(RedisKeys.SITEINFO);
+        redisUtil.deleteRedisCacheByKey(RedisKeys.LABELLIST);
+
         Label label = new Label();
         label.setName(name);
         return labelMapper.addLabel(label);
     }
 
     public boolean deleteLabel(Long id){
+
         redisUtil.deleteRedisCacheByKey(RedisKeys.SITEINFO);
+        redisUtil.deleteRedisCacheByKey(RedisKeys.LABELLIST);
+
         return labelMapper.deleteLabel(id);
     }
 
@@ -65,6 +78,7 @@ public class ManageServiceImpl implements ManageService {
     }
 
     public boolean updateLabel(Label label){
+        redisUtil.deleteRedisCacheByKey(RedisKeys.LABELLIST);
         return labelMapper.updateLabel(label);
     }
 
@@ -94,6 +108,7 @@ public class ManageServiceImpl implements ManageService {
     public boolean deleteArticle(Long id)
     {
         redisUtil.deleteRedisCacheByKey(RedisKeys.ARTICLESUM);
+        redisUtil.deleteRedisCacheByKey(RedisKeys.ARTICLE + id);
 
         articleInfoMapper.deleteArticleContentByArticleInfoId(id);
         labelMapper.deleteArticleLabelByArticleInfoId(id);
@@ -102,6 +117,8 @@ public class ManageServiceImpl implements ManageService {
 
     public boolean updateArticle(ArticleInfo articleInfo, ArticleContent articleContent)
     {
+        redisUtil.deleteRedisCacheByKey(RedisKeys.ARTICLE + articleInfo.getId());
+
         if(articleInfoMapper.updateArticleInfo(articleInfo)) {
         return articleInfoMapper.updateArticleContent(articleContent);
         }

@@ -56,6 +56,7 @@ public class HelloController {
         throw new MyException("666","这里是自定义异常！");
     }
 
+    /*
     @RequestMapping("/redis")
     @ResponseBody
     public List<Label> getAllStudent() {
@@ -74,4 +75,5 @@ public class HelloController {
 
         return labelList;
     }
+    */
 }

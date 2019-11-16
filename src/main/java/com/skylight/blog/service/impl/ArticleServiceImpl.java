@@ -34,12 +34,32 @@ public class ArticleServiceImpl implements ArticleService {
 
     public List<Category> getCategoryList()
     {
-        return categoryMapper.getCategoryList();
+        List<Category> categoryList;
+        if (redisTemplate.hasKey(RedisKeys.CATEGORYLIST)) {
+            categoryList = (List<Category>)redisTemplate.opsForValue().get(RedisKeys.CATEGORYLIST);
+            logger.info("从 Redis 中获取分类列表了~");
+        } else {
+            categoryList = categoryMapper.getCategoryList();
+            //把数据库查询出来数据，放入Redis中
+            redisTemplate.opsForValue().set(RedisKeys.CATEGORYLIST,categoryList);
+            logger.info("从 数据库 中获取分类列表了~");
+        }
+        return categoryList;
     }
 
     public List<Label> getLabelList()
     {
-        return labelMapper.getLabelList();
+        List<Label> labelList;
+        if (redisTemplate.hasKey(RedisKeys.LABELLIST)) {
+            labelList = (List<Label>)redisTemplate.opsForValue().get(RedisKeys.LABELLIST);
+            logger.info("从 Redis 中获取标签列表了~");
+        } else {
+            labelList = labelMapper.getLabelList();
+            //把数据库查询出来数据，放入Redis中
+            redisTemplate.opsForValue().set(RedisKeys.LABELLIST,labelList);
+            logger.info("从 数据库 中获取标签列表了~");
+        }
+        return labelList;
     }
 
     public List<ArticleWrap> getArticleInfoDetailsByLabelId(Long id,int page, int number)
