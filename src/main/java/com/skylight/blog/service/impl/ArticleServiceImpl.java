@@ -78,14 +78,28 @@ public class ArticleServiceImpl implements ArticleService {
 
     public List<ArticleWrap> getArticleInfoDetails(Long categoryId, int page, int number)
     {
-        List<ArticleWrap> articleWrapList = articleInfoMapper.getArticleInfoDetails(categoryId, (page - 1)*number, number);
+        List<ArticleWrap> articleWrapList ;
+        // 分页获取文章简介列表
+        if(categoryId == 0) {
+            if (redisTemplate.hasKey(RedisKeys.ARTICLEINFOLISTPAGE + page)) {
+                articleWrapList = (List<ArticleWrap>)redisTemplate.opsForValue().get(RedisKeys.ARTICLEINFOLISTPAGE + page);
+                logger.info("从 Redis 中 按页 获取第" + page + "页的文章简介列表了~");
+            } else {
+                articleWrapList = articleInfoMapper.getArticleInfoDetails(categoryId, (page - 1)*number, number);
+                //把数据库查询出来数据，放入Redis中
+                redisTemplate.opsForValue().set(RedisKeys.ARTICLEINFOLISTPAGE + page,articleWrapList);
+                logger.info("从 数据库 中 按页 获取第" + page + "页的文章简介列表了~");
+            }
+        } else {
+            articleWrapList = articleInfoMapper.getArticleInfoDetails(categoryId, (page - 1)*number, number);
+        }
+
         return articleWrapList;
     }
 
     public ArticleWrap getArticleWrapByArticleInfoId(Long id){
 
         ArticleWrap articleWrap ;
-        // logger.info("判断缓存数据是否存在" + redisTemplate.hasKey(RedisKeys.ARTICLE + id));
 
         if (redisTemplate.hasKey(RedisKeys.ARTICLE + id)) {
             articleWrap = JSONObject.parseObject(redisTemplate.opsForValue().get(RedisKeys.ARTICLE + id).toString(), ArticleWrap.class);

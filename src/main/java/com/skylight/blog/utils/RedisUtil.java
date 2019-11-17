@@ -4,6 +4,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -36,6 +37,14 @@ public class RedisUtil {
         if(redisTemplate.hasKey(redisKey)) {
             redisTemplate.delete(redisKey);
         }
+    }
+
+    /**
+     * 删除以某一字符串为前缀的所有缓存
+     */
+    public void deleteRedisCacheByKeyPrefix(String prefix){
+        Set<String> keys = redisTemplate.keys( prefix + "*");
+        redisTemplate.delete(keys);
     }
 
     /**

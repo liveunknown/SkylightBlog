@@ -12,14 +12,11 @@ public class RedisKeys {
 
     public static final String UPDATELOGLIST = "updateLogList";
 
-    public static final String FRIENDLINKLIST = "friendLinkList";
-
-    public static final String FAMOUSFRIENDLINKLIST = "famousFriendLinkList";
-
-    public static final String ORDINARYFRIENDLINKLIST = "ordinaryFriendLinkList";
+    public static final String FRIENDLINKLIST = "friendLinkList:";
 
     public static final String ARTICLESUM = "article_sum";
 
-    //public static final String ARTICLE = "article-";
     public static final String ARTICLE = "article:";
+
+    public static final String ARTICLEINFOLISTPAGE = "articleInfoListPage:";
 }

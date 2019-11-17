@@ -85,7 +85,9 @@ public class ManageServiceImpl implements ManageService {
     // Article
     public boolean addArticle(ArticleInfo articleInfo, ArticleContent articleContent, Long[] ids){
 
+        redisUtil.deleteRedisCacheByKey(RedisKeys.SITEINFO);
         redisUtil.deleteRedisCacheByKey(RedisKeys.ARTICLESUM);
+        redisUtil.deleteRedisCacheByKeyPrefix(RedisKeys.ARTICLEINFOLISTPAGE);
 
         articleInfoMapper.addArticleInfo(articleInfo);
         if(articleInfo.getIsOriginal() == 1) {
@@ -107,8 +109,10 @@ public class ManageServiceImpl implements ManageService {
 
     public boolean deleteArticle(Long id)
     {
+        redisUtil.deleteRedisCacheByKey(RedisKeys.SITEINFO);
         redisUtil.deleteRedisCacheByKey(RedisKeys.ARTICLESUM);
         redisUtil.deleteRedisCacheByKey(RedisKeys.ARTICLE + id);
+        redisUtil.deleteRedisCacheByKeyPrefix(RedisKeys.ARTICLEINFOLISTPAGE);
 
         articleInfoMapper.deleteArticleContentByArticleInfoId(id);
         labelMapper.deleteArticleLabelByArticleInfoId(id);
@@ -118,6 +122,7 @@ public class ManageServiceImpl implements ManageService {
     public boolean updateArticle(ArticleInfo articleInfo, ArticleContent articleContent)
     {
         redisUtil.deleteRedisCacheByKey(RedisKeys.ARTICLE + articleInfo.getId());
+        redisUtil.deleteRedisCacheByKeyPrefix(RedisKeys.ARTICLEINFOLISTPAGE);
 
         if(articleInfoMapper.updateArticleInfo(articleInfo)) {
         return articleInfoMapper.updateArticleContent(articleContent);

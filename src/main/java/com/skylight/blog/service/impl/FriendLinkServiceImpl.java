@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class FriendLinkServiceImpl implements FriendLinkService {
@@ -47,11 +48,11 @@ public class FriendLinkServiceImpl implements FriendLinkService {
         List<Friendlink> friendLinkList;
         String linkType = "";
         if(isFamous == 0) {
-            linkType = RedisKeys.ORDINARYFRIENDLINKLIST;
+            linkType = RedisKeys.FRIENDLINKLIST + '0';
         } else if (isFamous == 1) {
-            linkType = RedisKeys.FAMOUSFRIENDLINKLIST;
+            linkType = RedisKeys.FRIENDLINKLIST + '1';
         } else if (isFamous == 9) { // get all friend links
-            linkType = RedisKeys.FRIENDLINKLIST;
+            linkType = RedisKeys.FRIENDLINKLIST + '9';
         }
 
         if (redisTemplate.hasKey(linkType)) {
@@ -67,14 +68,7 @@ public class FriendLinkServiceImpl implements FriendLinkService {
     }
 
     public void deleteFriendLinkListFromRedis(){
-        if(redisTemplate.hasKey(RedisKeys.FRIENDLINKLIST)) {
-            redisTemplate.delete(RedisKeys.FRIENDLINKLIST);
-        }
-        if(redisTemplate.hasKey(RedisKeys.FAMOUSFRIENDLINKLIST)) {
-            redisTemplate.delete(RedisKeys.FAMOUSFRIENDLINKLIST);
-        }
-        if(redisTemplate.hasKey(RedisKeys.ORDINARYFRIENDLINKLIST)) {
-            redisTemplate.delete(RedisKeys.ORDINARYFRIENDLINKLIST);
-        }
+        Set<String> keys = redisTemplate.keys(RedisKeys.FRIENDLINKLIST + "*");
+        redisTemplate.delete(keys);
     }
 }
